@@ -1,0 +1,26 @@
+<meta charset="utf-8">
+<script src="Clases/LinkedList.js"></script>
+<script src="Clases/Node.js"></script>
+<script>
+
+    prueba = new LinkedList();
+
+    prueba.push("Hola");
+    prueba.push("Mundo",0);
+    prueba.push("Hoy");
+    prueba.push("Tupak",0);
+
+    console.log(prueba.print());
+    
+    p = prueba.pop(2);
+    console.log(p);
+    p = prueba.pop();
+    console.log(p);
+    p = prueba.pop(-6);
+    console.log(p);
+    p = prueba.pop(1);
+    console.log(p);
+    
+    console.log(prueba.print());
+
+</script>
