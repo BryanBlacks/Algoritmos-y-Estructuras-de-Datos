@@ -1,0 +1,13 @@
+<meta charset="utf-8">
+<script>
+    function factorial(n) {
+        r = n;
+        for (k = 1; k < n; k++) {
+            r += n - k;
+        }
+        return r;
+    }
+    n = 5;
+    //Cadena con formato
+    console.log(`El factorial de ${n} es: ${factorial(n)} `);
+</script>

@@ -1,0 +1,26 @@
+<meta charset="utf-8">
+<script>
+    function ListaEnlazada(Nodo) {
+        this.primero = Nodo;
+    }
+
+    function Nodo(nombre, estudiante) {
+        this.nombre = nombre;
+        this.estudiante = estudiante;
+        this.siguiente = null;
+    }
+
+    function Estudiante(nombre, numeroCuenta) {
+        this.nombre = nombre;
+        this.numeroCuenta = numeroCuenta;
+        this.indice = 100;
+    }
+
+    Juan = new Estudiante("Juan", "201910");
+    Nodo = new Nodo(0, Juan);
+    Lista = new ListaEnlazada(Nodo);
+
+    console.log("la variable lista es: ", Lista);
+    console.log("la variable nodo es: ", Nodo);
+    console.log("la variable estudiante es: ", Juan);
+</script>

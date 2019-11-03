@@ -1,0 +1,36 @@
+<meta charset="utf-8">
+<script src="Classes/Node.js"></script>
+<script src="Classes/Soda.js"></script>
+<script src="Classes/Stack.js"></script>
+<script>
+    vendingMachine = new Stack();
+
+    vendingMachine.push(new Soda("Pepsi"));
+    vendingMachine.push(new Soda("Coca-Cola"));
+    vendingMachine.push(new Soda("Fanta"));
+    vendingMachine.push(new Soda("Coca-Cola"));
+    vendingMachine.push(new Soda("Coca-Cola"));
+    vendingMachine.push(new Soda("Coca-Cola"));
+
+    console.log("El contenido de la maquina de refrescos es: ", vendingMachine.print());
+
+    product = vendingMachine.pop();
+    console.log("La bebida que sale de la maquina es: ", product);
+
+    product = vendingMachine.pop();
+    console.log("La bebida que sale de la maquina es: ", product);
+
+    product = vendingMachine.pop();
+    console.log("La bebida que sale de la maquina es: ", product);
+
+    product = vendingMachine.pop();
+    console.log("La bebida que sale de la maquina es: ", product);
+
+    product = vendingMachine.pop();
+    console.log("La bebida que sale de la maquina es: ", product);
+
+    product = vendingMachine.pop();
+    console.log("La bebida que sale de la maquina es: ", product);
+
+    console.log("El contenido de la maquina de refrescos es: ", vendingMachine.print());
+</script>

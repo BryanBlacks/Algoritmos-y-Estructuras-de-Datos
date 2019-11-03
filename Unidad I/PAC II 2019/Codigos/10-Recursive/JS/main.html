@@ -1,0 +1,43 @@
+<meta charset="utf-8">
+<script src="Recursive.js"></script>
+<script>
+    document.write('------M E N U------\n')
+    respuesta = parseInt(prompt("Escriba el numero de la operacion a realizar:  \n1. Factorial \n2. Fibonacci "))
+    document.write('\n')
+    modo = parseInt(prompt('1.Manual \n2.Automatico \nDatos de manera... '))
+
+    if (respuesta == 1) {
+        if (modo == 1) {
+            NumFact = parseInt(prompt('Ingrese un numero: '));
+            Factorial = new factorial(NumFact);
+            document.write("El factorial de ", NumFact, " es ", Factorial);
+
+        } else {
+            if (modo == 2) {
+                NumRandom = new random2Int();
+                Factorial = new factorial(NumRandom);
+                document.write("El factorial de ", numRandom, " es ", Factorial);
+            } else {
+                document.write("Valor Erroneo");
+            }
+        }
+    } else {
+        if (respuesta == 2) {
+            if (modo == 1) {
+
+                NumFib = parseInt(prompt('Ingrese un numero: '));
+                Fibonacci = new fibonacci(NumFib);
+                document.write("El factorial de ", NumFib, " es ", Fibonacci);
+
+            } else {
+                if (modo == 2) {
+                    NumRandom = new random2Int();
+                    Factorial = new factorial(NumRandom);
+                    document.write("El factorial de ", numRandom, " es ", Fibonacci);
+                } else {
+                    document.write("Valor Erroneo");
+                }
+            }
+        }
+    }
+</script>
