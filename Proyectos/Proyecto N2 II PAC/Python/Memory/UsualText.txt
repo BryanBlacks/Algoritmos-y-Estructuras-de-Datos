@@ -1,0 +1,39 @@
+A
+	B
+		distancia:1
+		anchoDeBanda:2
+		usuariosConectados:4
+		cantidadDeTrafico:2
+		tipoDeMedio:CAT5
+	C
+		distancia:1
+		anchoDeBanda:2
+		usuariosConectados:4
+		cantidadDeTrafico:2
+		tipoDeMedio:CAT6
+B
+	A
+		distancia:1
+		anchoDeBanda:2
+		usuariosConectados:4
+		cantidadDeTrafico:2
+		tipoDeMedio:Fibra-Optica
+	C
+		distancia:1
+		anchoDeBanda:2
+		usuariosConectados:4
+		cantidadDeTrafico:2
+		tipoDeMedio:WIFI
+	D
+		distancia:1
+		anchoDeBanda:2
+		usuariosConectados:4
+		cantidadDeTrafico:2
+		tipoDeMedio:Coaxial
+C
+	D
+		distancia:1
+		anchoDeBanda:2
+		usuariosConectados:4
+		cantidadDeTrafico:2
+		tipoDeMedio:Par-Trenzado
