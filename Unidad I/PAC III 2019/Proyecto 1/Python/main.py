@@ -1,8 +1,8 @@
 # -*- coding: utf8 -*-
 from PyQt5 import uic, QtWidgets
-from Interface.MainWindow import *
-from Interface.AddWindow import *
-from Interface.EditWindow import *
+from Nucleo.Interfaz.MainWindow import *
+from Nucleo.Interfaz.AddWindow import *
+from Nucleo.Interfaz.EditWindow import *
 
 class MainWindow(QtWidgets.QMainWindow,Ui_MainWindow):
     #Pantalla Principal
