@@ -23,6 +23,7 @@ class Ui_Tabla(object):
         self.txtTable.setFont(font)
         self.txtTable.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.txtTable.setObjectName("txtTable")
+        self.txtTable.setReadOnly(True)
         self.btnEdit = QtWidgets.QPushButton(Tabla)
         self.btnEdit.setGeometry(QtCore.QRect(230, 300, 140, 60))
         font = QtGui.QFont()

@@ -85,6 +85,16 @@ class EditWindow(QtWidgets.QMainWindow,Ui_Tabla):
         self.setupUi(self)
         self.ui=Ui_Tabla()
         self.center()
+        self.btnEdit.clicked.connect(self.openAddFromEdit)
+    
+    def openAddFromEdit(self):
+        self.addfromedit = AddWindow()
+        numPos = self.txtNumber.toPlainText()
+        if(int(numPos)):
+            editProduct = Queue.search(int(numPos))
+        else:
+            QMessageBox.warning(self,"PyQt5 Message","Introduzca un número de producto válido")
+        self.addfromedit.show()
  
     def center(self):
         frame = self.frameGeometry()

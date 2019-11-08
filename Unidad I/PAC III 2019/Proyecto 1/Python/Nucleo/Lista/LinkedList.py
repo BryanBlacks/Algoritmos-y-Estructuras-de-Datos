@@ -49,8 +49,6 @@ class LinkedList:
             else:
                 return False
 
-
-
     def search(self,pos=0):
         if(pos==0):
             return self.first.value
