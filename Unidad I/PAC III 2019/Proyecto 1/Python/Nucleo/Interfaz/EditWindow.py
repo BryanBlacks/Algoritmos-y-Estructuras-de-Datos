@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'TableWin.ui'
+# Form implementation generated from reading ui file 'EditWin.ui'
 #
 # Created by: PyQt5 UI code generator 5.5.1
 #
@@ -13,17 +13,6 @@ class Ui_Tabla(object):
         Tabla.setObjectName("Tabla")
         Tabla.resize(595, 388)
         Tabla.setStyleSheet("background-color: rgb(211, 205, 255);")
-        self.txtTable = QtWidgets.QTextEdit(Tabla)
-        self.txtTable.setGeometry(QtCore.QRect(20, 20, 551, 261))
-        font = QtGui.QFont()
-        font.setFamily("Bitstream Vera Sans")
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.txtTable.setFont(font)
-        self.txtTable.setStyleSheet("background-color: rgb(255, 255, 255);")
-        self.txtTable.setObjectName("txtTable")
-        self.txtTable.setReadOnly(True)
         self.btnEdit = QtWidgets.QPushButton(Tabla)
         self.btnEdit.setGeometry(QtCore.QRect(230, 300, 140, 60))
         font = QtGui.QFont()
@@ -88,13 +77,17 @@ class Ui_Tabla(object):
         self.label.setFont(font)
         self.label.setStyleSheet("color: rgb(0, 0, 0);")
         self.label.setObjectName("label")
-
+        self.txtTable = QtWidgets.QPlainTextEdit(Tabla)
+        self.txtTable.setGeometry(QtCore.QRect(20, 20, 550, 260))
+        self.txtTable.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.txtTable.setObjectName("txtTable")
+        self.txtTable.setReadOnly(True)
         self.retranslateUi(Tabla)
         QtCore.QMetaObject.connectSlotsByName(Tabla)
 
     def retranslateUi(self, Tabla):
         _translate = QtCore.QCoreApplication.translate
-        Tabla.setWindowTitle(_translate("Tabla", "Editar Inventario"))
+        Tabla.setWindowTitle(_translate("Tabla", "Ver y Editar"))
         self.label.setText(_translate("Tabla", "No."))
 
 

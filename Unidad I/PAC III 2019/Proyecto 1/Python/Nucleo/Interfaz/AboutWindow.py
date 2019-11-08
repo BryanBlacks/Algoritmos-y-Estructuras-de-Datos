@@ -89,7 +89,7 @@ class Ui_WinAbout(object):
 
     def retranslateUi(self, WinAbout):
         _translate = QtCore.QCoreApplication.translate
-        WinAbout.setWindowTitle(_translate("WinAbout", "Form"))
+        WinAbout.setWindowTitle(_translate("WinAbout", "About"))
         self.LblGerson.setText(_translate("WinAbout", "<html><head/><body><p>Gerson Adalid Murillo</p></body></html>"))
         self.LblNames.setText(_translate("WinAbout", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">Integrantes del equipo</span></p><p align=\"center\"><span style=\" font-size:14pt;\"><br/></span></p></body></html>"))
         self.LblInfoClass.setText(_translate("WinAbout", "<html><head/><body><p>AED proyecto N°1 III-PAC 2019</p></body></html>"))

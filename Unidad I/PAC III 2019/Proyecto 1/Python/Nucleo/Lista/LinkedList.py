@@ -78,7 +78,7 @@ class LinkedList:
 
 
     def generateTable(self):
-        count = 0
+        count = 1
         current = self.first
         name, cost, desc = "Nombre","Costo","Descripción"
         table=[]
