@@ -144,7 +144,7 @@ class Ui_WinAdd(object):
         self.label_3.setText(_translate("WinAdd", "Moneda"))
         self.lblName_2.setText(_translate("WinAdd", "Descripción del Producto"))
 
-
+    
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

@@ -1,13 +1,12 @@
-# -*- coding:utf-8 -*-
-from Product import *
-from Node import *
-
+#-*- coding:utf8 -*-
+from Nucleo.Lista.Node import *
 
 class LinkedList:
     def __init__(self):
         self.first = None
     
-    def push(self, value, pos):
+
+    def push(self, value ):
         if (not self.first):
             self.first = Node(value)
             return True
@@ -18,12 +17,21 @@ class LinkedList:
             current.next = Node(value)
             return True
 
-    def pop(self,pos=0):
+        return False
+
+    def printQueue(self):
+        current = self.first
+        while(current.next):
+            print(current.value.name)
+            current = current.next
+        print(current.value.name)
+
+    def pop(self,poss):
         if (not self.first):
             return False
         else:
             if (pos >-1):
-                if(n==0):
+                if(pos==0):
                     current = self.first
                     self.first = current.next
                     return True
@@ -40,6 +48,7 @@ class LinkedList:
                         count = count+1
             else:
                 return False
+
 
 
     def search(self,pos=0):
@@ -62,12 +71,12 @@ class LinkedList:
         if(not self.first):
             return 0
         else:
-            lot = 1
+            len = 1
             current = self.first
             while(current.next):
-                lot = lot+1
+                len = len+1
                 current = current.next
-            return lot
+            return len
 
 
     def generateTable(self):

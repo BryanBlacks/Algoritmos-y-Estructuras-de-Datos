@@ -13,15 +13,15 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(633, 319)
         MainWindow.setStyleSheet("background-color: rgb(211, 205, 255);")
-        self.btnAdd = QtWidgets.QPushButton(MainWindow)
-        self.btnAdd.setGeometry(QtCore.QRect(50, 50, 230, 50))
+        self.btnAddProduct = QtWidgets.QPushButton(MainWindow)
+        self.btnAddProduct.setGeometry(QtCore.QRect(50, 50, 230, 50))
         font = QtGui.QFont()
         font.setFamily("Bitstream Vera Sans")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.btnAdd.setFont(font)
-        self.btnAdd.setStyleSheet("background-color: qlineargradient(spread:reflect, x1:0, y1:0.882, x2:0.851, y2:0, stop:0 rgba(204, 0, 0, 0), stop:0.273632 rgba(255, 255, 255, 255));\n"
+        self.btnAddProduct.setFont(font)
+        self.btnAddProduct.setStyleSheet("background-color: qlineargradient(spread:reflect, x1:0, y1:0.882, x2:0.851, y2:0, stop:0 rgba(204, 0, 0, 0), stop:0.273632 rgba(255, 255, 255, 255));\n"
 "background-color: rgb(122, 255, 65);\n"
 "color: rgb(0, 0, 0);\n"
 "border-style: solid;\n"
@@ -30,7 +30,7 @@ class Ui_MainWindow(object):
 "border-color: rgb(0, 0, 0);\n"
 "\n"
 "")
-        self.btnAdd.setObjectName("btnAdd")
+        self.btnAddProduct.setObjectName("btnAddProduct")
         self.btnTree = QtWidgets.QPushButton(MainWindow)
         self.btnTree.setGeometry(QtCore.QRect(50, 210, 230, 50))
         font = QtGui.QFont()
@@ -111,7 +111,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Ventana Principal"))
-        self.btnAdd.setText(_translate("MainWindow", "Agregar a Inventario"))
+        self.btnAddProduct.setText(_translate("MainWindow", "Agregar a Inventario"))
         self.btnTree.setText(_translate("MainWindow", "Arbol Binario de Costos"))
         self.btnEdit.setText(_translate("MainWindow", "Ver y Editar Inventario"))
         self.btnAbout.setText(_translate("MainWindow", "Acerca de"))
