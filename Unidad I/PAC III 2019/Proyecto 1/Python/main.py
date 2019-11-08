@@ -87,8 +87,13 @@ class EditWindow(QtWidgets.QMainWindow,Ui_Tabla):
         self.center()
         self.btnEdit.clicked.connect(self.openAddFromEdit)
     
+        text = Queue.generateTable() 
+        self.txtTable.setText(text)
+        
     def openAddFromEdit(self):
         self.addfromedit = AddWindow()
+
+
         numPos = self.txtNumber.toPlainText()
         if(int(numPos)):
             editProduct = Queue.search(int(numPos))

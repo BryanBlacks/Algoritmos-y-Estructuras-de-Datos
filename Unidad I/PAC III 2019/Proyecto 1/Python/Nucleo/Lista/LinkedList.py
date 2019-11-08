@@ -78,6 +78,131 @@ class LinkedList:
 
 
     def generateTable(self):
-        pass
+        count = 0
+        current = self.first
+        name, cost, desc = "Nombre","Costo","Descripción"
+        table=[]
+        row=[]
+        j,w,q = 0,0,0
+
+        table.append("%s%s%s%s%s%s"%("-"*120,"\n","\t"*6,"Inventario de Productos","\n","-"*120))
+
+        for k in range(120):
+            if k<6:
+                if k==0:
+                    row.append("N.")
+                else:
+                    row.append(" ")
+            else:
+                if k<36:
+                    if k==6:
+                        row.append("| ")
+                    else:
+                        tam = len(name)
+                        if(j<tam):
+                            row.append(name[j])
+                            j = j+1
+                        else: 
+                            row.append(" ")
+                else:
+                    if k<51:
+                        if k==36:
+                            row.append("|")
+                        else:
+                            tam = len(cost)
+                            if(w<tam):
+                                row.append(cost[w])
+                                w = w+1
+                            else: 
+                                row.append(" ")
+                    else:
+                        if k<120:
+                            if k==51:
+                                row.append("| ")
+                            else:
+                                tam = len(desc)
+                                if(q<tam):
+                                    row.append(desc[q])
+                                    q = q+1
+                                else: 
+                                    row.append(" ")
+        
+        table.append("".join(row))
+        table.append("-"*120)
+        table.append(self.genList())
+
+        return "\n".join(table)
+
+
+
+    def genList(self):
+        count = 0
+        current = self.first
+        
+        table1=[]
+
+        while(current):
+            k,j,w,q,c = 0,0,0,0,0
+            cont=[]
+            obj = current.value
+            for i in range(120):
+                if(i<6):
+                    if i==0:
+                        cont.append(str(count))
+                    else: 
+                        cont.append(" ")
+
+                else:
+                    if(i<36):
+                        #j = 0
+                        if i==6:
+                            cont.append("| ")
+                        else: 
+                            tam = len(obj.name)
+                            if(j<tam):
+                                cont.append(obj.name[j])
+                                j = j+1
+                            else: 
+                                cont.append(" ")
+                    else:
+                        if(i<51):
+                            #w = 0
+                            if i==36:
+                                cont.append("| ")
+                            else:
+                                if i<40:
+                                    tam = len(obj.coin)
+                                    if(c<tam):
+                                        cont.append(obj.coin[c])
+                                        c = c+1
+                                else:
+                                    tam = len(obj.cost)
+                                    if(w<tam):
+                                        cont.append(obj.cost[w])
+                                        w = w+1
+                                    else:
+                                        cont.append(" ")
+                        else:
+                            if(i<120):
+                                #q = 0
+                                if i==51:
+                                    cont.append("| ")
+                                else:       
+                                    tam = len(obj.description)
+                                    if(q<tam):
+                                        cont.append(obj.description[q])
+                                        q = q+1
+                                    else:
+                                        cont.append(" ")
+
+            txt = "".join(cont)
+            table1.append(txt)
+            if(current.next):
+                table1.append("-"*120)
+            
+            current = current.next
+            count = count+1
+        
+        return "\n".join(table1)
 
     
