@@ -21,6 +21,7 @@ class MainWindow(QtWidgets.QMainWindow,Ui_MainWindow):
         self.btnAddProduct.clicked.connect(self.openAddWindow)
         self.btnEdit.clicked.connect(self.openEdit)
         self.btnAbout.clicked.connect(self.openAbout)
+        #self.lblCount.setText(str(Queue.length()))
 
     def center(self):
         frame = self.frameGeometry()
@@ -51,11 +52,13 @@ class AddWindow(QtWidgets.QMainWindow,Ui_WinAdd):
         self.btnCanel.clicked.connect(self.cancelCreation)
 
     def addToList(self):
+        #self.con = MainWindow()
         nameProduct = self.txtName.toPlainText()
         priceProduct = self.txtPrice.toPlainText()
         currencyProduct = self.comboBox.currentText()
         descriptProduct = self.plntxtDesc.toPlainText()
         Queue.push(Product(nameProduct, priceProduct, currencyProduct, descriptProduct))
+        #self.con.lblCount.setText(str(Queue.length()))
         self.clearText()
         #print(nameProduct, priceProduct, currencyProduct, descriptProduct)
         

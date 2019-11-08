@@ -69,12 +69,12 @@ class LinkedList:
         if(not self.first):
             return 0
         else:
-            len = 1
+            lot = 1
             current = self.first
             while(current.next):
-                len = len+1
+                lot = lot+1
                 current = current.next
-            return len
+            return lot
 
 
     def generateTable(self):
@@ -85,40 +85,40 @@ class LinkedList:
         row=[]
         j,w,q = 0,0,0
 
-        table.append("%s%s%s%s%s%s"%("-"*120,"\n","\t"*6,"Inventario de Productos","\n","-"*120))
+        table.append("%s%s%s%s%s%s"%("-"*120,"\n","\t\t\t","Inventario de Productos","\n","-"*120))
 
-        for k in range(120):
+        for k in range(70):
             if k<6:
                 if k==0:
-                    row.append("N.")
+                    row.append("N. ")
                 else:
                     row.append(" ")
             else:
                 if k<36:
                     if k==6:
-                        row.append("| ")
+                        row.append("|  ")
                     else:
                         tam = len(name)
                         if(j<tam):
                             row.append(name[j])
                             j = j+1
                         else: 
-                            row.append(" ")
+                            row.append("  ")
                 else:
                     if k<51:
                         if k==36:
-                            row.append("|")
+                            row.append("|  ")
                         else:
                             tam = len(cost)
                             if(w<tam):
                                 row.append(cost[w])
                                 w = w+1
                             else: 
-                                row.append(" ")
+                                row.append("   ")
                     else:
-                        if k<120:
+                        if k<71:
                             if k==51:
-                                row.append("| ")
+                                row.append("|  ")
                             else:
                                 tam = len(desc)
                                 if(q<tam):
@@ -148,7 +148,7 @@ class LinkedList:
             for i in range(120):
                 if(i<6):
                     if i==0:
-                        cont.append(str(count))
+                        cont.append(" %s "%count)
                     else: 
                         cont.append(" ")
 
@@ -156,19 +156,19 @@ class LinkedList:
                     if(i<36):
                         #j = 0
                         if i==6:
-                            cont.append("| ")
+                            cont.append("  ")
                         else: 
                             tam = len(obj.name)
                             if(j<tam):
                                 cont.append(obj.name[j])
                                 j = j+1
                             else: 
-                                cont.append(" ")
+                                cont.append("  ")
                     else:
                         if(i<51):
                             #w = 0
                             if i==36:
-                                cont.append("| ")
+                                cont.append("  ")
                             else:
                                 if i<40:
                                     tam = len(obj.coin)
@@ -178,15 +178,19 @@ class LinkedList:
                                 else:
                                     tam = len(obj.cost)
                                     if(w<tam):
-                                        cont.append(obj.cost[w])
-                                        w = w+1
+                                        if w==0:
+                                            cont.append(" %s"%obj.cost[w])
+                                            w = w+1
+                                        else:
+                                            cont.append(obj.cost[w])
+                                            w = w+1
                                     else:
-                                        cont.append(" ")
+                                        cont.append("    ")
                         else:
                             if(i<120):
                                 #q = 0
                                 if i==51:
-                                    cont.append("| ")
+                                    cont.append("  ")
                                 else:       
                                     tam = len(obj.description)
                                     if(q<tam):
