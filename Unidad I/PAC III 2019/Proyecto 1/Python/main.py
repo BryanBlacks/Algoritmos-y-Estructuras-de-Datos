@@ -30,8 +30,12 @@ class MainWindow(QtWidgets.QMainWindow,Ui_MainWindow):
         self.move(frame.topLeft())
 
     def openAddWindow(self):
-        self.addwindow = AddWindow()
+        self.addwindow = AddWindow(pos = None)
+        self.addwindow.btnAdd.clicked.connect(self.numProducts)
         self.addwindow.show()
+
+    def numProducts(self):
+        self.lblCount.setText(str(Queue.length()))
 
     def openEdit(self):
         self.editwindow = EditWindow()
@@ -43,28 +47,22 @@ class MainWindow(QtWidgets.QMainWindow,Ui_MainWindow):
 
 class AddWindow(QtWidgets.QMainWindow,Ui_WinAdd):
     #Pantalla para agregar
-    def __init__(self):
+    def __init__(self, pos):
         QtWidgets.QMainWindow.__init__(self)
         self.setupUi(self)
         self.ui=Ui_WinAdd()
-        self.center()    
+        self.center()
+        self.posToAdd = pos    
         self.btnAdd.clicked.connect(self.addToList)
         self.btnCanel.clicked.connect(self.cancelCreation)
 
     def addToList(self):
-        #self.addInPosition = EditWindow()
         nameProduct = self.txtName.toPlainText()
         priceProduct = self.txtPrice.toPlainText()
         currencyProduct = self.comboBox.currentText()
         descriptProduct = self.plntxtDesc.toPlainText()
-        #if (isinstance (self.addInPosition.numPos , int)):
-            #Queue.pushInPosition(Product(nameProduct, priceProduct, currencyProduct, descriptProduct) , pos)
-        #else:
-        Queue.push(Product(nameProduct, priceProduct, currencyProduct, descriptProduct))
-
-        #self.con.lblCount.setText(str(Queue.length()))
+        Queue.pushInPosition(Product(nameProduct, priceProduct, currencyProduct, descriptProduct) , self.posToAdd)
         self.clearText()
-        #print(nameProduct, priceProduct, currencyProduct, descriptProduct)
 
     def clearText(self):
         self.txtName.clear()
@@ -92,15 +90,17 @@ class EditWindow(QtWidgets.QMainWindow,Ui_Tabla):
         self.setupUi(self)
         self.ui=Ui_Tabla()
         self.center()
+        self.numPos = None
         self.btnEdit.clicked.connect(self.openAddFromEdit)
     
         text = Queue.generateTable() 
         self.txtTable.setPlainText(text)
         
     def openAddFromEdit(self):
-        self.addfromedit = AddWindow()
-        self.numPos = self.txtNumber.toPlainText()
-        pos = int(self.numPos)
+        position = self.txtNumber.toPlainText()
+        pos = int(position)
+        self.numPos = pos
+        self.addfromedit = AddWindow(self.numPos)
         if(pos == 0 or pos):
             self.toEdit = Queue.search(pos)
             if self.toEdit is False:
@@ -114,21 +114,12 @@ class EditWindow(QtWidgets.QMainWindow,Ui_Tabla):
                 self.addfromedit.txtName.setText(nameEdit)
                 self.addfromedit.txtPrice.setText(priceEdit)
                 self.addfromedit.plntxtDesc.setPlainText(descEdit)
-                self.addfromedit.btnAdd.clicked.connect(self.addInPosition)
+                #self.addfromedit.btnAdd.clicked.connect(self.addInPosition)
                 
         else:
             QMessageBox.warning(self,"PyQt5 Message","Introduzca un número válido")
 
-    def addInPosition(self):
-        nameProduct = self.addfromedit.txtName.toPlainText()
-        priceProduct = self.addfromedit.txtPrice.toPlainText()
-        currencyProduct = self.addfromedit.comboBox.currentText()
-        descriptProduct = self.addfromedit.plntxtDesc.toPlainText()
-        #if (isinstance (self.addInPosition.numPos , int)):
-            #Queue.pushInPosition(Product(nameProduct, priceProduct, currencyProduct, descriptProduct) , pos)
-        #else:
-        Queue.pushInPosition(Product(nameProduct, priceProduct, currencyProduct, descriptProduct),int(self.numPos))
-
+    
     def center(self):
         frame = self.frameGeometry()
         centerPoint = QtWidgets.QDesktopWidget().availableGeometry().center()

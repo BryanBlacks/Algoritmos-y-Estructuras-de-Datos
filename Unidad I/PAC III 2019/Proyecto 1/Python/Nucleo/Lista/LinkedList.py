@@ -5,41 +5,39 @@ class LinkedList:
     def __init__(self):
         self.first = None
     
-
-    def push(self, value):
-        if (not self.first):
+    def pushInPosition(self, value, position):
+        if not self.first:
+            
             self.first = Node(value)
             return True
         else:
-            current = self.first
-            while(current.next):
-                current = current.next
-            current.next = Node(value)
-            return True
-
-        return False
-    
-    def pushInPosition(self, value, position):
-        if position > -1:
-            count = 0
-            if position == 0:
-                queue = self.first
-                self.first = Node(value)
-                self.first.next = queue
-
+            if position is None:
+                current = self.first
+                while(current.next):
+                    current = current.next
+                current.next = Node(value)
                 return True
             else:
-                if position > 0:
-                    current = self.first
-                    before = self.first
-                    while current.next:
-                        current = current.next
-                        count = count +1
-                        if count == position:
-                            before.next = Node(value)
-                            before.next.next = current
-                            return True
-                        before = before.next
+                if position > -1:
+                    if position == 0:
+                        queue = self.first
+                        self.first = Node(value)
+                        self.first.next = queue
+
+                        return True
+                    else:
+                        count = 1
+                        prev = self.first
+                        last = prev.next
+                        while last:
+                            if count == position:
+                                prev.next = Node(value)
+                                prev.next.next = last.next
+                                return True
+                            prev = last
+                            last = last.next
+                            count = count +1
+                    return False
             return False
 
     def printQueue(self):
@@ -144,7 +142,7 @@ class LinkedList:
         row=[]
         j,w,q = 0,0,0
 
-        table.append("%s%s%s%s%s%s"%("-"*120,"\n","\t\t\t","Inventario de Productos","\n","-"*120))
+        table.append("%s%s%s%s%s%s"%("-"*115,"\n","\t\t\t","Inventario de Productos","\n","-"*115))
 
         for k in range(70):
             if k<6:
@@ -187,7 +185,7 @@ class LinkedList:
                                     row.append(" ")
         
         table.append("".join(row))
-        table.append("-"*120)
+        table.append("-"*115)
         table.append(self.genList())
 
         return "\n".join(table)
@@ -204,7 +202,7 @@ class LinkedList:
             k,j,w,q,c = 0,0,0,0,0
             cont=[]
             obj = current.value
-            for i in range(120):
+            for i in range(115):
                 if(i<6):
                     if i==0:
                         cont.append(" %s "%count)
@@ -246,7 +244,7 @@ class LinkedList:
                                     else:
                                         cont.append("    ")
                         else:
-                            if(i<120):
+                            if(i<115):
                                 #q = 0
                                 if i==51:
                                     cont.append("  ")
@@ -261,7 +259,7 @@ class LinkedList:
             txt = "".join(cont)
             table1.append(txt)
             if(current.next):
-                table1.append("-"*120)
+                table1.append("-"*115)
             
             current = current.next
             count = count+1
