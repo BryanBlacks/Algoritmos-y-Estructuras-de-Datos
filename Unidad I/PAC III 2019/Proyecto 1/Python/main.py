@@ -47,21 +47,25 @@ class AddWindow(QtWidgets.QMainWindow,Ui_WinAdd):
         QtWidgets.QMainWindow.__init__(self)
         self.setupUi(self)
         self.ui=Ui_WinAdd()
-        self.center()
+        self.center()    
         self.btnAdd.clicked.connect(self.addToList)
         self.btnCanel.clicked.connect(self.cancelCreation)
 
     def addToList(self):
-        #self.con = MainWindow()
+        #self.addInPosition = EditWindow()
         nameProduct = self.txtName.toPlainText()
         priceProduct = self.txtPrice.toPlainText()
         currencyProduct = self.comboBox.currentText()
         descriptProduct = self.plntxtDesc.toPlainText()
+        #if (isinstance (self.addInPosition.numPos , int)):
+            #Queue.pushInPosition(Product(nameProduct, priceProduct, currencyProduct, descriptProduct) , pos)
+        #else:
         Queue.push(Product(nameProduct, priceProduct, currencyProduct, descriptProduct))
+
         #self.con.lblCount.setText(str(Queue.length()))
         self.clearText()
         #print(nameProduct, priceProduct, currencyProduct, descriptProduct)
-        
+
     def clearText(self):
         self.txtName.clear()
         self.txtPrice.clear()
@@ -95,15 +99,36 @@ class EditWindow(QtWidgets.QMainWindow,Ui_Tabla):
         
     def openAddFromEdit(self):
         self.addfromedit = AddWindow()
-
-
-        numPos = self.txtNumber.toPlainText()
-        if(int(numPos)):
-            editProduct = Queue.search(int(numPos))
+        self.numPos = self.txtNumber.toPlainText()
+        pos = int(self.numPos)
+        if(pos == 0 or pos):
+            self.toEdit = Queue.search(pos)
+            if self.toEdit is False:
+                QMessageBox.warning(self,"PyQt5 Message","Introduzca un número de producto válido")
+            else:
+                self.addfromedit.show()
+                
+                nameEdit = Queue.getName(pos)
+                priceEdit = Queue.getPrice(pos)
+                descEdit = Queue.getDesc(pos)
+                self.addfromedit.txtName.setText(nameEdit)
+                self.addfromedit.txtPrice.setText(priceEdit)
+                self.addfromedit.plntxtDesc.setPlainText(descEdit)
+                self.addfromedit.btnAdd.clicked.connect(self.addInPosition)
+                
         else:
-            QMessageBox.warning(self,"PyQt5 Message","Introduzca un número de producto válido")
-        self.addfromedit.show()
- 
+            QMessageBox.warning(self,"PyQt5 Message","Introduzca un número válido")
+
+    def addInPosition(self):
+        nameProduct = self.addfromedit.txtName.toPlainText()
+        priceProduct = self.addfromedit.txtPrice.toPlainText()
+        currencyProduct = self.addfromedit.comboBox.currentText()
+        descriptProduct = self.addfromedit.plntxtDesc.toPlainText()
+        #if (isinstance (self.addInPosition.numPos , int)):
+            #Queue.pushInPosition(Product(nameProduct, priceProduct, currencyProduct, descriptProduct) , pos)
+        #else:
+        Queue.pushInPosition(Product(nameProduct, priceProduct, currencyProduct, descriptProduct),int(self.numPos))
+
     def center(self):
         frame = self.frameGeometry()
         centerPoint = QtWidgets.QDesktopWidget().availableGeometry().center()
@@ -111,7 +136,7 @@ class EditWindow(QtWidgets.QMainWindow,Ui_Tabla):
         self.move(frame.topLeft())
 
 class AboutWindow(QtWidgets.QMainWindow,Ui_WinAbout):
-    #Pantalla para editar
+    #Pantalla de Información del grupo
     def __init__(self):
         QtWidgets.QMainWindow.__init__(self)
         self.setupUi(self)

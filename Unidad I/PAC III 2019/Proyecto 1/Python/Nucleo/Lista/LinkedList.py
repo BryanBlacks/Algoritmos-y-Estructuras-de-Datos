@@ -6,7 +6,7 @@ class LinkedList:
         self.first = None
     
 
-    def push(self, value ):
+    def push(self, value):
         if (not self.first):
             self.first = Node(value)
             return True
@@ -18,6 +18,29 @@ class LinkedList:
             return True
 
         return False
+    
+    def pushInPosition(self, value, position):
+        if position > -1:
+            count = 0
+            if position == 0:
+                queue = self.first
+                self.first = Node(value)
+                self.first.next = queue
+
+                return True
+            else:
+                if position > 0:
+                    current = self.first
+                    before = self.first
+                    while current.next:
+                        current = current.next
+                        count = count +1
+                        if count == position:
+                            before.next = Node(value)
+                            before.next.next = current
+                            return True
+                        before = before.next
+            return False
 
     def printQueue(self):
         current = self.first
@@ -26,7 +49,7 @@ class LinkedList:
             current = current.next
         print(current.value.name)
 
-    def pop(self,poss):
+    def pop(self,pos):
         if (not self.first):
             return False
         else:
@@ -75,6 +98,42 @@ class LinkedList:
                 lot = lot+1
                 current = current.next
             return lot
+
+    def getName(self, pos):
+        current = self.first
+        count = 0
+        if pos == 0:
+            return self.first.value.name
+        while current.next:
+            current = current.next
+            count = count + 1
+            if count == pos:
+                return current.value.name
+        return False
+
+    def getPrice(self, pos):
+        current = self.first
+        count = 0
+        if pos == 0:
+            return self.first.value.cost
+        while current.next:
+            current = current.next
+            count = count + 1
+            if count == pos:
+                return current.value.cost
+        return False
+
+    def getDesc(self, pos):
+        current = self.first
+        count = 0
+        if pos == 0:
+            return self.first.value.description
+        while current.next:
+            current = current.next
+            count = count + 1
+            if count == pos:
+                return current.value.description
+        return False
 
 
     def generateTable(self):
