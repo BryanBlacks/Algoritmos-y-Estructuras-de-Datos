@@ -7,8 +7,10 @@ from Nucleo.Interfaz.EditWindow import *
 from Nucleo.Interfaz.AboutWindow import *
 from Nucleo.Lista.LinkedList import *
 from Nucleo.Lista.Product import *
+from Memoria import *
 
 Queue = LinkedList()
+Queue.csvToLinked("Memoria/CSV.csv")
 
 class MainWindow(QtWidgets.QMainWindow,Ui_MainWindow):
     #Pantalla Principal
@@ -21,7 +23,7 @@ class MainWindow(QtWidgets.QMainWindow,Ui_MainWindow):
         self.btnAddProduct.clicked.connect(self.openAddWindow)
         self.btnEdit.clicked.connect(self.openEdit)
         self.btnAbout.clicked.connect(self.openAbout)
-        #self.lblCount.setText(str(Queue.length()))
+        self.lblCount.setText(str(Queue.length()))
 
     def center(self):
         frame = self.frameGeometry()
@@ -64,6 +66,7 @@ class AddWindow(QtWidgets.QMainWindow,Ui_WinAdd):
         descriptProduct = self.plntxtDesc.toPlainText()
         Queue.pushInPosition(Product(nameProduct, priceProduct, currencyProduct, descriptProduct) , self.posToAdd)
         self.clearText()
+        Queue.toCsv("Memoria/CSV.csv")
 
     def clearText(self):
         self.txtName.clear()
@@ -142,10 +145,11 @@ class EditWindow(QtWidgets.QMainWindow,Ui_Tabla):
                 else:
                     pass
         self.txtNumber.clear()
+        #Queue.toCsv("Memoria/CSV.csv")
 
     def drawTable(self):
         text = Queue.generateTable() 
-        self.txtTable.setText(text)
+        self.txtTable.setPlainText(text)
 
     def center(self):
         frame = self.frameGeometry()

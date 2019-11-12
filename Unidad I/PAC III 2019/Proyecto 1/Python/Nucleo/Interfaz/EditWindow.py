@@ -2,11 +2,13 @@
 
 # Form implementation generated from reading ui file 'EditWin.ui'
 #
-# Created by: PyQt5 UI code generator 5.5.1
+# Created by: PyQt5 UI code generator 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
 
+
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 
 class Ui_Tabla(object):
     def setupUi(self, Tabla):
@@ -35,6 +37,7 @@ class Ui_Tabla(object):
         self.btnEdit.setIconSize(QtCore.QSize(40, 40))
         self.btnEdit.setObjectName("btnEdit")
         self.btnDelete = QtWidgets.QPushButton(Tabla)
+        self.btnDelete.setEnabled(True)
         self.btnDelete.setGeometry(QtCore.QRect(400, 300, 140, 60))
         font = QtGui.QFont()
         font.setFamily("Bitstream Vera Sans")
@@ -78,17 +81,11 @@ class Ui_Tabla(object):
         self.label.setStyleSheet("color: rgb(0, 0, 0);")
         self.label.setObjectName("label")
         self.txtTable = QtWidgets.QTextEdit(Tabla)
-        self.txtTable.setGeometry(QtCore.QRect(20, 30, 550, 260))
-        font = QtGui.QFont()
-        font.setFamily("Bitstream Vera Sans")
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.txtTable.setFont(font)
+        self.txtTable.setEnabled(True)
+        self.txtTable.setGeometry(QtCore.QRect(20, 20, 551, 261))
         self.txtTable.setStyleSheet("background-color: rgb(255, 255, 255);")
-        self.txtTable.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
-        self.txtTable.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
-        self.txtTable.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContents)
+        self.txtTable.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustIgnored)
+        self.txtTable.setReadOnly(True)
         self.txtTable.setObjectName("txtTable")
 
         self.retranslateUi(Tabla)
@@ -108,4 +105,3 @@ if __name__ == "__main__":
     ui.setupUi(Tabla)
     Tabla.show()
     sys.exit(app.exec_())
-
