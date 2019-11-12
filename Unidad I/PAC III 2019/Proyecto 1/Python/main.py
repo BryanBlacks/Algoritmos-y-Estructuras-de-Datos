@@ -34,16 +34,17 @@ class MainWindow(QtWidgets.QMainWindow,Ui_MainWindow):
         self.addwindow.btnAdd.clicked.connect(self.numProducts)
         self.addwindow.show()
 
-    def numProducts(self):
-        self.lblCount.setText(str(Queue.length()))
-
     def openEdit(self):
         self.editwindow = EditWindow()
+        self.editwindow.btnDelete.clicked.connect(self.numProducts)
         self.editwindow.show()
     
     def openAbout(self):
         self.aboutwindow = AboutWindow()
         self.aboutwindow.show()
+
+    def numProducts(self):
+        self.lblCount.setText(str(Queue.length()))
 
 class AddWindow(QtWidgets.QMainWindow,Ui_WinAdd):
     #Pantalla para agregar
@@ -92,9 +93,9 @@ class EditWindow(QtWidgets.QMainWindow,Ui_Tabla):
         self.center()
         self.numPos = None
         self.btnEdit.clicked.connect(self.openAddFromEdit)
-    
-        text = Queue.generateTable() 
-        self.txtTable.setPlainText(text)
+        self.btnDelete.clicked.connect(self.deleteProduct)
+        self.drawTable()
+
         
     def openAddFromEdit(self):
         position = self.txtNumber.toPlainText()
@@ -114,12 +115,38 @@ class EditWindow(QtWidgets.QMainWindow,Ui_Tabla):
                 self.addfromedit.txtName.setText(nameEdit)
                 self.addfromedit.txtPrice.setText(priceEdit)
                 self.addfromedit.plntxtDesc.setPlainText(descEdit)
-                #self.addfromedit.btnAdd.clicked.connect(self.addInPosition)
+                self.addfromedit.btnAdd.clicked.connect(self.drawTable)
+                self.addfromedit.btnAdd.clicked.connect(self.closeWin)
                 
         else:
             QMessageBox.warning(self,"PyQt5 Message","Introduzca un número válido")
 
+        self.txtNumber.clear()
     
+    def closeWin(self):
+        self.addfromedit.hide()
+
+    def deleteProduct(self):
+        position = self.txtNumber.toPlainText()
+        pos = int(position)
+        self.numPos = pos
+        if(pos == 0 or pos):
+            self.toEdit = Queue.search(pos)
+            if self.toEdit is False:
+                QMessageBox.warning(self,"PyQt5 Message","Introduzca un número de producto válido")
+            else:
+                deleteButton = QMessageBox.question(self,"PyQt5 message","¿Está seguro que desea eliminar el producto?",QMessageBox.Yes | QMessageBox.No)
+                if deleteButton == QMessageBox.Yes:
+                    Queue.pop(pos)
+                    self.drawTable()
+                else:
+                    pass
+        self.txtNumber.clear()
+
+    def drawTable(self):
+        text = Queue.generateTable() 
+        self.txtTable.setText(text)
+
     def center(self):
         frame = self.frameGeometry()
         centerPoint = QtWidgets.QDesktopWidget().availableGeometry().center()

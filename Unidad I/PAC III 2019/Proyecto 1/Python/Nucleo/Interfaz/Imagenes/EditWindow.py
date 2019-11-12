@@ -30,7 +30,7 @@ class Ui_Tabla(object):
 "border-color: rgb(0, 0, 0);")
         self.btnEdit.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("Imagenes/edit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("Nucleo/Interfaz/Imagenes/edit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnEdit.setIcon(icon)
         self.btnEdit.setIconSize(QtCore.QSize(40, 40))
         self.btnEdit.setObjectName("btnEdit")
@@ -51,7 +51,7 @@ class Ui_Tabla(object):
 "border-color: rgb(0, 0, 0);")
         self.btnDelete.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("Imagenes/121113.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("Nucleo/Interfaz/Imagenes/121113.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnDelete.setIcon(icon1)
         self.btnDelete.setIconSize(QtCore.QSize(40, 40))
         self.btnDelete.setAutoDefault(False)
@@ -77,26 +77,17 @@ class Ui_Tabla(object):
         self.label.setFont(font)
         self.label.setStyleSheet("color: rgb(0, 0, 0);")
         self.label.setObjectName("label")
-        self.txtTable = QtWidgets.QTextEdit(Tabla)
-        self.txtTable.setGeometry(QtCore.QRect(20, 30, 550, 260))
-        font = QtGui.QFont()
-        font.setFamily("Bitstream Vera Sans")
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.txtTable.setFont(font)
+        self.txtTable = QtWidgets.QPlainTextEdit(Tabla)
+        self.txtTable.setGeometry(QtCore.QRect(20, 20, 550, 260))
         self.txtTable.setStyleSheet("background-color: rgb(255, 255, 255);")
-        self.txtTable.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
-        self.txtTable.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
-        self.txtTable.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContents)
         self.txtTable.setObjectName("txtTable")
-
+        self.txtTable.setReadOnly(True)
         self.retranslateUi(Tabla)
         QtCore.QMetaObject.connectSlotsByName(Tabla)
 
     def retranslateUi(self, Tabla):
         _translate = QtCore.QCoreApplication.translate
-        Tabla.setWindowTitle(_translate("Tabla", "Form"))
+        Tabla.setWindowTitle(_translate("Tabla", "Ver y Editar"))
         self.label.setText(_translate("Tabla", "No."))
 
 

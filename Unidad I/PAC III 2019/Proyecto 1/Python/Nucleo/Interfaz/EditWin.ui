@@ -145,17 +145,34 @@ border-color: rgb(0, 0, 0);</string>
     <string>No.</string>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="txtTable">
+  <widget class="QTextEdit" name="textEdit">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>20</y>
+     <y>30</y>
      <width>550</width>
      <height>260</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Bitstream Vera Sans</family>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOn</enum>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOn</enum>
+   </property>
+   <property name="sizeAdjustPolicy">
+    <enum>QAbstractScrollArea::AdjustToContents</enum>
    </property>
   </widget>
  </widget>
