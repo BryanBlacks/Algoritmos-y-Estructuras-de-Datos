@@ -23,7 +23,7 @@ class LinkedList:
                     if position == 0:
                         queue = self.first
                         self.first = Node(value)
-                        self.first.next = queue
+                        self.first.next = queue.next
 
                         return True
                     else:

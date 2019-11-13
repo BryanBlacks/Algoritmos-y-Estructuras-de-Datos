@@ -32,7 +32,7 @@ class Ui_Tabla(object):
 "border-color: rgb(0, 0, 0);")
         self.btnEdit.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("Imagenes/edit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("Nucleo/Interfaz/Imagenes/edit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnEdit.setIcon(icon)
         self.btnEdit.setIconSize(QtCore.QSize(40, 40))
         self.btnEdit.setObjectName("btnEdit")
@@ -54,7 +54,7 @@ class Ui_Tabla(object):
 "border-color: rgb(0, 0, 0);")
         self.btnDelete.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("Imagenes/121113.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("Nucleo/Interfaz/Imagenes/121113.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnDelete.setIcon(icon1)
         self.btnDelete.setIconSize(QtCore.QSize(40, 40))
         self.btnDelete.setAutoDefault(False)
@@ -93,7 +93,7 @@ class Ui_Tabla(object):
 
     def retranslateUi(self, Tabla):
         _translate = QtCore.QCoreApplication.translate
-        Tabla.setWindowTitle(_translate("Tabla", "Form"))
+        Tabla.setWindowTitle(_translate("Tabla", "Ver y Editar Producto"))
         self.label.setText(_translate("Tabla", "No."))
 
 
