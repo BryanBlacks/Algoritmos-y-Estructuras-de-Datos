@@ -128,10 +128,10 @@ class LinkedList:
         if pos == 0:
             return self.first.value.cost
         while current.next:
-            if count == pos:
-                return current.value.cost
             count = count + 1
             current = current.next
+            if count == pos:
+                return current.value.cost
         return False
 
     def getDesc(self, pos):

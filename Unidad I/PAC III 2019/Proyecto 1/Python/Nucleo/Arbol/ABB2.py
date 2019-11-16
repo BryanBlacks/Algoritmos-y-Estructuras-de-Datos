@@ -1,8 +1,9 @@
 #-*- coding:utf8 -*-
+from Node import*
 import networkx as nx
 import matplotlib.pyplot as plt
 
-class BST:
+class BST1:
     def __init__(self):
         self.root = None
 
@@ -18,15 +19,15 @@ class BST:
                 current = Node(value)
                 return True
             elif current.value > value:
-                if not self.leftChild:
-                    current.leftChild = Node(value)
+                if not self.left:
+                    current.left = Node(value)
                     return True
                 else:
-                    return self.addInner(value,current.leftChild)
+                    return self.addInner(value,current.left)
             else:
-                if not self.rightChild:
-                    current.rightChild = Node(value)
+                if not self.right:
+                    current.right = Node(value)
                     return True
                 else:
-                    return self.addInner(value,current.rightChild)
+                    return self.addInner(value,current.right)
             return False
