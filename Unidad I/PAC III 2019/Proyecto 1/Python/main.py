@@ -5,9 +5,12 @@ from Nucleo.Interfaz.MainWindow import *
 from Nucleo.Interfaz.AddWindow import *
 from Nucleo.Interfaz.EditWindow import *
 from Nucleo.Interfaz.AboutWindow import *
+from Nucleo.Interfaz.BST_HNL import *
+from Nucleo.Interfaz.BST_USD import *
 from Nucleo.Lista.LinkedList import *
 from Nucleo.Lista.Product import *
-from Memoria import *
+from Nucleo.Arbol.ABB1 import *
+from Nucleo.Arbol.ABB2 import *
 
 Queue = LinkedList()
 Queue.csvToLinked("Memoria/CSV.csv")
@@ -23,6 +26,7 @@ class MainWindow(QtWidgets.QMainWindow,Ui_MainWindow):
         self.btnAddProduct.clicked.connect(self.openAddWindow)
         self.btnEdit.clicked.connect(self.openEdit)
         self.btnAbout.clicked.connect(self.openAbout)
+        self.btnTree.clicked.connect(self.openTree)
         self.lblCount.setText(str(Queue.length()))
 
     def center(self):
@@ -44,6 +48,12 @@ class MainWindow(QtWidgets.QMainWindow,Ui_MainWindow):
     def openAbout(self):
         self.aboutwindow = AboutWindow()
         self.aboutwindow.show()
+
+    def openTree(self):
+        self.bstHNL = BST_HNL()
+        self.bstUSD = BST_HNL()
+        self.bstHNL.show()
+        self.bstUSD.show()
 
     def numProducts(self):
         self.lblCount.setText(str(Queue.length()))
@@ -145,7 +155,7 @@ class EditWindow(QtWidgets.QMainWindow,Ui_Tabla):
                 else:
                     pass
         self.txtNumber.clear()
-        #Queue.toCsv("Memoria/CSV.csv")
+        Queue.toCsv("Memoria/CSV.csv")
 
     def drawTable(self):
         text = Queue.generateTable() 
@@ -164,6 +174,52 @@ class AboutWindow(QtWidgets.QMainWindow,Ui_WinAbout):
         self.setupUi(self)
         self.ui=Ui_WinAbout()
         self.center()
+    def center(self):
+        frame = self.frameGeometry()
+        centerPoint = QtWidgets.QDesktopWidget().availableGeometry().center()
+        frame.moveCenter(centerPoint)
+        self.move(frame.topLeft())
+
+class BST_HNL(QtWidgets.QMainWindow,Ui_BST_1):
+    #Pantalla Principal
+    def __init__(self):
+        QtWidgets.QMainWindow.__init__(self)
+        self.setupUi(self)
+        self.ui=Ui_BST_1()
+        self.center()
+        array = self.arrayPrices()
+        self.arrayToBST(array)
+        self.bstHNL = BST_HNL()
+        self.bstHNL.toMap()
+    
+    def arrayPrices(self):
+        array = []
+        for i in range(Queue.length()):
+            if str(Queue.getCoin(i)) is HNL:
+                Queue.getPrice(i).append(array)
+            else:
+                pass
+        return array
+
+    def arrayToBST(self, array):
+        for i in range(Queue.length()):
+            self.bstHNL.add(array[i])
+        
+
+    def center(self):
+        frame = self.frameGeometry()
+        centerPoint = QtWidgets.QDesktopWidget().availableGeometry().center()
+        frame.moveCenter(centerPoint)
+        self.move(frame.topLeft())
+
+class BST_USD(QtWidgets.QMainWindow,Ui_BST_2):
+    #Pantalla Principal
+    def __init__(self):
+        QtWidgets.QMainWindow.__init__(self)
+        self.setupUi(self)
+        self.ui=Ui_BST_2()
+        self.center()
+
     def center(self):
         frame = self.frameGeometry()
         centerPoint = QtWidgets.QDesktopWidget().availableGeometry().center()

@@ -1,37 +1,32 @@
-# -*- coding:utf-8 -*-
-from Node import *
+#-*- coding:utf8 -*-
+import networkx as nx
+import matplotlib.pyplot as plt
 
-
-class ABB_2:
+class BST:
     def __init__(self):
         self.root = None
 
-    def add(self,value):
+    def add(self, value):
         return self.addInner(value,self.root)
 
-    def addInner(self,value,current):
-        if(not self.root):
+    def addInner(self, value, current):
+        if not self.first:
             self.root = Node(value)
             return True
         else:
-            if(value.cost > current.value.cost):
-                if (current.right):
-                    current = current.right
-                    return self.addInner(value, current)
-                else:
-                    current.right = Node(value)
+            if current.value = value:
+                current = Node(value)
+                return True
+            elif current.value > value:
+                if not self.leftChild:
+                    current.leftChild = Node(value)
                     return True
-            else:
-                if(value.cost < current.value.cost):
-                    if (current.left):
-                        current = current.left
-                        return self.addInner(value, current)
-                    
-                    else:
-                        current.left = Node(value)
-                        return True
-                """
                 else:
-                    if(value.cost == current.value.cost):
-                        pass
-                """
+                    return self.addInner(value,current.leftChild)
+            else:
+                if not self.rightChild:
+                    current.rightChild = Node(value)
+                    return True
+                else:
+                    return self.addInner(value,current.rightChild)
+            return False
