@@ -1,7 +1,7 @@
 #-*- coding:utf8 -*-
-from Nucleo.Lista.Node import *
-from Nucleo.Lista.Product import *
 
+from Nucleo.Lista.Product import *
+from Nucleo.Lista.Node import *
 class LinkedList:
     def __init__(self):
         self.first = None
@@ -164,7 +164,7 @@ class LinkedList:
         con = open(file1,"r")
         contenc = con.read()
         rows = contenc.split("\n")
-        
+        con.close()
         for row in rows:
             cont = row.split(",")
             pd.append(cont)

@@ -1,5 +1,5 @@
 #-*- coding:utf8 -*-
-from Node import*
+from Nucleo.Arbol.Node import *
 import networkx as nx
 import matplotlib.pyplot as plt
 
@@ -15,7 +15,7 @@ class BST1:
             self.root = Node(value)
             return True
         else:
-            if current.value = value:
+            if current.value == value:
                 current = Node(value)
                 return True
             elif current.value > value:

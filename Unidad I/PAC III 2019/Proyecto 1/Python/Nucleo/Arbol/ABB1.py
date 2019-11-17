@@ -1,5 +1,5 @@
 #-*- coding:utf8 -*-
-from Node import*
+from Nucleo.Arbol.Node import *
 import networkx as nx
 import matplotlib.pyplot as plt
 

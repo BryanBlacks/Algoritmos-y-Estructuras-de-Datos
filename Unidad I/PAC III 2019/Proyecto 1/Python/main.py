@@ -190,27 +190,32 @@ class BST_HNL(QtWidgets.QMainWindow,Ui_BST_1):
 
         self.bstHNL = BST()
 
-        array = self.arrayPrices()
-        self.arrayToBST(array)
-        
+        a = self.arrayPrices()
+        #self.arrayToBST(array)
+
         self.bstHNL.toMap()
     
     def arrayPrices(self):
-        array = []
+        #array = []
         for i in range(Queue.length()):
-            vector = []
-            if str(Queue.getCoin(i)) is "HNL":
-                vector.append(float(Queue.getPrice(i)))
-                vector.append(Queue.getName(i))
+            #vector = []
+            co=""
+            na= ""
+            st = Queue.getCoin(i)
+            if st == 'HNL':
+                co = float(Queue.getPrice(i))
+                na = str(Queue.getName(i))
                 #Queue.getPrice(i).append(array)
-            array.append(vector)
+            else:
+                pass
+            #array.append(vector)
+            self.bstHNL.add(co,na)
 
-        return array
+        return True
 
-    def arrayToBST(self, array):
-        for i in range(len(array)):
-            
-            self.bstHNL.add(array[i][0], array[i][1])
+    #def arrayToBST(self, array):
+        #for i in range(len(array)):
+            #self.bstHNL.add(array[i][0], array[i][1])
         
 
     def center(self):
