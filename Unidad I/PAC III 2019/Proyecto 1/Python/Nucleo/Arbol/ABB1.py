@@ -21,18 +21,19 @@ class BST:
             if current.value == value:
                 current = Node(value,name)
                 return True
-            elif current.value > value:
-                if not current.left:
-                    current.left = Node(value,name)
-                    return True
-                else:
-                    return self.addInner(value,name,current.left)
             else:
-                if not current.right:
-                    current.right = Node(value,name)
-                    return True
+                if current.value > value:
+                    if not current.left:
+                        current.left = Node(value,name)
+                        return True
+                    else:
+                        return self.addInner(value,name,current.left)
                 else:
-                    return self.addInner(value,name,current.right)
+                    if not current.right:
+                        current.right = Node(value,name)
+                        return True
+                    else:
+                        return self.addInner(value,name,current.right)
             return False
 
     """
@@ -81,20 +82,28 @@ class BST:
 
     def toMap(self):
         G.add_node("%s | %s"%(self.root.value, self.root.name))
-        return mappInner(self.root)
+        return self.toMapInner(self.root)
 
     def toMapInner(self,current):
 
         if current.left:
             G.add_node("%s | %s"%(current.left.value, current.left.name))
             G.add_edge("%s | %s"%(current.value,current.name), "%s | %s"%(current.left.value, current.left.name))
-            self.mapp(current.left)
+            self.toMapInner(current.left)
 
         if current.right:
             G.add_node("%s | %s"%(current.right.value, current.right.name))
             G.add_edge("%s | %s"%(current.value,current.name), "%s | %s"%(current.right.value, current.right.name))
-            self.mapp(current.right)
+            self.toMapInner(current.right)
             
         return True
 
+    def showMap(self):
+        self.toMap()
+        pos = nx.circular_layout(G)
+        nlist = [node for node in G.nodes()]
+        elist = [edge for edge in G.edges()]
 
+        nx.draw_networkx_nodes(G, pos,with_labels = True, nodelist = nlist)
+        nx.draw_networkx_edges(G,pos, edgelist=elist)
+        plt.show()

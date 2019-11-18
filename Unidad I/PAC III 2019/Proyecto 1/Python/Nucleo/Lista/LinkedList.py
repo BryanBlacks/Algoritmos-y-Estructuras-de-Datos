@@ -100,50 +100,50 @@ class LinkedList:
 
     def getName(self, pos):
         current = self.first
-        count = 0
+        count = 1
         if pos == 0:
             return self.first.value.name
         while current.next:
-            current = current.next
-            count = count + 1
             if count == pos:
                 return current.value.name
+            current = current.next
+            count = count + 1
         return False
 
     def getCoin(self, pos):
         current = self.first
-        count = 0
+        count = 1
         if pos == 0:
             return self.first.value.coin
         while current.next:
-            current = current.next
-            count = count + 1
             if count == pos:
                 return current.value.coin
+            current = current.next
+            count = count + 1
         return False
 
     def getPrice(self, pos):
         current = self.first
-        count = 0
+        count = 1
         if pos == 0:
             return self.first.value.cost
         while current.next:
-            count = count + 1
-            current = current.next
             if count == pos:
                 return current.value.cost
+            count = count + 1
+            current = current.next
         return False
 
     def getDesc(self, pos):
         current = self.first
-        count = 0
+        count = 1
         if pos == 0:
             return self.first.value.description
         while current.next:
-            current = current.next
-            count = count + 1
             if count == pos:
                 return current.value.description
+            current = current.next
+            count = count + 1
         return False
 
     def toCsv(self,filename):

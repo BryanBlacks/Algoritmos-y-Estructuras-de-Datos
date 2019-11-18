@@ -75,6 +75,12 @@ class AddWindow(QtWidgets.QMainWindow,Ui_WinAdd):
         currencyProduct = self.comboBox.currentText()
         descriptProduct = self.plntxtDesc.toPlainText()
         Queue.pushInPosition(Product(nameProduct, priceProduct, currencyProduct, descriptProduct) , self.posToAdd)
+        
+        #if currencyProduct == 'HNL':
+            #return bstHNL.add(float(priceProduct),nameProduct)
+        #else: 
+            #return bstUSD.add(float(priceProduct),nameProduct)
+
         self.clearText()
         Queue.toCsv("Memoria/CSV.csv")
 
@@ -187,36 +193,21 @@ class BST_HNL(QtWidgets.QMainWindow,Ui_BST_1):
         self.setupUi(self)
         self.ui=Ui_BST_1()
         self.center()
-
+        self.arrayPrices()
         self.bstHNL = BST()
-
-        a = self.arrayPrices()
-        #self.arrayToBST(array)
-
-        self.bstHNL.toMap()
+        self.bstHNL.showMap()
     
     def arrayPrices(self):
-        #array = []
+        price= ""
+        name= ""
         for i in range(Queue.length()):
-            #vector = []
-            co=""
-            na= ""
-            st = Queue.getCoin(i)
-            if st == 'HNL':
-                co = float(Queue.getPrice(i))
-                na = str(Queue.getName(i))
-                #Queue.getPrice(i).append(array)
+            currency = Queue.getCoin(i)
+            price = float(Queue.getPrice(i))
+            name = str(Queue.getName(i))
+            if currency == 'HNL':
+                return self.bstHNL.add(price,name)
             else:
                 pass
-            #array.append(vector)
-            self.bstHNL.add(co,na)
-
-        return True
-
-    #def arrayToBST(self, array):
-        #for i in range(len(array)):
-            #self.bstHNL.add(array[i][0], array[i][1])
-        
 
     def center(self):
         frame = self.frameGeometry()
