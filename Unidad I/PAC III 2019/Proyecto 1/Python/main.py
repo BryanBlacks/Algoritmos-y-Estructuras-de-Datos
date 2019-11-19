@@ -50,10 +50,28 @@ class MainWindow(QtWidgets.QMainWindow,Ui_MainWindow):
         self.aboutwindow.show()
 
     def openTree(self):
-        self.bstHNL = BST_HNL()
-        self.bstUSD = BST_HNL()
-        self.bstHNL.show()
-        self.bstUSD.show()
+        self.bstHNLWin = BST_HNL()
+        self.bstUSDWin = BST_USD()
+        self.bstHNL = BST()
+        self.bstUSD = BST1()
+        self.arrayPrices()
+        self.bstHNLWin.show()
+        self.bstUSDWin.show()
+
+    def arrayPrices(self):
+        price= ""
+        name= ""
+        for i in range(Queue.length()):
+            currency = Queue.getCoin(i)
+            price = float(Queue.getPrice(i))
+            name = str(Queue.getName(i))
+            if currency == 'HNL':
+                self.bstHNL.add(price,name)
+            else:
+                self.bstUSD.add(price,name)
+        self.bstUSD.showMapUSD()
+        self.bstHNL.showMapHNL()
+        return True
 
     def numProducts(self):
         self.lblCount.setText(str(Queue.length()))
@@ -118,27 +136,30 @@ class EditWindow(QtWidgets.QMainWindow,Ui_Tabla):
         
     def openAddFromEdit(self):
         position = self.txtNumber.toPlainText()
-        pos = int(position)
-        self.numPos = pos
-        self.addfromedit = AddWindow(self.numPos)
-        if(pos == 0 or pos):
-            self.toEdit = Queue.search(pos)
-            if self.toEdit is False:
-                QMessageBox.warning(self,"PyQt5 Message","Introduzca un número de producto válido")
-            else:
-                self.addfromedit.show()
-                
-                nameEdit = Queue.getName(pos)
-                priceEdit = Queue.getPrice(pos)
-                descEdit = Queue.getDesc(pos)
-                self.addfromedit.txtName.setText(nameEdit)
-                self.addfromedit.txtPrice.setText(priceEdit)
-                self.addfromedit.plntxtDesc.setPlainText(descEdit)
-                self.addfromedit.btnAdd.clicked.connect(self.drawTable)
-                self.addfromedit.btnAdd.clicked.connect(self.closeWin)
-                
+        if position == '':
+            QMessageBox.warning(self,"PyQt5 Message","Introduzca un número de producto a editar")
         else:
-            QMessageBox.warning(self,"PyQt5 Message","Introduzca un número válido")
+            pos = int(position)
+            self.numPos = pos
+            self.addfromedit = AddWindow(self.numPos)
+            if(pos == 0 or pos):
+                self.toEdit = Queue.search(pos)
+                if self.toEdit is False:
+                    QMessageBox.warning(self,"PyQt5 Message","Introduzca un número de producto válido")
+                else:
+                    self.addfromedit.show()
+                    
+                    nameEdit = Queue.getName(pos)
+                    priceEdit = Queue.getPrice(pos)
+                    descEdit = Queue.getDesc(pos)
+                    self.addfromedit.txtName.setText(nameEdit)
+                    self.addfromedit.txtPrice.setText(priceEdit)
+                    self.addfromedit.plntxtDesc.setPlainText(descEdit)
+                    self.addfromedit.btnAdd.clicked.connect(self.drawTable)
+                    self.addfromedit.btnAdd.clicked.connect(self.closeWin)
+                    
+            else:
+                QMessageBox.warning(self,"PyQt5 Message","Introduzca un número válido")
 
         self.txtNumber.clear()
     
@@ -147,19 +168,23 @@ class EditWindow(QtWidgets.QMainWindow,Ui_Tabla):
 
     def deleteProduct(self):
         position = self.txtNumber.toPlainText()
-        pos = int(position)
-        self.numPos = pos
-        if(pos == 0 or pos):
-            self.toEdit = Queue.search(pos)
-            if self.toEdit is False:
-                QMessageBox.warning(self,"PyQt5 Message","Introduzca un número de producto válido")
-            else:
-                deleteButton = QMessageBox.question(self,"PyQt5 message","¿Está seguro que desea eliminar el producto?",QMessageBox.Yes | QMessageBox.No)
-                if deleteButton == QMessageBox.Yes:
-                    Queue.pop(pos)
-                    self.drawTable()
+        position = self.txtNumber.toPlainText()
+        if position == '':
+            QMessageBox.warning(self,"PyQt5 Message","Introduzca un número de producto a eliminar")
+        else:
+            pos = int(position)
+            self.numPos = pos
+            if(pos == 0 or pos):
+                self.toEdit = Queue.search(pos)
+                if self.toEdit is False:
+                    QMessageBox.warning(self,"PyQt5 Message","Introduzca un número de producto válido")
                 else:
-                    pass
+                    deleteButton = QMessageBox.question(self,"PyQt5 message","¿Está seguro que desea eliminar el producto?",QMessageBox.Yes | QMessageBox.No)
+                    if deleteButton == QMessageBox.Yes:
+                        Queue.pop(pos)
+                        self.drawTable()
+                    else:
+                        pass
         self.txtNumber.clear()
         Queue.toCsv("Memoria/CSV.csv")
 
@@ -193,22 +218,7 @@ class BST_HNL(QtWidgets.QMainWindow,Ui_BST_1):
         self.setupUi(self)
         self.ui=Ui_BST_1()
         self.center()
-        self.arrayPrices()
-        self.bstHNL = BST()
-        self.bstHNL.showMap()
     
-    def arrayPrices(self):
-        price= ""
-        name= ""
-        for i in range(Queue.length()):
-            currency = Queue.getCoin(i)
-            price = float(Queue.getPrice(i))
-            name = str(Queue.getName(i))
-            if currency == 'HNL':
-                return self.bstHNL.add(price,name)
-            else:
-                pass
-
     def center(self):
         frame = self.frameGeometry()
         centerPoint = QtWidgets.QDesktopWidget().availableGeometry().center()

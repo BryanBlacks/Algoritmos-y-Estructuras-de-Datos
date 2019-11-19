@@ -1,9 +1,10 @@
 #-*- coding:utf8 -*-
 from Nucleo.Arbol.Node import *
 import networkx as nx
+from networkx.drawing.nx_agraph import write_dot, graphviz_layout
 import matplotlib.pyplot as plt
 
-G = nx.Graph()
+G = nx.DiGraph()
 image = plt.figure()
 
 class BST:
@@ -36,50 +37,6 @@ class BST:
                         return self.addInner(value,name,current.right)
             return False
 
-    """
-    def toMap(self):
-        return self.toMapInner(self.root)
-        
-    def toMapInner(self,current):
-        if current.rightChild or current.leftChild:
-            if current.rightChild and current.leftChild:
-                G.add_node(current.leftChild)
-                G.add_node(current.rightChild)
-                G.add_edge(current, current.leftChild)
-                G.add_edge(current, current.rightChild)
-            elif current.leftChild and not current.rightChild:
-                G.add_node(current.leftChild)
-                G.add_edge(current,current.leftChild)
-                return self.toMapInner(current.leftChild)
-            elif current.rightChild and not current.leftChild:
-                G.add_node(current.rightChild)
-                G.add_edge(current, current.rightChild)
-                return self.toMapInner(current.rightChild)
-        plt.show()
-        
-            current = self.root
-            G.add_node(self.root)
-            while current.leftChild or current.rightChild:
-                if current.rightChild and current.leftChild:
-                    G.add_node(current.leftChild)
-                    G.add_node(current.rightChild)
-                    G.add_edge(current, current.leftChild)
-                    G.add_edge(current, current.rightChild)
-                    if current.rightChild.rightChild:
-                        current = current.rightChild
-                    else: 
-                elif current.leftChild and not current.rightChild:
-                    G.add_node(current.leftChild)
-                    G.add_edge(current,current.leftChild)
-                    current = current.leftChild
-                elif current.rightChild and not current.leftChild:
-                    G.add_node(current.rightChild)
-                    G.add_edge(current, current.rightChild)
-                    current = current.rightChild
-        
-        plt.show()
-        """
-
     def toMap(self):
         G.add_node("%s | %s"%(self.root.value, self.root.name))
         return self.toMapInner(self.root)
@@ -98,12 +55,12 @@ class BST:
             
         return True
 
-    def showMap(self):
+    def showMapHNL(self):
         self.toMap()
-        pos = nx.circular_layout(G)
         nlist = [node for node in G.nodes()]
         elist = [edge for edge in G.edges()]
-
-        nx.draw_networkx_nodes(G, pos,with_labels = True, nodelist = nlist)
-        nx.draw_networkx_edges(G,pos, edgelist=elist)
-        plt.show()
+        write_dot(G,'Memoria/test.dot')
+        pos = graphviz_layout(G, prog='dot')
+        nx.draw(G,pos, with_labels=True, arrows=True, nodelist=nlist, edgelist=elist,node_size=7000,node_color='#a8dee3',node_shape='8',linewidths=True,style='solid',arrowsize=30)
+        #so^>v<dph8
+        image.savefig("Memoria/BST1.png")

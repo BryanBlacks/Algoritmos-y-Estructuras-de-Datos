@@ -67,7 +67,7 @@ class BST:
         #pos = nx.bfs_tree(G,self.root.value)
         write_dot(G,'test.dot')
 
-        pos = graphviz_layout(G, prog='dot')
+        pos = graphviz_layout(G, prog='dot',root=self.root.value)
         nx.draw(G,pos, with_labels=True, arrows=True)
         plt.show()
         #nx.draw(G,nodelist=nlist,edgelist=elist,with_labels=True,node_size=300)
