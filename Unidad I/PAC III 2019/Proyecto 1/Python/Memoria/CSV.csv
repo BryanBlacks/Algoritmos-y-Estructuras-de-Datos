@@ -1,7 +1,7 @@
 Nombre, Moneda, Costo, Descriccion
 Churro,HNL,25,Sabor Chile
 Café,HNL,75,Bolsa
-Arroz,USD,15,Libra
+Arroz,USD,16,Libra
 Pan,HNL,20,Para la niña
 Perro,USD,45,Peludo
 Jugo,HNL,39,Naranja
@@ -10,3 +10,5 @@ prueba,HNL,86,4567
 Agua,HNL,32,Bote
 Hielo,HNL,45,Bolsa
 Rosa,USD,15,Roja
+platanos,USD,9,123
+1,HNL,46,ada

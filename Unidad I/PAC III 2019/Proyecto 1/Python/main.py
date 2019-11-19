@@ -1,6 +1,7 @@
 # -*- coding: utf8 -*-
-from PyQt5 import uic, QtWidgets
+from PyQt5 import uic, QtWidgets, QtGui
 from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtGui import QPixmap
 from Nucleo.Interfaz.MainWindow import *
 from Nucleo.Interfaz.AddWindow import *
 from Nucleo.Interfaz.EditWindow import *
@@ -204,6 +205,10 @@ class BST_HNL(QtWidgets.QMainWindow,Ui_BST_1):
         self.bstHNL = BST()
         self.arrayPrices()
         self.bstHNL.showMapHNL()
+
+        #pix = (QPixmap('Memoria/BST1.png'))
+        #self.label.setPixmap(pix.scaled(640, 480))
+        #self.label.setGeometry(0,0,640, 480)
     
     def arrayPrices(self):
         price= ""
@@ -236,6 +241,9 @@ class BST_USD(QtWidgets.QMainWindow,Ui_BST_2):
         self.bstUSD = BST1()
         self.arrayPrices1()
         self.bstUSD.showMapUSD()
+
+        
+
 
     def arrayPrices1(self):
         price= ""
