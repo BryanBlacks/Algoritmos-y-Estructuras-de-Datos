@@ -1,7 +1,6 @@
-strict digraph  {
-	"25.0 | Churro" -> "15.0 | Arroz";
+strict digraph "" {
+	"25.0 | Churro" -> "20.0 | Pan";
 	"25.0 | Churro" -> "75.0 | Café";
-	"50.0 | Pan" -> "39.0 | Jugo";
-	"75.0 | Café" -> "50.0 | Pan";
-	"75.0 | Café" -> "700.0 | Perro";
+	"75.0 | Café" -> "39.0 | Jugo";
+	"75.0 | Café" -> "86.0 | prueba";
 }

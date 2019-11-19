@@ -5,7 +5,7 @@ from networkx.drawing.nx_agraph import write_dot, graphviz_layout
 import matplotlib.pyplot as plt
 
 G = nx.DiGraph()
-image = plt.figure()
+images = plt.figure()
 
 class BST:
     def __init__(self):
@@ -56,11 +56,14 @@ class BST:
         return True
 
     def showMapHNL(self):
+        
+
         self.toMap()
         nlist = [node for node in G.nodes()]
         elist = [edge for edge in G.edges()]
         write_dot(G,'Memoria/test.dot')
         pos = graphviz_layout(G, prog='dot')
-        nx.draw(G,pos, with_labels=True, arrows=True, nodelist=nlist, edgelist=elist,node_size=7000,node_color='#a8dee3',node_shape='8',linewidths=True,style='solid',arrowsize=30)
+        nx.draw(G,pos, with_labels=True, arrows=True, node_size=7000,node_color='#a8dee3',node_shape='8')
         #so^>v<dph8
-        image.savefig("Memoria/BST1.png")
+        #plt.show()
+        images.savefig("Memoria/BST1.jpg")

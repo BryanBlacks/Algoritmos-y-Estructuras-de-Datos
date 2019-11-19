@@ -4,8 +4,6 @@ import networkx as nx
 from networkx.drawing.nx_agraph import write_dot, graphviz_layout
 import matplotlib.pyplot as plt
 
-H = nx.DiGraph()
-image = plt.figure()
 
 class BST1:
     def __init__(self):
@@ -37,30 +35,38 @@ class BST1:
                         return self.addInner(value,name,current.right)
             return False
 
-    def toMap(self):
-        H.add_node("%s | %s"%(self.root.value, self.root.name))
-        return self.toMapInner(self.root)
 
-    def toMapInner(self,current):
+    def showMapUSD(self):
+        H = nx.DiGraph()
+        image = plt.figure()
+
+        self.toMap1(H)
+        nlist = [node for node in H.nodes()]
+        elist = [edge for edge in H.edges()]
+        write_dot(H,'Memoria/test1.dot')
+        pos1 = graphviz_layout(H, prog='dot')
+        nx.draw(H, pos1, with_labels=True, arrows=True, node_size=7000,node_color='#a8dee3',node_shape='8')
+        #so^>v<dph8
+        #plt.show()
+        image.savefig("Memoria/BST2.png")
+
+
+
+    def toMap1(self,H):
+        H.add_node("%s | %s"%(self.root.value, self.root.name))
+        return self.toMapInner1(H,self.root)
+
+    def toMapInner1(self,H,current):
 
         if current.left:
             H.add_node("%s | %s"%(current.left.value, current.left.name))
             H.add_edge("%s | %s"%(current.value,current.name), "%s | %s"%(current.left.value, current.left.name))
-            self.toMapInner(current.left)
+            self.toMapInner1(H,current.left)
 
         if current.right:
             H.add_node("%s | %s"%(current.right.value, current.right.name))
             H.add_edge("%s | %s"%(current.value,current.name), "%s | %s"%(current.right.value, current.right.name))
-            self.toMapInner(current.right)
+            self.toMapInner1(H,current.right)
             
         return True
 
-    def showMapUSD(self):
-        self.toMap()
-        nlist = [node for node in H.nodes()]
-        elist = [edge for edge in H.edges()]
-        write_dot(H,'Memoria/test.dot')
-        pos = graphviz_layout(H, prog='dot')
-        nx.draw(H,pos, with_labels=True, arrows=True, nodelist=nlist, edgelist=elist,node_size=7000,node_color='#a8dee3',node_shape='8',linewidths=True,style='solid',arrowsize=30)
-        #so^>v<dph8
-        image.savefig("Memoria/BST2.png")

@@ -1,0 +1,4 @@
+strict digraph "" {
+	"15.0 | Arroz" -> "11.0 | Jugo";
+	"15.0 | Arroz" -> "700.0 | Perro";
+}

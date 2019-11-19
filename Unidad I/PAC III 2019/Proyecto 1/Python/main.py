@@ -52,26 +52,12 @@ class MainWindow(QtWidgets.QMainWindow,Ui_MainWindow):
     def openTree(self):
         self.bstHNLWin = BST_HNL()
         self.bstUSDWin = BST_USD()
-        self.bstHNL = BST()
-        self.bstUSD = BST1()
-        self.arrayPrices()
-        self.bstHNLWin.show()
-        self.bstUSDWin.show()
+        
+        
+        #self.bstHNLWin.show()
+        #self.bstUSDWin.show()
 
-    def arrayPrices(self):
-        price= ""
-        name= ""
-        for i in range(Queue.length()):
-            currency = Queue.getCoin(i)
-            price = float(Queue.getPrice(i))
-            name = str(Queue.getName(i))
-            if currency == 'HNL':
-                self.bstHNL.add(price,name)
-            else:
-                self.bstUSD.add(price,name)
-        self.bstUSD.showMapUSD()
-        self.bstHNL.showMapHNL()
-        return True
+    
 
     def numProducts(self):
         self.lblCount.setText(str(Queue.length()))
@@ -218,6 +204,24 @@ class BST_HNL(QtWidgets.QMainWindow,Ui_BST_1):
         self.setupUi(self)
         self.ui=Ui_BST_1()
         self.center()
+
+        self.bstHNL = BST()
+        self.arrayPrices()
+        self.bstHNL.showMapHNL()
+    
+    def arrayPrices(self):
+        price= ""
+        name= ""
+        for i in range(Queue.length()):
+            currency = Queue.getCoin(i)
+            price = float(Queue.getPrice(i))
+            name = str(Queue.getName(i))
+            if currency == 'HNL':
+                self.bstHNL.add(price,name)
+            else:
+                pass
+        
+        return True
     
     def center(self):
         frame = self.frameGeometry()
@@ -232,6 +236,24 @@ class BST_USD(QtWidgets.QMainWindow,Ui_BST_2):
         self.setupUi(self)
         self.ui=Ui_BST_2()
         self.center()
+
+        self.bstUSD = BST1()
+        self.arrayPrices1()
+        self.bstUSD.showMapUSD()
+
+    def arrayPrices1(self):
+        price= ""
+        name= ""
+        for i in range(Queue.length()):
+            currency = Queue.getCoin(i)
+            price = float(Queue.getPrice(i))
+            name = str(Queue.getName(i))
+            if currency == 'USD':
+                self.bstUSD.add(price,name)
+            else:
+                pass
+        
+        return True
 
     def center(self):
         frame = self.frameGeometry()

@@ -1,8 +1,9 @@
 Nombre, Moneda, Costo, Descriccion
 Churro,HNL,25,Sabor Chile
 Café,HNL,75,Bolsa
-Arroz,HNL,15,Libra
-Pan,HNL,50,Para la niña
-Perro,HNL,700,Peludo
+Arroz,USD,15,Libra
+Pan,HNL,20,Para la niña
+Perro,USD,700,Peludo
 Jugo,HNL,39,Naranja
-Jugo,USD,15,Pera
+Jugo,USD,11,Pera
+prueba,HNL,86,4567
