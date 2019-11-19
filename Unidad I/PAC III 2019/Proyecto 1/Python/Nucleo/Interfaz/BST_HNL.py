@@ -13,16 +13,16 @@ from PyQt5.QtGui import QPixmap
 class Ui_BST_1(object):
     def setupUi(self, BST_1):
         BST_1.setObjectName("BST_1")
-        BST_1.resize(650, 400)
+        BST_1.resize(600, 400)
         BST_1.setStyleSheet("background-color: rgb(211, 205, 255);")
-
+    
         self.label = QtWidgets.QLabel(BST_1)
-        self.label.setGeometry(QtCore.QRect(0, 0, 650, 400))
+        self.label.setGeometry(QtCore.QRect(0, 0, 600, 400))
         self.label.setText("")
         self.label.setObjectName("label")
         pix = (QPixmap('Memoria/BST1.png'))
-        self.label.setPixmap(pix.scaled(650, 400))
-        self.label.setGeometry(0,0,650, 400)
+        self.label.setPixmap(pix.scaled(600, 400))
+        self.label.setGeometry(0,0,600, 400)
 
         self.retranslateUi(BST_1)
         QtCore.QMetaObject.connectSlotsByName(BST_1)

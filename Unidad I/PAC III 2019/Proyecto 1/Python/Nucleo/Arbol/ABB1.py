@@ -43,15 +43,15 @@ class BST:
 
     def toMapInner(self,current):
 
+        if current.right:
+            G.add_node("%s | %s"%(current.right.value, current.right.name))
+            G.add_edge("%s | %s"%(current.value,current.name), "%s | %s"%(current.right.value, current.right.name))
+            self.toMapInner(current.right)
         if current.left:
             G.add_node("%s | %s"%(current.left.value, current.left.name))
             G.add_edge("%s | %s"%(current.value,current.name), "%s | %s"%(current.left.value, current.left.name))
             self.toMapInner(current.left)
 
-        if current.right:
-            G.add_node("%s | %s"%(current.right.value, current.right.name))
-            G.add_edge("%s | %s"%(current.value,current.name), "%s | %s"%(current.right.value, current.right.name))
-            self.toMapInner(current.right)
             
         return True
 
@@ -66,4 +66,4 @@ class BST:
         nx.draw(G,pos, with_labels=True, arrows=True, node_size=7000,node_color='#a8dee3',node_shape='8')
         #so^>v<dph8
         #plt.show()
-        images.savefig("Memoria/BST1.jpg")
+        #images.savefig("Memoria/BST1.png")

@@ -52,12 +52,8 @@ class MainWindow(QtWidgets.QMainWindow,Ui_MainWindow):
     def openTree(self):
         self.bstHNLWin = BST_HNL()
         self.bstUSDWin = BST_USD()
-        
-        
-        #self.bstHNLWin.show()
-        #self.bstUSDWin.show()
-
-    
+        self.bstHNLWin.show()
+        self.bstUSDWin.show()
 
     def numProducts(self):
         self.lblCount.setText(str(Queue.length()))

@@ -94,7 +94,7 @@ class Ui_MainWindow(object):
 "")
         self.label.setObjectName("label")
         self.lblCount = QtWidgets.QLabel(MainWindow)
-        self.lblCount.setGeometry(QtCore.QRect(430, 110, 61, 91))
+        self.lblCount.setGeometry(QtCore.QRect(400, 110,200, 91))
         font = QtGui.QFont()
         font.setFamily("Bitstream Vera Sans")
         font.setPointSize(72)

@@ -47,8 +47,8 @@ class BST1:
         pos1 = graphviz_layout(H, prog='dot')
         nx.draw(H, pos1, with_labels=True, arrows=True, node_size=7000,node_color='#a8dee3',node_shape='8')
         #so^>v<dph8
-        #plt.show()
-        image.savefig("Memoria/BST2.png")
+        plt.show()
+        #image.savefig("Memoria/BST2.png")
 
 
 
@@ -58,15 +58,15 @@ class BST1:
 
     def toMapInner1(self,H,current):
 
+        if current.right:
+            H.add_node("%s | %s"%(current.right.value, current.right.name))
+            H.add_edge("%s | %s"%(current.value,current.name), "%s | %s"%(current.right.value, current.right.name))
+            self.toMapInner1(H,current.right)
         if current.left:
             H.add_node("%s | %s"%(current.left.value, current.left.name))
             H.add_edge("%s | %s"%(current.value,current.name), "%s | %s"%(current.left.value, current.left.name))
             self.toMapInner1(H,current.left)
 
-        if current.right:
-            H.add_node("%s | %s"%(current.right.value, current.right.name))
-            H.add_edge("%s | %s"%(current.value,current.name), "%s | %s"%(current.right.value, current.right.name))
-            self.toMapInner1(H,current.right)
             
         return True
 
