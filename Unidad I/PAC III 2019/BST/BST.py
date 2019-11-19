@@ -1,7 +1,7 @@
 #-*- coding:utf8 -*-
 import networkx as nx
+from networkx.drawing.nx_agraph import write_dot, graphviz_layout
 import matplotlib.pyplot as plt
-from networkx.drawing.nx_agraph import graphviz_layout
 
 G = nx.DiGraph()
 image = plt.figure()
@@ -61,12 +61,17 @@ class BST:
 
     def showMap(self):
         self.toMap()
-        nlist = [node for node in G.nodes()]
-        elist = [edge for edge in G.edges()]
+        #nlist = [node for node in G.nodes()]
+        #elist = [edge for edge in G.edges()]
         #pos = nx.bipartite_layout(G, nlist, align='vertical', scale=1, center=None, aspect_ratio=4/3)
-        pos = nx.bfs_tree(G,self.root.value)
-        nx.draw(G,nodelist=nlist,edgelist=elist,with_labels=True,node_size=300)
-        image.savefig('/home/benedetto/Documentos/AED 0700 III PAC/Unidad I/PAC III 2019/map.png')
+        #pos = nx.bfs_tree(G,self.root.value)
+        write_dot(G,'test.dot')
+
+        pos = graphviz_layout(G, prog='dot')
+        nx.draw(G,pos, with_labels=True, arrows=True)
+        plt.show()
+        #nx.draw(G,nodelist=nlist,edgelist=elist,with_labels=True,node_size=300)
+        #image.savefig('/home/benedetto/Documentos/AED 0700 III PAC/Unidad I/PAC III 2019/map.png')
 
 bst = BST()
 bst.add(2)
