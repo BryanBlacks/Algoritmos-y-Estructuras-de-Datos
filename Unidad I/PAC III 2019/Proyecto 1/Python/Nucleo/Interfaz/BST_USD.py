@@ -20,9 +20,6 @@ class Ui_BST_2(object):
         self.label.setGeometry(QtCore.QRect(0, 0, 640, 480))
         self.label.setText("")
         self.label.setObjectName("label")
-        pix = (QPixmap('Memoria/BST2.png'))
-        self.label.setPixmap(pix.scaled(640, 480))
-        self.label.setGeometry(0,0,640, 480)
 
         self.retranslateUi(BST_2)
         QtCore.QMetaObject.connectSlotsByName(BST_2)

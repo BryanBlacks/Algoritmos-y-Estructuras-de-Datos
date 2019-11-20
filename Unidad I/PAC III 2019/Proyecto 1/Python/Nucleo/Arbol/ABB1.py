@@ -5,8 +5,6 @@ import networkx as nx
 from networkx.drawing.nx_agraph import write_dot, graphviz_layout
 import matplotlib.pyplot as plt
 
-G = nx.DiGraph()
-images = plt.figure()
 
 class BST:
     def __init__(self):
@@ -36,36 +34,38 @@ class BST:
                         return True
                     else:
                         return self.addInner(value,name,current.right)
-            return False
+            return False    
 
-    def toMap(self):
-        G.add_node("%s | %s"%(self.root.value, self.root.name))
-        return self.toMapInner(self.root)
-
-    def toMapInner(self,current):
-
-        if current.left:
-            G.add_node("%s | %s"%(current.left.value, current.left.name))
-            G.add_edge("%s | %s"%(current.value,current.name), "%s | %s"%(current.left.value, current.left.name))
-            self.toMapInner(current.left)
-
-        if current.right:
-            G.add_node("%s | %s"%(current.right.value, current.right.name))
-            G.add_edge("%s | %s"%(current.value,current.name), "%s | %s"%(current.right.value, current.right.name))
-            self.toMapInner(current.right)
-
-            
-        return True
 
     def showMapHNL(self):
-        
+        G = nx.DiGraph()
+        images = plt.figure()
 
-        self.toMap()
+        self.toMap(G)
         nlist = [node for node in G.nodes()]
         elist = [edge for edge in G.edges()]
         write_dot(G,'Memoria/test.dot')
         pos = graphviz_layout(G, prog='dot')
-        nx.draw(G,pos, with_labels=True, arrows=True, node_size=2000,node_color='#a8dee3',node_shape='s')
+        nx.draw(G,pos, with_labels=True, arrows=True, node_size=5000,node_color='#a8dee3',node_shape='8')
         #so^>v<dph8
         #plt.show()
         images.savefig("Memoria/BST1.png")
+
+    def toMap(self,G):
+        G.add_node("%s | %s"%(self.root.value, self.root.name))
+        return self.toMapInner(G,self.root)
+
+    def toMapInner(self,G,current):
+
+        if current.left:
+            G.add_node("%s | %s"%(current.left.value, current.left.name))
+            G.add_edge("%s | %s"%(current.value,current.name), "%s | %s"%(current.left.value, current.left.name))
+            self.toMapInner(G,current.left)
+
+        if current.right:
+            G.add_node("%s | %s"%(current.right.value, current.right.name))
+            G.add_edge("%s | %s"%(current.value,current.name), "%s | %s"%(current.right.value, current.right.name))
+            self.toMapInner(G,current.right)
+
+            
+        return True

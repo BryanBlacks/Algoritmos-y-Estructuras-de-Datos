@@ -1,7 +1,6 @@
 # -*- coding: utf8 -*-
-from PyQt5 import uic, QtWidgets, QtGui
+from PyQt5 import uic, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
-from PyQt5.QtGui import QPixmap
 from Nucleo.Interfaz.MainWindow import *
 from Nucleo.Interfaz.AddWindow import *
 from Nucleo.Interfaz.EditWindow import *
@@ -53,8 +52,6 @@ class MainWindow(QtWidgets.QMainWindow,Ui_MainWindow):
     def openTree(self):
         self.bstHNLWin = BST_HNL()
         self.bstUSDWin = BST_USD()
-        self.bstHNLWin.show()
-        self.bstUSDWin.show()
 
     def numProducts(self):
         self.lblCount.setText(str(Queue.length()))
@@ -200,15 +197,15 @@ class BST_HNL(QtWidgets.QMainWindow,Ui_BST_1):
         QtWidgets.QMainWindow.__init__(self)
         self.setupUi(self)
         self.ui=Ui_BST_1()
-        self.center()
 
         self.bstHNL = BST()
         self.arrayPrices()
         self.bstHNL.showMapHNL()
-
-        #pix = (QPixmap('Memoria/BST1.png'))
-        #self.label.setPixmap(pix.scaled(640, 480))
-        #self.label.setGeometry(0,0,640, 480)
+        pix1 = (QPixmap('Memoria/BST1.png'))
+        self.label.setPixmap(pix1.scaled(640, 480))
+        self.label.setGeometry(0,0,640, 480)
+        self.center()
+        self.show()
     
     def arrayPrices(self):
         price= ""
@@ -236,14 +233,15 @@ class BST_USD(QtWidgets.QMainWindow,Ui_BST_2):
         QtWidgets.QMainWindow.__init__(self)
         self.setupUi(self)
         self.ui=Ui_BST_2()
-        self.center()
 
         self.bstUSD = BST1()
         self.arrayPrices1()
         self.bstUSD.showMapUSD()
-
-        
-
+        pix2 = (QPixmap('Memoria/BST2.png'))
+        self.label.setPixmap(pix2.scaled(640, 480))
+        self.label.setGeometry(0,0,640, 480)
+        self.center()
+        self.show()
 
     def arrayPrices1(self):
         price= ""

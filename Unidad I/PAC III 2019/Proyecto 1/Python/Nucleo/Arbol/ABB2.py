@@ -51,22 +51,21 @@ class BST1:
         image.savefig("Memoria/BST2.png")
 
 
-
     def toMap1(self,H):
         H.add_node("%s | %s"%(self.root.value, self.root.name))
         return self.toMapInner1(H,self.root)
 
     def toMapInner1(self,H,current):
 
+        if current.right:
+            H.add_node("%s | %s"%(current.right.value, current.right.name))
+            H.add_edge("%s | %s"%(current.value,current.name), "%s | %s"%(current.right.value, current.right.name))
+            self.toMapInner1(H,current.right)
         if current.left:
             H.add_node("%s | %s"%(current.left.value, current.left.name))
             H.add_edge("%s | %s"%(current.value,current.name), "%s | %s"%(current.left.value, current.left.name))
             self.toMapInner1(H,current.left)
 
-        if current.right:
-            H.add_node("%s | %s"%(current.right.value, current.right.name))
-            H.add_edge("%s | %s"%(current.value,current.name), "%s | %s"%(current.right.value, current.right.name))
-            self.toMapInner1(H,current.right)
             
         return True
 
