@@ -1,4 +1,33 @@
 # -*- coding: utf8 -*-
+"""
+-------------------------------------------Main-------------------------------------------
+* Cada pantalla encapsulada en una clase, con sus respectivos eventos y funciones.
+
+* Instancia de la Lista Enlazada para uso general, apertura y guardado de la lista
+    (con su metodo interno) de manera dinamica de acuerdo a los eventos que la modifican.
+
+* Centrado de cada pantalla con dicha función encapsulada en la clase de cada pantalla.
+
+* Pantalla agregar con funciones propias como agregar a la lista, que obtiene las cadenas
+    de texto que se encuentran en los textbox y luego usa esos datos para agregar a la 
+    lista el nodo (tipo producto con todos esos datos) como una cola.
+
+* Pantalla ver y editar con funciones propias como la de abrir la pantalla de agregar 
+    desde la pantalla de editar precionando el botón editar, para lo cual antes se 
+    deberá poner un numero que corresponda al numero en la lista de un producto con lo
+    cual se sobre-escribirá el nodo que se edité haciendo uso del agregado en posición, 
+    en caso contrario se abriran ciertas ventanas de alerta que ayudan al usuario a 
+    insertar el dato correcto para editar o eliminar.
+
+* Pantallas Individuales para los árboles binarios que desglosan los precios en una
+    jerarquía determinada los cuales usan el parametro de la moneda para agregar los 
+    elementos de la lista en el árbol correspondiente para lo cual poder crear y guardar
+    en memoria las imagenes que se generan usando matplotlib y luego embeber esas imagenes
+    en las pantallas correspondientes.
+
+* Pantalla About contiene información de los integrantes y la clase AED.
+
+"""
 from PyQt5 import uic, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 from Nucleo.Interfaz.MainWindow import *

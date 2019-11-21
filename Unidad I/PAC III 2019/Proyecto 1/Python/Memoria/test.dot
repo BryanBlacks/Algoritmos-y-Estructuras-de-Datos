@@ -1,8 +1,8 @@
 strict digraph  {
+	"25.0 | Churro" -> "20.0 | Pan";
+	"25.0 | Churro" -> "65.0 | Café";
+	"65.0 | Café" -> "86.0 | Cereal";
+	"65.0 | Café" -> "39.0 | Jugo";
 	"39.0 | Jugo" -> "32.01 | Dulce";
 	"39.0 | Jugo" -> "45.3 | Gel";
-	"65.0 | Café" -> "39.0 | Jugo";
-	"65.0 | Café" -> "86.0 | Cereal";
-	"25.0 | Churro" -> "65.0 | Café";
-	"25.0 | Churro" -> "20.0 | Pan";
 }
