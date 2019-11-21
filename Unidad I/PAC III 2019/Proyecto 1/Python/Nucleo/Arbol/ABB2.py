@@ -4,6 +4,27 @@ import networkx as nx
 from networkx.drawing.nx_agraph import write_dot, graphviz_layout
 import matplotlib.pyplot as plt
 
+"""
+-------------------------------Árbol De Costos en Dolares-------------------------------
+* Árbol Binario que almacena el precio y el nombre de los productos existentes en la 
+    lista enlazada.
+
+* Función Agregar ---> Función recursiva en la cual el usuario solo hace uso del
+    add e internamente se usa la función addInner para moverse en el árbol dependiendo
+    del value (precio del nodo tipo producto) que se desee ingresar.
+
+* Función Mostrar Mapa ---> Función que hace la instancia del graph direccionado y 
+    utiliza el plt para guardar la figura en una variable temporal que prograsivamente
+    será guardada en memoría para luego embeber la imagén en la pantalla respectiva 
+    del árbol que internamente hace uso de la función que agrega los nodos en el graph
+    Luego con el layout especifico para generar la jerarquía del árbol binario por
+    último se dibuja y guarda la imagén en memoria.
+
+* Función Hacía el Mapa ---> Función que agrega el primer nodo con su value y el nombre
+    que fueron almacenados en el árbol binario, haciendo uso de una función interna 
+    para agregar de manera recursiva los nodos en el graph direccionado.
+-----------------------------------------------------------------------------------------
+"""
 
 class BST1:
     def __init__(self):

@@ -1,5 +1,33 @@
 #-*- coding:utf8 -*-
 
+"""
+--------------------------------------Lista Enlazada----------------------------------------
+* Función Agregar En posición ---> Función pensada para agregar como lista tipo cola
+    sino se manda una posición y cuando se manda una posición se usa para actualizar el que 
+    se esté editando.
+
+* Función Eliminar ---> Función para eliminar un nodo de la lista en una posición dada.
+
+* Función Buscar ---> Función para buscar un nodo dependiendo de su posición.
+
+* Función Imprimir ---> Función pensada para uso exclusivo de pruebas de la lista y así 
+    poder confirmar lo que contenía la lista mostrandolo en consola (No usar en ver. final).
+
+* Función Longitud ---> Función que retorna el entero que representa el largo de la lista.
+
+* Funciones Obtener Nombre, Precio, Descripción ---> Funciones que retornan esas 
+    caracteristicas de un nodo en una posición especifica (Utilizado para llenar los campos 
+    de texto al darle clic al botón editar con un número de producto valido).
+
+* Funciones Archivo de Texto Plano ---> Funciones que trabajan con el archivo de texto csv
+    una que lee el archivo para agregar los nodos al árbol y otra que escribe en el archivo
+    cada vez que la lista es actualizada (agregar, editar, borrar).
+
+* Funciones Tabla ASCII ---> Funciones encargadas de generar lo que se escribirá en la
+    pantalla para editar, una genera los elementos estaticos y la otra escribe los 
+    elementos que contiene la lista.
+"""
+
 from Nucleo.Lista.Product import *
 from Nucleo.Lista.Node import *
 
