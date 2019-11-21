@@ -43,8 +43,7 @@ class BST:
         images = plt.figure()
 
         self.toMap(G)
-        nlist = [node for node in G.nodes()]
-        elist = [edge for edge in G.edges()]
+        
         write_dot(G,'Memoria/test.dot')
         pos = graphviz_layout(G, prog='dot')
         nx.draw(G,pos, with_labels=True, arrows=True, node_size=5000,node_color='#a8dee3',node_shape='8')
