@@ -2,6 +2,7 @@
 
 from Nucleo.Lista.Product import *
 from Nucleo.Lista.Node import *
+
 class LinkedList:
     def __init__(self):
         self.first = None

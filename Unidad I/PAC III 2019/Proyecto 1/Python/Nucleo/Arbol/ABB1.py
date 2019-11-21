@@ -19,7 +19,8 @@ class BST:
             return True
         else:
             if current.value == value:
-                current = Node(value,name)
+                currentname = current.name
+                current = Node(value,"%s%s"%(currentname,name))
                 return True
             else:
                 if current.value > value:
@@ -47,7 +48,7 @@ class BST:
         write_dot(G,'Memoria/test.dot')
         pos = graphviz_layout(G, prog='dot')
         nx.draw(G,pos, with_labels=True, arrows=True, node_size=5000,node_color='#a8dee3',node_shape='8')
-        #so^>v<dph8
+        #formas para el nodo: so^>v<dph8
         #plt.show()
         images.savefig("Memoria/BST1.png")
 

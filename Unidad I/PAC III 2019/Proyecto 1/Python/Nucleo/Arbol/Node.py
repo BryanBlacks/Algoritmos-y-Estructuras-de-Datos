@@ -1,3 +1,4 @@
+#-*- coding:utf8 -*-
 class Node:
     def __init__(self,value,name):
         self.value = value

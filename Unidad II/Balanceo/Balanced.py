@@ -10,9 +10,48 @@ Se hace un metodo que compare el current.value
 
 """
 
+class Compare:
+    def __init__(self):
+        self.alphabet = " !#$%&/()=?¡'¿[]-:;,.+*´_0123456789abcdefghijklmnopqrstvwxyzABCDEFGHIJKLMNOPQRSTVWXYZ"
+
+    def compare(self,obj1,obj2):
+        if(isinstance(obj1,object)):
+            obj1 = str(obj1.value)
+        if(isinstance(obj2,object)):
+            obj2 = str(obj2.value)
+
+        if(isinstance(obj1,int)):
+            obj1 = str(obj1)
+        if(isinstance(obj2,int)):
+            obj2 = str(obj2)
+        
+        #lstrip para quitar los espacios de ambos lados
+        
+        max = len(obj1)
+        min = len(obj1)
+        if(min > len(obj2)):
+            min=len(obj2)
+        if(max < len(obj2)):
+            max=len(obj2)
+
+        if obj1 == obj2:
+            return 0
+
+        for i in range(min):
+            if self.alphabet.index(obj1[i]) > self.alphabet.index(obj2[i]):
+                return 1
+            elif self.alphabet.index(obj1[i]) < self.alphabet.index(obj2[i]):
+                return -1
+                
+        if (len(obj1)>len(obj2)):
+            return 1   
+        else:
+            return -1
+
 class LinkedList:
     def __init__(self):
         self.first = None
+        self.compare = Compare()
 
     #Agregar y ordenar los valores que se insertan
     def add(self,value):
@@ -25,14 +64,13 @@ class LinkedList:
                     #Se debe saber la lógica del sistema,es decir,sí se reemplazan
                     #los nodos con el mismo nombre o no
                     pass
-                elif (self.compare(current,value) == 0):
+                elif (self.compare.compare(current,value) == 0):
                     pass
-                elif (self.compare(current,value)<0):
+                elif (self.compare.compare(current,value)<0):
                     #value va despues
                     current = current.next
                 else:
                     #value va antes
                     stack = self.first
                     self.first = Node(value)
-                    self.first.next = stack
-                
+                    self.first.next = stack  
