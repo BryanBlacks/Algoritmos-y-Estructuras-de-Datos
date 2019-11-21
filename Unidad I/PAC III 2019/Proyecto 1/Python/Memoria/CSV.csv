@@ -1,9 +1,13 @@
 Nombre, Moneda, Costo, Descriccion
-Churro,HNL,25,Sabor Chile
-Café,HNL,75,Bolsa
-Arroz,USD,15,Libra
+Churro,HNL,25,Dorito Picante
+Café,HNL,75,Cafe Oro - 1 Bolsa
+Arroz   ,USD,28,Blanco / 30Lb
 Pan,HNL,20,Para la niña
-Perro,USD,700,Peludo
-Jugo,HNL,39,Naranja
-Jugo,USD,11,Pera
-prueba,HNL,86,4567
+Dogui,USD,120,Concentrado / Verduras
+Jugo,HNL,39,Sabor Naranja 3Lts
+Jugo,USD,11,Sabor Frutas 5Lts
+Cereal,HNL,86,Kellogg's
+Dulce,HNL,32.01,Snickers
+Azucar,USD,21,50 Lbs
+Gel,HNL,45.3,Extreme
+Donas,USD,9.4,12 unid

@@ -57,14 +57,14 @@ class BST1:
 
     def toMapInner1(self,H,current):
 
-        if current.right:
-            H.add_node("%s | %s"%(current.right.value, current.right.name))
-            H.add_edge("%s | %s"%(current.value,current.name), "%s | %s"%(current.right.value, current.right.name))
-            self.toMapInner1(H,current.right)
         if current.left:
             H.add_node("%s | %s"%(current.left.value, current.left.name))
             H.add_edge("%s | %s"%(current.value,current.name), "%s | %s"%(current.left.value, current.left.name))
             self.toMapInner1(H,current.left)
+        if current.right:
+            H.add_node("%s | %s"%(current.right.value, current.right.name))
+            H.add_edge("%s | %s"%(current.value,current.name), "%s | %s"%(current.right.value, current.right.name))
+            self.toMapInner1(H,current.right)
 
             
         return True

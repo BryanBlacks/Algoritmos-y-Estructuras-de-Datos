@@ -1,9 +1,8 @@
-strict digraph  {
-	"235.5 | Pato" -> "239.5 | Hola";
-	"235.5 | Pato" -> "228.4 | Juego";
-	"86.0 | prueba" -> "235.5 | Pato";
-	"39.0 | Jugo" -> "32.0 | Agua";
-	"75.0 | Café" -> "86.0 | prueba";
-	"75.0 | Café" -> "39.0 | Jugo";
+strict digraph "" {
+	"25.0 | Churro" -> "20.0 | Pan";
 	"25.0 | Churro" -> "75.0 | Café";
+	"75.0 | Café" -> "39.0 | Jugo";
+	"75.0 | Café" -> "86.0 | Cereal";
+	"39.0 | Jugo" -> "32.01 | Dulce";
+	"39.0 | Jugo" -> "45.3 | Gel";
 }
