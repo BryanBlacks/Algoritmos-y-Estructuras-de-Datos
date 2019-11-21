@@ -177,7 +177,6 @@ class EditWindow(QtWidgets.QMainWindow,Ui_Tabla):
 
     def deleteProduct(self):
         position = self.txtNumber.toPlainText()
-        position = self.txtNumber.toPlainText()
         if position == '':
             QMessageBox.warning(self,"PyQt5 Message","Introduzca un número de producto a eliminar")
         else:
