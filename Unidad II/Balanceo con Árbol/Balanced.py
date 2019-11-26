@@ -74,7 +74,7 @@ class LinkedList:
             
             while(current):
             #Si el valor del actual es menor al valor del que deseo agregar
-                if (compare.compare(current.value, value) < 0):
+                if (compare.compare(value, current.value) < 0):
                     if not current.next:
                     #Si no hay siguiente del actual y se debe de seguir avanzando,
                       #el nuevo nodo se agrega al final de la lista.
@@ -86,7 +86,7 @@ class LinkedList:
                         current = current.next
 
             #Si el valor del actual es el mismo al que deseo agregar, reemplazo el nodo
-                elif (compare.compare(current.value, value) == 0):
+                elif (compare.compare(value, current.value) == 0):
                     if not prev:
                         #Si no tiene previo, esto indica que el nodo a reemplazar es el primero de la lista
                         self.first.next = current.next
@@ -114,9 +114,11 @@ class LinkedList:
                     else:
                         #current.next = current
                         #ARREGLAR AQUÍ
-                        prev = current.next
-                        current = Node(value)
-                        current.next = prev
+                        #prev = current.next
+                        #current = Node(value)
+                        #current.next = prev
+                        prev.next = Node(value)
+                        prev.next.next = current
                         return True
             return False
         
