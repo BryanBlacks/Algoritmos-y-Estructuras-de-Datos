@@ -1,6 +1,6 @@
 strict digraph  {
-	"28.0 | Arroz   " -> "120.0 | Dogui";
 	"28.0 | Arroz   " -> "11.0 | Jugo";
-	"11.0 | Jugo" -> "21.0 | Azucar";
+	"28.0 | Arroz   " -> "120.0 | Dogui";
 	"11.0 | Jugo" -> "9.4 | Donas";
+	"11.0 | Jugo" -> "21.0 | Azucar";
 }
