@@ -99,28 +99,11 @@ class LinkedList:
                         self.first.next = current
                         return True
                     else:
-                        #current.next = current
-                        #ARREGLAR AQUÍ
-                        #prev = current.next
-                        #current = Node(value)
-                        #current.next = prev
+                    
                         prev.next = Node(value)
                         prev.next.next = current
                         return True
             return False
-    """
-    def add(self, value):
-        if not self.first:
-            self.first = Node(value)
-            return True
-        else:
-            current  = self.first
-            while current.next:
-                current = current.next
-            current.next = Node(value)
-            return True
-        return False
-    """
 
     def search(self,value):
         if not self.first:
@@ -150,7 +133,6 @@ class LinkedList:
                         return parent
                     current = current.next
                 return False
-    
 
 class DeletedElement:
     def __init__(self,parent,deletedNode):
@@ -215,51 +197,3 @@ tree.add("Adios",tree.search("A"))
 tree.add("Prueba",tree.search("Adios",tree.search("A")))
 
 #tree.remove("hola",4)
-
-"""
-def add(self, value, current=None):
-        if not current:
-            current = self.root
-            return current.children.add(value)
-        else:
-            
-
-            if isinstance(current,Node):
-                print("El nodo %s  se agregará como hijo de %s" %(value,current.value))
-                return current.children.add(value)
-            else:
-                print("El nodo padre %s No se encontró en el árbol, %s se agregará en la raíz"%(current,value))
-                return self.root.children.add(value)
-#current = self.root
-def search1(self,value,current):
-    
-        if current.next:
-            if current.children.search(value):
-                return current.children.search(value)
-            else:
-                if current.children.first:
-                    current= current.children.first
-                    if self.search1(value, current):
-                        return self.search1(value, current)
-                    else:
-                        current = current.next
-                        if current.children.first:
-                            current= current.children.first
-                            if self.search1(value, current):
-                                return self.search1(value, current)
-
-                else:
-                    current= current.next
-                    self.search1(value, current)
-
-        else:
-            if current.children.search(value):
-                return current.children.search(value)
-            else:
-                if current.children.first:
-                    self.search1(value, current.children.first)
-                else:
-                    return False
-
-        return False
-"""   
