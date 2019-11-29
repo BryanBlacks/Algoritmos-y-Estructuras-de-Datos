@@ -1,38 +1,10 @@
 #-*- coding: utf8 -*-
-import sys
+from Nucleo.Comandos.Multifunction import *
+
 import datetime
 
-header = "\n%s%s%s%s%s%s%s%s\n" % (
-    "%s%s" % ("\t", "-" * 100),
-    "\n%s%s%s" % (
-        "\t%s" % (("*" * 11).center(100, " ")),
-        "\n\t%s" % ("* SGestor *".center(100, " ")),
-        "\n\t%s\n" % (("*" * 11).center(100, " "))
-    ),
-    "\n\t%s\n" % ("Sistema gestor de archivos".center(100, " ")),
-    "\n\t%s" % ("Creado por: ".center(100, " ")),
-    "\n\t%s" % ("[Bryan Gonzales] [Edgar Benedetto] [Fabio Lagos]".center(100, " ")),
-    "\n\t%s\n" % ("v 0.00.10".center(100, " ")),
-    "\n\tSistema que gestiona archivos almacenados en formato JSON.\n",
-    "%s%s" % ("\t", "-" * 100)
-) 
-
-help = "\n%s%s%s%s\n" % (
-    #"%s%s" % ("\t", "-" * 100),
-    "\tComandos:\n",
-    "\n\t\thelp\t---> Ayuda.",
-    "\n\t\tls\t---> Muestra algo en la consola.",
-    "\n\t\texit\t---> Salir del programa.\n",
-    #"%s%s" % ("\t", "-" * 100),
-)
-
-commandError = "\n%s%s%s\n" % (
-    "%s%s" % ("\t", "*" * 100),
-    "\n\tEl comando ingresado no existe.\n",
-    "%s%s" % ("\t", "*" * 100),
-) 
-
-print(header)
+multfunction = Function()
+multfunction.printHeader()
 
 while(True):
     command = input("\t$ ")
@@ -40,12 +12,17 @@ while(True):
     
     if (command == None or command == ""):
         pass
+    
     elif (command == "help"):
-        print("%s%s" % (header, help))
+        multifunction.header() 
+        multifunction.help()
+
     elif (command == "ls"):
         print("\n\t\tLista en forma Horizontal")
+
     elif (command == "ls-1"):
         print("\n\t\tLista en forma vertical\n")
+
     elif (command == "pwd"):
         print("\n\t\tImprime el nodo actual\n")
 
