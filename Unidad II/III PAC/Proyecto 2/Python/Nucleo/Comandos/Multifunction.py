@@ -41,10 +41,10 @@ class Function:
             "%s%s" % ("\t", "*" * 100),
         )
         print(commandError)
-
+    
     def mkdir(command):
         #command[4:]
         command = self.clean(command)
         #self.clean quitar espacios quitar tabulados y por ultimo separar cada cadena por un espacio
-        #para progresivamente hacer el split "comando parametro comando1 parametro1"
+        #para progresivamente hacer el split "[[comando,parametro];[comando1,parametro1]]"
         #parametro1
