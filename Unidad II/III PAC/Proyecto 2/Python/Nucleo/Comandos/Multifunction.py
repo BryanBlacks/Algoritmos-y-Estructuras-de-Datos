@@ -48,3 +48,21 @@ class Function:
         #self.clean quitar espacios quitar tabulados y por ultimo separar cada cadena por un espacio
         #para progresivamente hacer el split "[[comando,parametro];[comando1,parametro1]]"
         #parametro1
+    
+    def info(self, text):
+
+        text = text.split(";")
+        array = []
+
+        for i in text:
+            a = []
+            i = i.strip()
+
+            space = i.find(" ")
+            command, param = i[:space],i[space:]
+
+            a.append(command)
+            a.append(param.strip())
+            array.append(a)
+
+        return array
