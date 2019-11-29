@@ -1,25 +1,25 @@
 #-*- coding: utf8 -*-
-from Nucleo.Comandos.Multifunction import *
+from Core.Formats.MultiFunction import *
 
-multfunction = Function()
-multfunction.printHeader()
+multiFunction = Function()
+multiFunction.printHeader()
 
 while(True):
     command = input("\t$ ")
     #Limpiado del comand
-    array = multfunction.clean(command)
+    array = multiFunction.clean(command)
     
     if (command == None or command == ""):
         pass
     #[["help"];[ls];[ls-1]]
     #PRUEBA 2 COÑO
     for command in array:
-        elif (command[0] is "help"):
-            multifunction.header() 
-            multifunction.help()
+        if (command[0] is "help"):
+            multiFunction.printHeader() 
+            multiFunction.printHelp()
 
         elif (command[0] is "ls"):
-            multfunction.ls()
+            multiFunction.ls()
 
         elif (command[0] is "ls-1"):
             print("\n\t\tLista en forma vertical\n")
@@ -58,5 +58,5 @@ while(True):
         elif (command == "exit"):
             break
         else:
-            multfunction.commandError()
-            multfunction.printHelp
+            multiFunction.commandError()
+            multiFunction.printHelp()
