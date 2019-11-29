@@ -12,7 +12,7 @@ header = "\n%s%s%s%s%s%s%s%s\n" % (
     "\n\t%s\n" % ("Sistema gestor de archivos".center(100, " ")),
     "\n\t%s" % ("Creado por: ".center(100, " ")),
     "\n\t%s" % ("[Bryan Gonzales] [Edgar Benedetto] [Fabio Lagos]".center(100, " ")),
-    "\n\t%s\n" % ("v 0.00.04".center(100, " ")),
+    "\n\t%s\n" % ("v 0.00.10".center(100, " ")),
     "\n\tSistema que gestiona archivos almacenados en formato JSON.\n",
     "%s%s" % ("\t", "-" * 100)
 ) 
