@@ -4,7 +4,6 @@ class Function:
         pass
 
     def printHeader(self):
-
         header = "\n%s%s%s%s%s%s%s%s\n" % (
             "%s%s" % ("\t", "-" * 100),
             "\n%s%s%s" % (
@@ -22,7 +21,6 @@ class Function:
         print(header)
     
     def printHelp(self):
-
         help = "\n%s%s%s%s\n" % (
             #"%s%s" % ("\t", "-" * 100),
             "\tComandos:\n",
@@ -34,15 +32,20 @@ class Function:
         print(help)
 
     def commandError(self):
-
         commandError = "\n%s%s%s\n" % (
             "%s%s" % ("\t", "*" * 100),
             "\n\tEl comando ingresado no existe.\n",
             "%s%s" % ("\t", "*" * 100),
         )
         print(commandError)
+
+    def clean(self, command):
+        return []
     
-    def mkdir(command):
+    def ls(self):
+        pass
+    
+    def mkdir(self, command):
         #command[4:]
         command = self.clean(command)
         #self.clean quitar espacios quitar tabulados y por ultimo separar cada cadena por un espacio
