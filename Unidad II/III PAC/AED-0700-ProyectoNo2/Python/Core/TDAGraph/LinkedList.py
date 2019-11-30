@@ -6,7 +6,7 @@ class LinkedList:
 
     def add(self,value):
         if not self.first:
-            self.first = Node(value)
+            self.first = Node(Vertex(value))
         else:
             current = self.first
             prev = None
