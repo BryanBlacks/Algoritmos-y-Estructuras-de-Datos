@@ -15,7 +15,7 @@ class LinkedList:
             while(current):
                 if (compare.compare(value, current.value) < 0):
                     if not current.next:
-                        current.next = Node(value)
+                        current.next = Node(Vertex(value)
                         return True
                     else:
                         prev = current
@@ -24,25 +24,25 @@ class LinkedList:
                 elif (compare.compare(value, current.value) == 0):
                     if not prev:
                         self.first.next = current.next
-                        self.first = Node(value)
+                        self.first = Node(Vertex(value)
                         return True
                     else:
                         if not current.next:
-                            prev.next = Node(value)
+                            prev.next = Node(Vertex(value)
                             return True
                         
                         else:
-                            prev.next = Node(value)
+                            prev.next = Node(Vertex(value))
                             prev.next.next = current.next
                             return True
 
                 else:
                     if not prev: 
-                        self.first = Node(value)
+                        self.first = Node(Vertex(value)
                         self.first.next = current
                         return True
                     else:
-                        prev.next = Node(value)
+                        prev.next = Node(Vertex(value)
                         prev.next.next = current
                         return True
             return False
@@ -77,3 +77,11 @@ class LinkedList:
                         return parent
                     current = current.next
                 return False
+    
+    def alreadyExist(self, value):
+        current = self.first
+        while(current):
+            if (current.value.name == value):
+                return True
+            current = current.next
+        return False
