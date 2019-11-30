@@ -4,7 +4,7 @@ class LinkedList:
     def __init__(self):
         self.first = None
 
-    def add(self,value):
+    def add(self,value,nodeType):
         if not self.first:
             self.first = Node(Vertex(value))
         else:
@@ -15,7 +15,7 @@ class LinkedList:
             while(current):
                 if (compare.compare(value, current.value) < 0):
                     if not current.next:
-                        current.next = Node(Vertex(value)
+                        current.next = Node(Vertex(value, nodeType))
                         return True
                     else:
                         prev = current

@@ -1,12 +1,13 @@
 class Vertex:
 
-    def __init__(self,name):
+    def __init__(self,name,nodeType):
         self.name = name
-        self.type = None
+        self.nodeType = nodeType
         self.edge = LinkeList()
     
     def setEdges(self, vertex_name):
         self.edges.add(vertex_name)
 
 class Edge:
-     def __init__(self, )
+     def __init__(self, vertexName ):
+         self.vertexName = vertexName

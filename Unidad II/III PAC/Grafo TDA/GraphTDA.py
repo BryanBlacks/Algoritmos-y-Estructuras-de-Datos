@@ -33,7 +33,7 @@ class LinkedList:
             return False
 
 class Node:
-    def __init__(self,value):
+    def __init__(self, value):
         self.value = value
         self.next = None
 
@@ -44,7 +44,7 @@ class Vertex:
         self.edge = LinkedList()
 
 class Edge:
-    def __init__(self,vertexName,weight):
+    def __init__(self, vertexName, weight):
         self.vertexName = vertexName
         self.weight = weight
 
