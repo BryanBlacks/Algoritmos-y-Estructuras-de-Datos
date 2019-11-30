@@ -1,8 +1,14 @@
+<<<<<<< HEAD
 from Compare import*
 from LinkedList import*
+=======
+# -*- coding:utf8 -*-
+
+from TDAGraph.Node import Node
+from TDAGraph.Vertex import Vertex
+>>>>>>> 2851268404ffc3884d93db15c300a1b8b9e7c58d
 
 class TreeGraph:
-
     def __init__(self):
         self.root = Node(Vertex("C:\""))
         self.trash = LinkedList()
@@ -50,6 +56,7 @@ class TreeGraph:
 
 
         else:
+<<<<<<< HEAD
             if(comp.compare(current.value.name,value)):
                 return current
             
@@ -87,3 +94,9 @@ class TreeGraph:
             return present
 
         return False
+=======
+            pass
+
+    def search(self):
+        pass
+>>>>>>> 2851268404ffc3884d93db15c300a1b8b9e7c58d

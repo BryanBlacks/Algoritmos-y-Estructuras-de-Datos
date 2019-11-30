@@ -1,4 +1,6 @@
-from Compare import*
+# -*- coding:utf8 -*-
+
+from Compare import Compare
 
 class LinkedList:
     def __init__(self):
@@ -46,8 +48,6 @@ class LinkedList:
                         prev.next.next = current
                         return True
             return False
-
-            
 
     def search(self,value):
         if not self.first:
