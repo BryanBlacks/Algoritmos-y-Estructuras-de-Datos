@@ -1,4 +1,5 @@
-#-*- coding: utf8 -*-
+#-*- coding:utf8 -*-
+
 from Core.Formats.MultiFunction import *
 
 multiFunction = Function()
@@ -14,14 +15,14 @@ while(True):
     #[["help"];[ls];[ls-1]]
     #PRUEBA 2 COÑO
     for command in array:
-        if (command[0] is "help"):
+        if (command[0] == "help"):
             multiFunction.printHeader() 
             multiFunction.printHelp()
 
-        elif (command[0] is "ls"):
+        elif (command[0] == "ls"):
             multiFunction.ls()
 
-        elif (command[0] is "ls-1"):
+        elif (command[0] == "ls-1"):
             print("\n\t\tLista en forma vertical\n")
 
         elif (command == "pwd"):
@@ -58,5 +59,5 @@ while(True):
         elif (command == "exit"):
             break
         else:
-            multiFunction.commandError()
+            multiFunction.printCommandError()
             multiFunction.printHelp()
