@@ -21,7 +21,7 @@ while(centinel):
             elif (command[0] == "ls"):
                 multiFunction.ls()
 
-            elif (command[0] == "ls-1"):
+            elif (command[0] == "ls -1"):
                 print("\n\t\tLista en forma vertical\n")
 
             elif (command[0] == "pwd"):
@@ -51,6 +51,9 @@ while(centinel):
 
             elif (command[0] == "cd"):
                 print("\n\t\tNavegar al nodo padre\n")
+
+            elif (command[0] == "cd .."):
+                print("\n\t\tRegresauna a ruta anterior a la actual\n")
 
             elif (command[0] == "findfbe"):
                 print("\n\t\tEncontrar archivos por extensión\n")
