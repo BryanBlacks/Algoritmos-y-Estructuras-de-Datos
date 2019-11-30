@@ -16,22 +16,8 @@ class Compare:
         if(len(str2) < lesser): lesser = len(str2)
         return lesser
         
-<<<<<<< HEAD
     #Define cua de las cadenas va primero por jerarquia alfabetica
     def order(self,obj1,obj2):
-
-=======
-    def compare(self, obj1, obj2):
-        if(isinstance(obj1, Node)):
-            obj1 = (str(obj1.value)).strip()
-        if(isinstance(obj1,int)):
-            obj1 = (str(obj1)).strip()
-        
-        if(isinstance(obj2, Node)):
-            obj2 = (str(obj2.value)).strip()
-        if(isinstance(obj2,int)):
-            obj2 = (str(obj2)).strip()
->>>>>>> 2851268404ffc3884d93db15c300a1b8b9e7c58d
 
         obj1 = obj1.strip()
         obj2 = obj2.strip()
