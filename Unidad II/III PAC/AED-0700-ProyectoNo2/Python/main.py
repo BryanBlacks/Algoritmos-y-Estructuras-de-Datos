@@ -4,8 +4,8 @@ from Core.MultiFunction import *
 
 multiFunction = Function()
 multiFunction.printHeader()
-a = True
-while(a):
+centinel = True
+while(centinel):
     command = input("\t$ ")
     
     if (command == None or command == ""):
@@ -56,7 +56,7 @@ while(a):
                 print("\n\t\tEncontrar archivos por extensión\n")
 
             elif (command[0] == "exit"):
-                a = False
+                centinel = False
                 break
             else:
                 multiFunction.printCommandError()
