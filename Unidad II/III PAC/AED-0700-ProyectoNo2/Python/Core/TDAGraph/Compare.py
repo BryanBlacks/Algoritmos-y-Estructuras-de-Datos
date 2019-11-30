@@ -12,16 +12,9 @@ class Compare:
         if(len(str2) < lesser): lesser = len(str2)
         return lesser
         
-    def compare(self,obj1,obj2):
-        if(isinstance(obj1,Node)):
-            obj1 = (str(obj1.value)).strip()
-        if(isinstance(obj1,int)):
-            obj1 = (str(obj1)).strip()
-        
-        if(isinstance(obj2,Node)):
-            obj2 = (str(obj2.value)).strip()
-        if(isinstance(obj2,int)):
-            obj2 = (str(obj2)).strip()
+    #Define cua de las cadenas va primero por jerarquia alfabetica
+    def order(self,obj1,obj2):
+
 
         obj1 = obj1.strip()
         obj2 = obj2.strip()
@@ -40,3 +33,18 @@ class Compare:
             return -1
         else:
             return 1
+    
+    # Compara si la cadena es igual, si lo es se retorna cualquiera de las cadenas ya que serian iguales
+    def compare(self,name1,name2):
+        
+        if(len(name1) > len(name2)):
+            return None
+        else:
+            if(len(name2) > len(name1)):
+                return None
+        for i in range(self.lesserLength(name1,name2)):
+            if(name1[i] == name2[i]):
+                pass
+            else:
+                return None
+        return name1

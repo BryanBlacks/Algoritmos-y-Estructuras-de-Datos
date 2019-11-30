@@ -8,6 +8,3 @@ class Vertex:
     def setEdges(self, vertex_name):
         self.edges.add(vertex_name)
 
-class Edge:
-     def __init__(self, vertexName ):
-         self.vertexName = vertexName

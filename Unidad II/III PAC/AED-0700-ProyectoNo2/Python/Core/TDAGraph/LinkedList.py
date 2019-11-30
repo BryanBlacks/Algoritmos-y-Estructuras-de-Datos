@@ -6,7 +6,7 @@ class LinkedList:
 
     def add(self,value,nodeType):
         if not self.first:
-            self.first = Node(Vertex(value))
+            self.first = Node(Vertex(value, nodeType))
         else:
             current = self.first
             prev = None
@@ -24,25 +24,25 @@ class LinkedList:
                 elif (compare.compare(value, current.value) == 0):
                     if not prev:
                         self.first.next = current.next
-                        self.first = Node(Vertex(value)
+                        self.first = Node(Vertex(value, nodeType)
                         return True
                     else:
                         if not current.next:
-                            prev.next = Node(Vertex(value)
+                            prev.next = Node(Vertex(value,nodeType)
                             return True
                         
                         else:
-                            prev.next = Node(Vertex(value))
+                            prev.next = Node(Vertex(value,nodeType))
                             prev.next.next = current.next
                             return True
 
                 else:
                     if not prev: 
-                        self.first = Node(Vertex(value)
+                        self.first = Node(Vertex(value, nodeType)
                         self.first.next = current
                         return True
                     else:
-                        prev.next = Node(Vertex(value)
+                        prev.next = Node(Vertex(value, nodeType)
                         prev.next.next = current
                         return True
             return False
