@@ -1,4 +1,5 @@
-#-*- coding: utf8 -*-
+# -*- coding:utf8 -*-
+
 class Function: 
     def __init__(self):
         pass
@@ -31,7 +32,7 @@ class Function:
         )
         print(help)
 
-    def commandError(self):
+    def printCommandError(self):
         commandError = "\n%s%s%s\n" % (
             "%s%s" % ("\t", "*" * 100),
             "\n\tEl comando ingresado no existe.\n",
