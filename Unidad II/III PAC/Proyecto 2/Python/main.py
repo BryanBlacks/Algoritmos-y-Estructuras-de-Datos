@@ -11,8 +11,8 @@ while(True):
     
     if (command == None or command == ""):
         pass
+    
     #[["help"];[ls];[ls-1]]
-    #PRUEBA 2 COÑO
     for command in array:
         elif (command[0] is "help"):
             multifunction.header() 
@@ -57,6 +57,7 @@ while(True):
 
         elif (command == "exit"):
             break
+
         else:
             multfunction.commandError()
             multfunction.printHelp
