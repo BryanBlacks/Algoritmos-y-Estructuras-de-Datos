@@ -1,5 +1,8 @@
 # -*- coding:utf8 -*-
 
+from PyQt5 import QtCore, QtGui, QtWidgets
+from Core.Windows.graphWindow import Graph
+
 class Function: 
     def __init__(self):
         pass
@@ -21,6 +24,15 @@ class Function:
         )
         print(header)
     
+    def printCommandError(self):
+        commandError = "\n%s%s%s\n" % (
+            "%s%s" % ("\t", "*" * 100),
+            "\n\tEl comando ingresado no existe.\n",
+            "%s%s" % ("\t", "*" * 100),
+        )
+        print(commandError)
+
+    #Comandos de la consola
     def printHelp(self):
         help = "\n%s%s%s%s\n" % (
             #"%s%s" % ("\t", "-" * 100),
@@ -32,19 +44,21 @@ class Function:
         )
         print(help)
 
-    def printCommandError(self):
-        commandError = "\n%s%s%s\n" % (
-            "%s%s" % ("\t", "*" * 100),
-            "\n\tEl comando ingresado no existe.\n",
-            "%s%s" % ("\t", "*" * 100),
-        )
-        print(commandError)
-
     def clean(self, command):
         return []
     
     def ls(self):
         pass
+
+    def plot(self):
+        app = QtWidgets.QApplication([])
+
+        self.window = QtWidgets.QMainWindow()
+        self.goWindow = Graph()
+        self.goWindow.setupUi(self.window)
+        self.window.show()
+
+        app.exec()
     
     def mkdir(self, command):
         #command[4:]
