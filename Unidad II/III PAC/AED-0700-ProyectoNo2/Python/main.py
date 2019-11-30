@@ -40,7 +40,7 @@ while(a):
                 print("\n\t\tCrear Nodo de tipo directorio\n")
 
             elif (command[0] == "plot"):
-                print("\n\t\tMapa de todos los nodos del grafo\n")
+                multiFunction.plot()
 
             elif (command[0] == "rmdir"):
                 #captura de parametro

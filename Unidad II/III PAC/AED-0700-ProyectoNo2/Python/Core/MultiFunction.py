@@ -45,7 +45,7 @@ class Function:
         print(help)
 
     def clean(self, command):
-        pass
+        return []
     
     def ls(self):
         pass
