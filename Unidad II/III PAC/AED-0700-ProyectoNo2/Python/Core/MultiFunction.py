@@ -77,7 +77,10 @@ class Function:
             i = i.strip()
 
             space = i.find(" ")
-            command, param = i[:space],i[space:]
+            if space == -1:
+                command, param = i[:],i[:]
+            else: 
+                command, param = i[:space],i[space:]
 
             a.append(command)
             a.append(param.strip())
