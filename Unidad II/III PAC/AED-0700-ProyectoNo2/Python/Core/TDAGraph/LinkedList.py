@@ -1,52 +1,106 @@
-# -*- coding:utf8 -*-
-
-from Compare import Compare
+from Compare import*
+from Node import*
 
 class LinkedList:
     def __init__(self):
         self.first = None
+        self.compare = Compare()
 
-    def add(self,value,nodeType):
-        if not self.first:
-            self.first = Node(Vertex(value, nodeType))
-        else:
-            current = self.first
-            prev = None
-            compare = Compare()
+    #Agrega jerarquicamente en orden ascendente( siendo la carpetas antes que los archivos)
+    def addList(self, value, prev = None, current = None):
             
-            while(current):
-                if (compare.compare(value, current.value) < 0):
-                    if not current.next:
-                        current.next = Node(Vertex(value, nodeType))
-                        return True
-                    else:
-                        prev = current
-                        current = current.next
+            if(not self.first):
+                self.first = Node(value)
+                return True
 
-                elif (compare.compare(value, current.value) == 0):
-                    if not prev:
-                        self.first.next = current.next
-                        self.first = Node(Vertex(value, nodeType)
-                        return True
-                    else:
-                        if not current.next:
-                            prev.next = Node(Vertex(value,nodeType)
-                            return True
-                        
+            if(not prev):
+                prev = self.first
+                #current = prev
+
+            if not self.alreadyExist(value):
+            
+                if( value.nodeType == 'D'):
+                        if( prev.value.nodeType == 'D'):
+                            
+                            if( self.compare.order(value.name,prev.value.name) > 0 ):
+                                if(prev is self.first):
+                                    self.first = Node(value)
+                                    self.first.next = prev
+                                    return True
+                                else:
+                                    current.next = Node(value)
+                                    current.next.next = prev
+                                    return True
+
+                            else:
+                                current = prev
+                                prev = prev.next
+                                if prev:
+                                    return self.addList(value,prev,current)
+                                else:
+                                    current.next = Node(value)
+                                    return True
+
+                                
+
+
                         else:
-                            prev.next = Node(Vertex(value,nodeType))
-                            prev.next.next = current.next
-                            return True
+                            if( prev.value.nodeType == 'F'):
+                                if prev is self.first:
+                                    self.first = Node(value)
+                                    self.first.next = prev
+                                    return True
+                                
+                                current.next = Node(value)
+                                current.next.next = prev
+                                return True
+                            
+                            if(prev is None):
+                                current.next = Node(value)
+                                return True
 
                 else:
-                    if not prev: 
-                        self.first = Node(Vertex(value, nodeType)
-                        self.first.next = current
-                        return True
-                    else:
-                        prev.next = Node(Vertex(value, nodeType)
-                        prev.next.next = current
-                        return True
+                        if(prev.value.nodeType == 'F'):
+
+                            if( self.compare.order(value.name,prev.value.name) > 0 ):
+                                if(prev is self.first):
+                                    self.first = Node(value)
+                                    self.first.next = prev
+                                    return True
+                                else:
+                                    current.next = Node(value)
+                                    current.next.next = prev
+                                    return True
+
+                            else:
+                                if(prev):
+                                    current = prev
+                                    prev = prev.next
+                                    if prev:
+                                        return self.addList(value,prev,current)
+                                    else:
+                                        current.next = Node(value)
+                                        return True
+
+                        else:
+                            while(not(prev is None) and prev.value.nodeType == 'D' ):
+                                current = prev
+                                prev = prev.next
+
+                            if(prev is None):
+                                current.next = Node(value)
+                                return True
+                            
+                            else:
+                                return self.addList(value,prev,current)
+
+
+    def alreadyExist(self, value):
+            current = self.first
+            while(current):
+                if (current.value.name == value.name):
+                    return True
+                current = current.next
             return False
 
     def search(self,value):
@@ -55,33 +109,39 @@ class LinkedList:
         else:
             current  = self.first
             while current:
-                if current.value == value:
+                if current.value.name == value.name:
                     return current
                 current = current.next
             return False
     
+    #Elimina el nodo(value = nombre de carpeta o archivo), y retorna el nodo eliminado
     def pop(self,value):
         if not self.first:
             return False
         else:
             current  = self.first
-            if current.value == value:
-                parent = current.value
+            if current.value.name == value:
+                parent = current
                 self.first = self.first.next
                 return parent
             else:
+                prev = current
+                current = curren.next
                 while current:
-                    if current.value == value:
-                        
-                        parent = current.value
+                    if current.value.name == value:        
+                        parent = current
+                        prev.next = current.next
                         return parent
                     current = current.next
                 return False
-    
-    def alreadyExist(self, value):
+
+
+    def __str__(self):
         current = self.first
-        while(current):
-            if (current.value.name == value):
-                return True
+        trail = " "
+        while (current):
+            trail += str(current.value.name) 
+            trail += " --> "
             current = current.next
-        return False
+        
+        return trail

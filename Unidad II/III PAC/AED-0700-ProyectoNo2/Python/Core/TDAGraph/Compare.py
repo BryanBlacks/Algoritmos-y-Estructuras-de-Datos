@@ -1,10 +1,8 @@
 # -*- coding:utf8 -*-
 
-from TDAGraph.Node import Node
-
 class Compare:
     def __init__(self):
-        self.alphabet = " !#$%&/()=?¡'¿[]-:;,.+*´_0123456789abcdefghijklmnñopqrstvwxyzABCDEFGHIJKLMNÑOPQRSTVWXYZ"
+        self.alphabet = "zyxwvutsrqpoñnmlkjihgfedcbaZYXWVUTSRQPOÑNMLKJIHGFEDCBA9876543210 !#$%&/()=?¡'¿[]-:;,.+*´_"
 
     def greaterLength(self, str1, str2):
         greater = len(str1)

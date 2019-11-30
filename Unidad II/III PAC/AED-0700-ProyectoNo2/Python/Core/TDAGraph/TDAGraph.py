@@ -1,12 +1,13 @@
 # -*- coding:utf8 -*-
 
 from Compare import*
+from Node import*
 from LinkedList import*
 from Vertex import Vertex
 
 class TreeGraph:
     def __init__(self):
-        self.root = Node(Vertex("C:\""))
+        self.root = Node(Vertex("C:\"","D"))
         self.trash = LinkedList()
 
     def add(self, name, type_, reference =None):
@@ -32,7 +33,7 @@ class TreeGraph:
                 return current
             
             else:
-                if(current.value.type == 'D'):
+                if(current.value.nodeType == 'D'):
                     if (current.value.edge.first):
                         if (self.search(value, current.value.edge.first)):
                             current = current.value.edge.first
@@ -57,7 +58,7 @@ class TreeGraph:
             
             else:                
 
-                if(current.value.type == 'D'):
+                if(current.value.nodeType == 'D'):
                     if(current.value.edge.first):
                         if(self.search(value,current.value.edge.first)):
                             current = current.value.edge.first
@@ -74,13 +75,14 @@ class TreeGraph:
     # se borra de la ruta actual(carpeta actual) que es reference, el nodo(value)
     def remove(self, value, reference = None):
         
-        if not reference:
-            parentNode = self.root
-            parentNode.value.edge.pop(value)
+    
+        parent = self.search(reference)
+        
+        node = parent.value.edge.pop(value)
+        date= None
 
-        else:
-            parent = self.search(reference)
-            parent.value.edge.pop(value)
+        nodeDelete = Node(nodeDelete.value,date,parent)
+        self.trash.addList(nodeDelete)
 
     def navegation(self, name):
 
@@ -89,3 +91,44 @@ class TreeGraph:
             return present
 
         return False
+
+
+tree = TreeGraph()
+
+tree.add("Tu Mama","D")
+tree.add("Tu Papa","D")
+tree.add("Hijo1","F","Tu Mama")
+tree.add("Hijoa2","D","Tu Mama")
+tree.add("sohan","F","Tu Mama")
+tree.add("pedro","D","Tu Mama")
+tree.add("NuevoPedro","D","pedro")
+tree.add("NuevoPedro1","F","pedro")
+
+tree.add("Hijoa1","D","Tu Papa")
+tree.add("Hijo2","F","Tu Papa")
+tree.add("Hijo3","D","Tu Papa")
+tree.add("Hijo1","D","Tu Papa")
+tree.add("elsr","F","Tu Papa")
+tree.add("tupak","F","Tu Papa")
+tree.add("wer","D","Tu Papa")
+tree.add("Nuevo","D","Hijo1")
+tree.add("Nuevo2","F","Hijo1")
+tree.add("Nuevo3","F","Hijo1")
+tree.add("Nuevo3","F","Hijo3")
+
+print(tree.root.value.edge)
+
+a = tree.root.value.edge.first
+print(a.value.edge)
+
+b = tree.search("Tu Mama")
+print(b.value.edge)
+
+c = tree.search("Hijo1")
+print(c.value.edge)
+
+d = tree.search("Hijo3")
+print(d.value.edge)
+
+e = tree.search("pedro")
+print(e.value.edge)

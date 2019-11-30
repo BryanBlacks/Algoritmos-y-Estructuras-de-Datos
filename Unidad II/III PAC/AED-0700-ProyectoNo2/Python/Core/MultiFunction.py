@@ -2,10 +2,14 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from Core.Windows.graphWindow import Graph
+from Core.TDAGraph.TDAGraph import *
+
+graph = TreeGraph()
 
 class Function: 
     def __init__(self):
-        pass
+        #Arreglo de rutas en las que se navega
+        self.rootes = [graph.root]
 
     def printHeader(self):
         header = "\n%s%s%s%s%s%s%s%s\n" % (
@@ -92,3 +96,15 @@ class Function:
             array.append(newArray)
 
         return array
+
+    def cd(self, nodeName):
+        if nodeName is "..":
+            self.rootes.pop()
+        else:
+            nodeName = graph.search(nodeName)
+            if nodeName :
+                self.rootes.append(nodeName)
+            else:
+                pass
+
+        return self.rootes[-1]
