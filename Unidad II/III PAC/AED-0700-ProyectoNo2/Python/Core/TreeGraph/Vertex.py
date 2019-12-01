@@ -1,4 +1,5 @@
-from LinkedList import*
+# -*- coding: utf 8 -*-
+from Core.TreeGraph.LinkedList import*
 
 class Vertex:
 

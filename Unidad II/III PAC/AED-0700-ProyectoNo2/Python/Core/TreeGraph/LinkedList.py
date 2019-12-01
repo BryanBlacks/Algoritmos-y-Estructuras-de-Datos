@@ -1,5 +1,7 @@
-from Compare import*
-from Node import*
+# -*- coding: utf 8 -*-
+
+from Core.TreeGraph.Compare import *
+from Core.TreeGraph.Node import *
 
 class LinkedList:
     def __init__(self):
@@ -109,7 +111,7 @@ class LinkedList:
         else:
             current  = self.first
             while current:
-                if current.value.name == value.name:
+                if current.value.name == value:
                     return current
                 current = current.next
             return False

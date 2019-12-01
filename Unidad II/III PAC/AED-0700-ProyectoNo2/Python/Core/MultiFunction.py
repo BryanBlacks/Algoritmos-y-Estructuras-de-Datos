@@ -2,9 +2,10 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from Core.Windows.graphWindow import Graph
-from Core.TDAGraph.TDAGraph import *
+from Core.TreeGraph.TDAGraph import *
 
 graph = TreeGraph()
+list1 = LinkedList()
 
 class Function: 
     def __init__(self):
@@ -58,8 +59,6 @@ class Function:
         )
         print(help)
     
-    def ls(self):
-        pass
 
     def plot(self):
         app = QtWidgets.QApplication([])
@@ -69,12 +68,13 @@ class Function:
         self.window.show()
         app.exec()
     
-    def mkdir(self, command):
-        #command[4:]
-        #self.clean quitar espacios quitar tabulados y por ultimo separar cada cadena por un espacio
-        #para progresivamente hacer el split "[[comando,parametro];[comando1,parametro1]]"
-        #parametro1
-        pass
+    def mkdir(self, name):
+        refer  = self.rootes[-1]
+        graph.add(name,"D",refer.value.name)
+        
+    def touch(self,name):
+        refer = self.rootes[-1]
+        graph.add(name, "F",refer.value.name)
     
     def info(self, text):
 
@@ -99,12 +99,78 @@ class Function:
 
     def cd(self, nodeName):
         if nodeName is "..":
-            self.rootes.pop()
+            #condicional si esta en el root
+            if len(self.rootes) == 1:
+                pass
+            else:
+                self.rootes.pop()
         else:
-            nodeName = graph.search(nodeName)
+            nodeName = graph.navegation(nodeName)
             if nodeName :
                 self.rootes.append(nodeName)
             else:
-                pass
+                print("Ruta no encontrada")
 
-        return self.rootes[-1]
+        return True
+    
+    def ls_1(self):
+        pass
+
+    def ls(self):
+        pass
+
+    def pwd(self):
+        
+        array = self.rootes
+        rute = ""
+        for node in array:
+
+            nameRute = node.value.name
+            rute = "%s/%s" % (rute,nameRute)
+        rute = "%s/" % rute
+
+        return rutes
+
+    def ln(self, text):
+        pos = text.find("/")
+        text = [(pos+1):]
+        text = text.split("/")
+
+        copyfile = text[-1]
+        direc = text[-2]
+
+        file1 = self.rootes[-1].value.edge.search(copyfile)
+        pos = (file1.value.name).find(".")
+        name = "%s.lnk" % file1.value.name[:pos]
+
+        dir1 = graph.search(direc)
+        
+        if file1 and dir1:
+            graph.add(name,"F",dir1.value.name)
+        else:
+            print("La dirección o el archivo no existe en el árbol")
+        
+
+    def rm(self,name):
+        refer = self.rootes[-1]
+        graph.remove(name,refer.value.name)
+
+    def rmdir(self,name):
+        refer = self.rootes[-1]
+        graph.remove(name,refer.value.name)
+    
+    def trash(self):
+        
+        list1 = graph.trash
+        current = list1.first
+        trail = ""
+        while (current):
+            trail = "%s%s, fecha de eliminación: %s\n" % (trail,current.value.name,current.date) 
+            current = current.next
+        
+        print(trail)
+
+
+    def findfbe(self, extension):
+        pass
+        #listOfNodes = 

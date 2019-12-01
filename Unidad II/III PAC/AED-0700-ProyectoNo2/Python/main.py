@@ -47,7 +47,7 @@ while(centinel):
                 print("\n\t\tElimina nodo del árbol\n")
 
             elif (command[0] == "trash"):
-                print("\n\t\tLista de todo lo borrado en el árbol\n")
+                multiFunction.trash()
 
             elif (command[0] == "cd"):
                 print("\n\t\tNavegar al nodo padre\n")

@@ -1,9 +1,9 @@
 # -*- coding:utf8 -*-
-
-from Compare import*
-from Node import*
-from LinkedList import*
-from Vertex import Vertex
+import datetime
+from Core.TreeGraph.Compare import*
+from Core.TreeGraph.Node import*
+from Core.TreeGraph.LinkedList import*
+from Core.TreeGraph.Vertex import Vertex
 
 class TreeGraph:
     def __init__(self):
@@ -79,9 +79,9 @@ class TreeGraph:
         parent = self.search(reference)
         
         node = parent.value.edge.pop(value)
-        date= None
+        date= datetime.datetime.now()
 
-        nodeDelete = Node(nodeDelete.value,date,parent)
+        nodeDelete = Node(node.value,date,parent)
         self.trash.addList(nodeDelete)
 
     def navegation(self, name):
@@ -91,8 +91,10 @@ class TreeGraph:
             return present
 
         return False
+    
+    def searchByExtension(self, )
 
-
+"""
 tree = TreeGraph()
 
 tree.add("Tu Mama","D")
@@ -132,3 +134,4 @@ print(d.value.edge)
 
 e = tree.search("pedro")
 print(e.value.edge)
+"""
