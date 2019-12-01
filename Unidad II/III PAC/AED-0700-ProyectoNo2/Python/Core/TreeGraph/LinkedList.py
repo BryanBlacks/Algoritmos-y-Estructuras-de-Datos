@@ -141,7 +141,6 @@ class LinkedList:
 
     def print(self, typeLs = None):
         trail = "\t\t"
-        print(typeLs)
 
         current = self.first
         
@@ -162,6 +161,5 @@ class LinkedList:
                     ln += 1
 
                 current = current.next
-            #trail += "{0:23}{1:23}{2:23}{3:23}\n\t\t".format(columns[0], columns[1], columns[2], columns[3])
 
         return trail
