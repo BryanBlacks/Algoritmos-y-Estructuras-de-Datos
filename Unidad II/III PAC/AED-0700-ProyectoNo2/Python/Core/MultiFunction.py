@@ -119,14 +119,14 @@ class Function:
     def pwd(self):
         
         array = self.rootes
-        rute = ""
+        route = ""
         for node in array:
 
             nameRute = node.value.name
-            rute = "%s/%s" % (rute,nameRute)
-        rute = "%s/" % rute
+            route = "%s/%s" % (route,nameRute)
+        rute = "%s/" % route
 
-        #return rutes
+        print("\t\t%s" % (route))
 
     def ln(self, text):
         pos = text.find("/")

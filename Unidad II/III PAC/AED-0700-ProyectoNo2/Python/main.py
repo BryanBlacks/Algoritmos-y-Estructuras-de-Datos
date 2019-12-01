@@ -39,11 +39,13 @@ while(centinel):
                     multiFunction.ls()
 
             elif (command[0] == "pwd"):
-                print("\n\t\tImprime el nodo actual\n")
+                #print("\n\t\tImprime el nodo actual\n")
+                multiFunction.pwd()
 
             elif (command[0] == "ln"):
                 #Restricciones sino se agregan plecas, sino existe el directorio y/o el archivo
-                print("\n\t\tCrear Link de archivo\n")
+                #print("\n\t\tCrear Link de archivo\n")
+                multiFunction.ln(command[1])
 
             elif (command[0] == "touch"):
                 #captura de parametro
