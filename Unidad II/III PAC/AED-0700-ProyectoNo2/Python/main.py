@@ -20,7 +20,7 @@ while(centinel):
 
             elif (command[0] == "ls"):
                 #print("\n\t\tLista en forma horizontal y vertical\n")
-                """
+                
                 multiFunction.mkdir("a")
                 multiFunction.mkdir("b")
                 multiFunction.mkdir("c")
@@ -31,7 +31,6 @@ while(centinel):
                 multiFunction.mkdir("h")
                 multiFunction.mkdir("i")
                 multiFunction.mkdir("j")
-                """
 
                 if (command [1] == "-1"):
                     multiFunction.ls(command[1])
@@ -49,7 +48,8 @@ while(centinel):
 
             elif (command[0] == "touch"):
                 #captura de parametro
-                print("\n\t\tCrear Nodo de tipo archivo\n")
+                #print("\n\t\tCrear Nodo de tipo archivo\n")
+                multiFunction.touch(command[1])
 
             elif (command[0] == "mkdir"):
                 #captura de parametro

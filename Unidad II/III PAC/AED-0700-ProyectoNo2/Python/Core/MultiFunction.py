@@ -16,9 +16,9 @@ class Function:
         header = "\n%s%s%s%s%s%s%s%s\n" % (
             "%s%s" % ("\t", "-" * 100),
             "\n%s%s%s" % (
-                "\t%s" % (("*" * 11).center(100, " ")),
+                "\t%s" % (("*" * 43).center(100, " ")),
                 "\n\t%s" % ("* Simulador de Gestor de Archivos  *".center(100, " ")),
-                "\n\t%s\n" % (("*" * 11).center(100, " "))
+                "\n\t%s\n" % (("*" * 43).center(100, " "))
             ),
             "\n\t%s\n" % ("Sistema gestor de archivos".center(100, " ")),
             "\n\t%s" % ("Creado por: ".center(100, " ")),
@@ -74,7 +74,7 @@ class Function:
         
     def touch(self,name):
         refer = self.rootes[-1]
-        graph.add(name, "F",refer.value.name)
+        graph.add(name, "F", refer.value.name)
     
     def info(self, text):
 
@@ -134,9 +134,11 @@ class Function:
         text = text.split("/")
 
         copyfile = text[-1]
-        direc = text[-2]
+        a = len(text)
+        text = text[:a]
+        direc = text[-1]
 
-        file1 = self.rootes[-1].value.edge.search(copyfile)
+        file1 = self.rootes[-1].value.edges.search(copyfile)
         pos = (file1.value.name).find(".")
         name = "%s.lnk" % file1.value.name[:pos]
 
