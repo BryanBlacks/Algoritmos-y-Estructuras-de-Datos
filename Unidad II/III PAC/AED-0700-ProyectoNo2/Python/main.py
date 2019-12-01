@@ -19,10 +19,24 @@ while(centinel):
                 multiFunction.printHelp()
 
             elif (command[0] == "ls"):
-                multiFunction.ls()
+                #print("\n\t\tLista en forma horizontal y vertical\n")
+                """
+                multiFunction.mkdir("a")
+                multiFunction.mkdir("b")
+                multiFunction.mkdir("c")
+                multiFunction.mkdir("d")
+                multiFunction.mkdir("e")
+                multiFunction.mkdir("f")
+                multiFunction.mkdir("g")
+                multiFunction.mkdir("h")
+                multiFunction.mkdir("i")
+                multiFunction.mkdir("j")
+                """
 
-            elif (command[0] == "ls -1"):
-                print("\n\t\tLista en forma vertical\n")
+                if (command [1] == "-1"):
+                    multiFunction.ls(command[1])
+                else:
+                    multiFunction.ls()
 
             elif (command[0] == "pwd"):
                 print("\n\t\tImprime el nodo actual\n")
@@ -37,9 +51,11 @@ while(centinel):
 
             elif (command[0] == "mkdir"):
                 #captura de parametro
-                print("\n\t\tCrear Nodo de tipo directorio\n")
+                #print("\n\t\tCrear Nodo de tipo directorio\n")
+                multiFunction.mkdir(command[1])
 
             elif (command[0] == "plot"):
+                #print("\n\t\tMuestra grafo\n")
                 multiFunction.plot()
 
             elif (command[0] == "rmdir"):
@@ -50,7 +66,8 @@ while(centinel):
                 multiFunction.trash()
 
             elif (command[0] == "cd"):
-                print("\n\t\tNavegar al nodo padre\n")
+                #print("\n\t\tNavegar al nodo padre\n")
+                multiFunction.cd(command[1])
 
             elif (command[0] == "cd .."):
                 print("\n\t\tRegresauna a ruta anterior a la actual\n")

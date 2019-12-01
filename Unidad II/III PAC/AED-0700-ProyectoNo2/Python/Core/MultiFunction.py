@@ -98,7 +98,7 @@ class Function:
         return array
 
     def cd(self, nodeName):
-        if nodeName is "..":
+        if nodeName == "..":
             #condicional si esta en el root
             if len(self.rootes) == 1:
                 pass
@@ -112,12 +112,9 @@ class Function:
                 print("Ruta no encontrada")
 
         return True
-    
-    def ls_1(self):
-        pass
 
-    def ls(self):
-        pass
+    def ls(self, typeLs = None):
+        print(self.rootes[-1].value.edges.print(typeLs))
 
     def pwd(self):
         
@@ -129,11 +126,11 @@ class Function:
             rute = "%s/%s" % (rute,nameRute)
         rute = "%s/" % rute
 
-        return rutes
+        #return rutes
 
     def ln(self, text):
         pos = text.find("/")
-        text = [(pos+1):]
+        #text = [(pos+1):]
         text = text.split("/")
 
         copyfile = text[-1]

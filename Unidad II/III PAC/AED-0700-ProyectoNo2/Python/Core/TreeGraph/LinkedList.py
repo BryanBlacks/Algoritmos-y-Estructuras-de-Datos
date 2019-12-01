@@ -1,5 +1,7 @@
 # -*- coding: utf 8 -*-
 
+import math
+
 from Core.TreeGraph.Compare import *
 from Core.TreeGraph.Node import *
 
@@ -128,7 +130,7 @@ class LinkedList:
                 return parent
             else:
                 prev = current
-                current = curren.next
+                current = current.next
                 while current:
                     if current.value.name == value:        
                         parent = current
@@ -137,13 +139,29 @@ class LinkedList:
                     current = current.next
                 return False
 
+    def print(self, typeLs = None):
+        trail = "\t\t"
+        print(typeLs)
 
-    def __str__(self):
         current = self.first
-        trail = " "
-        while (current):
-            trail += str(current.value.name) 
-            trail += " --> "
-            current = current.next
         
+        if (typeLs == "-1"):
+            while (current):
+                trail += "{:96}\n\t\t".format(current.value.name)
+                
+                current = current.next
+        else:
+            ln = 1
+            
+            while (current):
+                if (ln == 4):
+                    trail += "{:23}\n\t\t".format(current.value.name)
+                    ln = 1
+                else:
+                    trail += "{:23}".format(current.value.name)
+                    ln += 1
+
+                current = current.next
+            #trail += "{0:23}{1:23}{2:23}{3:23}\n\t\t".format(columns[0], columns[1], columns[2], columns[3])
+
         return trail

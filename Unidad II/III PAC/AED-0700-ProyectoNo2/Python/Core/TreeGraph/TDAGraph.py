@@ -14,11 +14,11 @@ class TreeGraph:
 
         if(not reference):
             parentNode = self.root
-            parentNode.value.edge.addList(Vertex(name,type_))
+            parentNode.value.edges.addList(Vertex(name,type_))
 
         else:
             parent = self.search(reference)
-            parent.value.edge.addList(Vertex(name,type_))
+            parent.value.edges.addList(Vertex(name,type_))
         
     # Se busca en el arbol el nodo a tratar(value = nombre de archivo o carpeta)
     def search(self, value, current = None):
@@ -34,9 +34,9 @@ class TreeGraph:
             
             else:
                 if(current.value.nodeType == 'D'):
-                    if (current.value.edge.first):
-                        if (self.search(value, current.value.edge.first)):
-                            current = current.value.edge.first
+                    if (current.value.edges.first):
+                        if (self.search(value, current.value.edges.first)):
+                            current = current.value.edges.first
                             return self.search(value, current)
                         
                         else:
@@ -59,9 +59,9 @@ class TreeGraph:
             else:                
 
                 if(current.value.nodeType == 'D'):
-                    if(current.value.edge.first):
-                        if(self.search(value,current.value.edge.first)):
-                            current = current.value.edge.first
+                    if(current.value.edges.first):
+                        if(self.search(value,current.value.edges.first)):
+                            current = current.value.edges.first
                             return self.search(value, current)
                         
                         else:
@@ -92,7 +92,8 @@ class TreeGraph:
 
         return False
     
-    def searchByExtension(self, )
+    def searchByExtension(self):
+        pass
 
 """
 tree = TreeGraph()
@@ -118,20 +119,20 @@ tree.add("Nuevo2","F","Hijo1")
 tree.add("Nuevo3","F","Hijo1")
 tree.add("Nuevo3","F","Hijo3")
 
-print(tree.root.value.edge)
+print(tree.root.value.edges)
 
-a = tree.root.value.edge.first
-print(a.value.edge)
+a = tree.root.value.edges.first
+print(a.value.edges)
 
 b = tree.search("Tu Mama")
-print(b.value.edge)
+print(b.value.edges)
 
 c = tree.search("Hijo1")
-print(c.value.edge)
+print(c.value.edges)
 
 d = tree.search("Hijo3")
-print(d.value.edge)
+print(d.value.edges)
 
 e = tree.search("pedro")
-print(e.value.edge)
+print(e.value.edges)
 """
