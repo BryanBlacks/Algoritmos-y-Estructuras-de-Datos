@@ -21,16 +21,18 @@ while(centinel):
             elif (command[0] == "ls"):
                 #print("\n\t\tLista en forma horizontal y vertical\n")
                 
+                
                 multiFunction.mkdir("a")
                 multiFunction.mkdir("b")
                 multiFunction.mkdir("c")
                 multiFunction.mkdir("d")
                 multiFunction.mkdir("e")
-                multiFunction.mkdir("f")
-                multiFunction.mkdir("g")
-                multiFunction.mkdir("h")
-                multiFunction.mkdir("i")
-                multiFunction.mkdir("j")
+                multiFunction.touch("f.py")
+                multiFunction.touch("g.py")
+                multiFunction.touch("h.py")
+                multiFunction.touch("i.py")
+                multiFunction.touch("j.py")
+                
 
                 if (command [1] == "-1"):
                     multiFunction.ls(command[1])
