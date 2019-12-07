@@ -29,10 +29,10 @@ class Function:
         )
         print(header)
     
-    def printCommandError(self):
+    def printError(self):
         commandError = "\n%s%s%s\n" % (
             "%s%s" % ("\t", "*" * 100),
-            "\n\tEl comando ingresado no existe.\n",
+            "\n\tEl comando ingresado es inválido. Corra el comando \"help\" para ayuda.\n",
             "%s%s" % ("\t", "*" * 100)
         )
         print(commandError)

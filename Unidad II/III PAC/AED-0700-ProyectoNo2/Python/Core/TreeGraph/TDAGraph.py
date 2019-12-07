@@ -8,11 +8,7 @@ from Core.TreeGraph.Vertex import Vertex
 
 class TreeGraph:
     def __init__(self):
-<<<<<<< HEAD
         self.root = Node(Vertex("C:/","D"),None,None)
-=======
-        self.root = Node(Vertex("C:","D"))
->>>>>>> 830827801b1f44176ad525b4822a59775bd030fc
         self.trash = LinkedList()
 
     def add(self, name, type_, reference =None):
