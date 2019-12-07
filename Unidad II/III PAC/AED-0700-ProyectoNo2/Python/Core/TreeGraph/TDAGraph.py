@@ -1,4 +1,5 @@
 # -*- coding:utf8 -*-
+
 import datetime
 from Core.TreeGraph.Compare import*
 from Core.TreeGraph.Node import*
@@ -7,7 +8,11 @@ from Core.TreeGraph.Vertex import Vertex
 
 class TreeGraph:
     def __init__(self):
+<<<<<<< HEAD
         self.root = Node(Vertex("C:/","D"),None,None)
+=======
+        self.root = Node(Vertex("C:","D"))
+>>>>>>> 830827801b1f44176ad525b4822a59775bd030fc
         self.trash = LinkedList()
 
     def add(self, name, type_, reference =None):
@@ -50,8 +55,6 @@ class TreeGraph:
                     current = current.next
                     return self.search(value,current)
 
-
-
         else:
             if(comp.compare(current.value.name,value)):
                 return current
@@ -75,7 +78,6 @@ class TreeGraph:
     # se borra de la ruta actual(carpeta actual) que es reference, el nodo(value)
     def remove(self, value, reference = None):
         
-    
         parent = self.search(reference)
         
         node = parent.value.edges.pop(value)

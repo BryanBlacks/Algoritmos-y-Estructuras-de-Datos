@@ -16,9 +16,9 @@ class Function:
         header = "\n%s%s%s%s%s%s%s%s\n" % (
             "%s%s" % ("\t", "-" * 100),
             "\n%s%s%s" % (
-                "\t%s" % (("*" * 43).center(100, " ")),
-                "\n\t%s" % ("* Simulador de Gestor de Archivos  *".center(100, " ")),
-                "\n\t%s\n" % (("*" * 43).center(100, " "))
+                "\t%s" % (("*" * 35).center(100, " ")),
+                "\n\t%s" % ("* Simulador de Gestor de Archivos *".center(100, " ")),
+                "\n\t%s\n" % (("*" * 35).center(100, " "))
             ),
             "\n\t%s\n" % ("Sistema gestor de archivos".center(100, " ")),
             "\n\t%s" % ("Creado por: ".center(100, " ")),
@@ -58,7 +58,6 @@ class Function:
             #"%s%s" % ("\t", "-" * 100),
         )
         print(help)
-    
 
     def plot(self):
         app = QtWidgets.QApplication([])
@@ -124,7 +123,8 @@ class Function:
 
             nameRute = node.value.name
             route = "%s/%s" % (route,nameRute)
-        rute = "%s/" % route
+
+        route = "%s/" % route
 
         print("\t\t%s" % (route))
 
