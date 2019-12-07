@@ -1,4 +1,32 @@
-# -*- coding: utf 8 -*-
+# -*- coding:utf8 -*-
+
+"""
+---------------------------------------------------------------------------------------------------------------------
+LinkedList (Lista enlazada)
+---------------------------------------------------------------------------------------------------------------------
+
+* Método "addList"
+    Este método agrega jerárquicamente en orden ascendente (siendo la carpetas antes que los archivos) un directorio
+    (D) o un archivo (F), verifcando primero si existe ya un directorio o archivo con el mismo nombre, si es así,
+    muestra un mensaje indicandole al usario que no se puede agregar un elemento con el mismo nombre.
+
+* Método "alreadyExist"
+    Este método verifica si ya existe una carpeta o un archivo con el mismo nombre.
+
+* Método "search"
+    Este método busca y retorna la coincidencia del valor que es pasado como parámetro.
+
+* Método "pop"
+    Este método busca un nodo cuyo valor es el nombre del directorio o archivo, si determina que existe dicho valor,
+    lo guarda en una variable temporal,lo elimina y retorna ese elemento eliminado guardado previamente en la
+    variable temporal.
+
+* Método "print"
+    Este método retorna una cadena con formato, los valores de cada uno de los nodos de la lista enlazada,
+    previamente ordenados mediante jerarquía alfabética y tipo de elemento (carpeta o archivo).
+
+---------------------------------------------------------------------------------------------------------------------
+"""
 
 import math
 
@@ -10,102 +38,97 @@ class LinkedList:
         self.first = None
         self.compare = Compare()
 
-    #Agrega jerarquicamente en orden ascendente( siendo la carpetas antes que los archivos)
     def addList(self, value, prev = None, current = None):
-            
-            if(not self.first):
-                self.first = Node(value,None,None)
-                return True
+        if (not self.first):
+            self.first = Node(value, None, None)
+            return True
 
-            if(not prev):
-                prev = self.first
-                #current = prev
+        if (not prev):
+            prev = self.first
+            #current = prev
 
-            if not self.alreadyExist(value):
-            
-                if( value.nodeType == 'D'):
-                        if( prev.value.nodeType == 'D'):
-                            
-                            if( self.compare.order(value.name,prev.value.name) > 0 ):
-                                if(prev is self.first):
-                                    self.first = Node(value,None,None)
-                                    self.first.next = prev
-                                    return True
-                                else:
-                                    current.next = Node(value,None,None)
-                                    current.next.next = prev
-                                    return True
-
-                            else:
-                                current = prev
-                                prev = prev.next
-                                if prev:
-                                    return self.addList(value,prev,current)
-                                else:
-                                    current.next = Node(value,None,None)
-                                    return True
-
-                                
-
-
+        #Verifica su ya existe un elemento con el mismo valor.
+        if  not self.alreadyExist(value):
+            #El directorio se interpretará como "D"
+            if (value.nodeType == 'D'):
+                if (prev.value.nodeType == 'D'):
+                    if (self.compare.order(value.name, prev.value.name) > 0):
+                        if (prev is self.first):
+                            self.first = Node(value, None, None)
+                            self.first.next = prev
+                            return True
                         else:
-                            if( prev.value.nodeType == 'F'):
-                                if prev is self.first:
-                                    self.first = Node(value,None,None)
-                                    self.first.next = prev
-                                    return True
-                                
-                                current.next = Node(value,None,None)
-                                current.next.next = prev
-                                return True
-                            
-                            if(prev is None):
-                                current.next = Node(value,None,None)
+                            current.next = Node(value, None, None)
+                            current.next.next = prev
+                            return True
+
+                    else:
+                        current = prev
+                        prev = prev.next
+                        if (prev):
+                            return self.addList(value, prev, current)
+                        else:
+                            current.next = Node(value, None, None)
+                            return True
+
+                else:
+                    if (prev.value.nodeType == 'F'):
+                        if  (prev is self.first):
+                            self.first = Node(value, None, None)
+                            self.first.next = prev
+                            return True
+                        
+                        current.next = Node(value, None, None)
+                        current.next.next = prev
+                        return True
+                    
+                    if (prev is None):
+                        current.next = Node(value, None, None)
+                        return True
+
+            else:
+                #El archivo se interpretará como "F"
+                if (prev.value.nodeType == 'F'):
+                    if (self.compare.order(value.name,prev.value.name) > 0):
+                        if (prev is self.first):
+                            self.first = Node(value, None, None)
+                            self.first.next = prev
+                            return True
+                        else:
+                            current.next = Node(value, None, None)
+                            current.next.next = prev
+                            return True
+
+                    else:
+                        if (prev):
+                            current = prev
+                            prev = prev.next
+                            if (prev):
+                                return self.addList(value, prev, current)
+                            else:
+                                current.next = Node(value, None, None)
                                 return True
 
                 else:
-                        if(prev.value.nodeType == 'F'):
+                    while(not(prev is None) and prev.value.nodeType == 'D'):
+                        current = prev
+                        prev = prev.next
 
-                            if( self.compare.order(value.name,prev.value.name) > 0 ):
-                                if(prev is self.first):
-                                    self.first = Node(value,None,None)
-                                    self.first.next = prev
-                                    return True
-                                else:
-                                    current.next = Node(value,None,None)
-                                    current.next.next = prev
-                                    return True
-
-                            else:
-                                if(prev):
-                                    current = prev
-                                    prev = prev.next
-                                    if prev:
-                                        return self.addList(value,prev,current)
-                                    else:
-                                        current.next = Node(value,None,None)
-                                        return True
-
-                        else:
-                            while(not(prev is None) and prev.value.nodeType == 'D' ):
-                                current = prev
-                                prev = prev.next
-
-                            if(prev is None):
-                                current.next = Node(value,None,None)
-                                return True
-                            
-                            else:
-                                return self.addList(value,prev,current)
-
+                    if (prev is None):
+                        current.next = Node(value, None, None)
+                        return True
+                    
+                    else:
+                        return self.addList(value, prev, current)
 
     def alreadyExist(self, value):
-            current = self.first
-            while(current):
-                if (current.value.name == value.name):
-                    return True
-                current = current.next
-            return False
+        current = self.first
+        
+        while(current):
+            if (current.value.name == value.name):
+                return True
+            current = current.next
+        return False
 
     def search(self,value):
         if not self.first:
@@ -118,12 +141,12 @@ class LinkedList:
                 current = current.next
             return False
     
-    #Elimina el nodo(value = nombre de carpeta o archivo), y retorna el nodo eliminado
     def pop(self,value):
         if not self.first:
             return False
         else:
             current  = self.first
+
             if current.value.name == value:
                 parent = current
                 self.first = self.first.next
@@ -144,16 +167,20 @@ class LinkedList:
 
         current = self.first
         
+        #Valida la existencia de un parametro.
         if (typeLs == "-1"):
+            #Construye una lista vertical.
             while (current):
                 trail += "{:96}\n\t\t".format(current.value.name)
                 
                 current = current.next
         else:
+            #Construye una lista horizontal.
             ln = 1
             
             while (current):
                 if (ln == 4):
+                    #Asigna un ancho mínimo por cada valor de los nodos.
                     trail += "{:23}\n\t\t".format(current.value.name)
                     ln = 1
                 else:

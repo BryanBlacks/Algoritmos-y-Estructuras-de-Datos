@@ -1,5 +1,63 @@
 # -*- coding:utf8 -*-
 
+"""
+---------------------------------------------------------------------------------------------------------------------
+MultiFunction (Almacen de comandos)
+---------------------------------------------------------------------------------------------------------------------
+
+* Método printHeader
+    Este método imprime en consola una cadena con la información básica del programa, como ser el nombre del mismo,
+    los creadores, la versión, una descripción breve del funcionamiento del mismo.
+
+* Método "printHelp"
+    Este método retorna una cadena con formato de la lista de cada uo de los comandos que el programa utiliza.
+
+* Comando "help"
+    Este comando imprime la información básica del programa anexada con la lista de comandos soportados por el
+    programa, esta última cadena se obtiene al llamar a la función printHelp.
+
+* Comando "ls o ls -1"
+    Este comando llama a la funcion "print" de la lista enlazada para obtener una cadena con formato con los nombres
+    de cada archivo y carpetas. Si existe un parametro, la cadena sera retornada en forma de lista vertical, 
+    de lo contrario, retornará una lista horizontal.
+
+* Comando "pwd"
+    Este comando retorna en una cadena la ruta donde el usario está actualmente.
+
+* Comando "ln"
+    Este comando crea un enlace a un archivo, con formato ".lnk" dentro de la ruta actual donde se quiere crear
+    dicho enlace.
+
+* Comando "touch"
+    Este comando crea un archivo con extensión en la ruta donde está el usuario está actualmente.
+
+* Comando "mkdir"
+    Este comando crea un directorio en la ruta donde está el usuario está actualmente.
+
+* Comando "plot"
+    Este comando abre una ventana donde se mostrará, de forma gráfica, el grafo previamente creado.
+
+* Comando "rm"
+    Este comando elimina un archivo en la ruta actual donde se encuentra el usuario.
+
+* Comando "rmdir"
+    Este comando elimina una carpeta en la ruta actual donde se encuentra el usuario.
+
+* Comando "trash"
+    Este comando imprime una cadena con formato, la cual contiene una lista de forma vertical de todos los 
+    directorios y archivos eliminados del árbol (grafo) con su respectiva información, como ser: el nombre
+    la fecha de eliminacióny la ruta a la cual pertenecía.
+
+* Comando "cd"
+    Este comando funcionará para navegar entre cada uno de los directoros, si existe el parámetro "..", se
+    regresará al directorio anterior.
+
+* Comando "findbe"
+    Este comando .
+
+---------------------------------------------------------------------------------------------------------------------
+"""
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from Core.Windows.graphWindow import Graph
 from Core.TreeGraph.TDAGraph import *
@@ -69,14 +127,13 @@ class Function:
     
     def mkdir(self, name):
         refer  = self.rootes[-1]
-        graph.add(name,"D",refer.value.name)
+        graph.add(name,"D", refer.value.name)
         
     def touch(self,name):
         refer = self.rootes[-1]
         graph.add(name, "F", refer.value.name)
     
     def info(self, text):
-
         text = text.split(";")
         array = []
 
@@ -88,7 +145,7 @@ class Function:
             if space == -1:
                 command, param = i[:],i[:]
             else: 
-                command, param = i[:space],i[space:]
+                command, param = i[:space], i[space:]
 
             newArray.append(command)
             newArray.append(param.strip())
@@ -116,9 +173,9 @@ class Function:
         print(self.rootes[-1].value.edges.print(typeLs))
 
     def pwd(self):
-        
         array = self.rootes
         route = ""
+
         for node in array:
 
             nameRute = node.value.name
@@ -149,7 +206,6 @@ class Function:
         else:
             print("La dirección o el archivo no existe en el árbol")
         
-
     def rm(self,name):
         refer = self.rootes[-1]
         graph.remove(name,refer.value.name)
@@ -159,16 +215,15 @@ class Function:
         graph.remove(name,refer.value.name)
     
     def trash(self):
-        
         list1 = graph.trash
         current = list1.first
         trail = ""
+
         while (current):
             trail = "%s%s, fecha de eliminación: %s\n" % (trail,current.value.name,current.date) 
             current = current.next
         
         print(trail)
-
 
     def findfbe(self, extension):
         pass
