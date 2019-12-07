@@ -71,14 +71,30 @@ class Function:
         self.rootes = [graph.root]
 
     def printHeader(self):
+        logo = "%s%s%s%s%s%s%s%s%s%s%s%s%s" % (
+            "\n\t%s" % ("%s            *" % (" " * (59 - 19))),
+            "\n\t%s" % ("%s            ***" % (" " * (59 - 19))),
+            "\n\t%s" % ("%s           *****" % (" " * (59 - 19))),
+            "\n\t%s" % ("%s         **** ***" % (" " * (59 - 19))),
+            "\n\t%s" % ("%s       ***** *****" % (" " * (59 - 19))),
+            "\n\t%s" % ("%s    **** ** ******" % (" " * (59 - 19))),
+            "\n\t%s" % ("%s  ******** ** ****" % (" " * (59 - 19))),
+            "\n\t%s" % ("%s ******* ** ******" % (" " * (59 - 19))),
+            "\n\t%s" % ("%s*** ***  ********" % (" " * (59 - 19))),
+            "\n\t%s" % ("%s**** * *********" % (" " * (59 - 19))),
+            "\n\t%s" % ("%s***** ********" % (" " * (59 - 19))),
+            "\n\t%s" % ("%s **** ******" % (" " * (59 - 19))),
+            "\n\t%s" % ("%s   *** **" % (" " * (59 - 19)))
+        )
+
         header = "\n%s%s%s%s%s%s%s%s\n" % (
             "%s%s" % ("\t", "-" * 100),
+            logo,
             "\n%s%s%s" % (
-                "\t%s" % (("*" * 35).center(100, " ")),
-                "\n\t%s" % ("* Simulador de Gestor de Archivos *".center(100, " ")),
-                "\n\t%s\n" % (("*" * 35).center(100, " "))
+                "\t%s" % (("*" * 43).center(100, " ")),
+                "\n\t%s" % ("* Sistema simulador de gestor de archivos *".center(100, " ")),
+                "\n\t%s\n" % (("*" * 43).center(100, " "))
             ),
-            "\n\t%s\n" % ("Sistema gestor de archivos".center(100, " ")),
             "\n\t%s" % ("Creado por: ".center(100, " ")),
             "\n\t%s" % ("[Bryan Gonzales] [Edgar Benedetto] [Fabio Lagos]".center(100, " ")),
             "\n\t%s\n" % ("v 0.00.10".center(100, " ")),
