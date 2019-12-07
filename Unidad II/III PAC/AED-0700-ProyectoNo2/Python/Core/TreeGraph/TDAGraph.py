@@ -7,7 +7,7 @@ from Core.TreeGraph.Vertex import Vertex
 
 class TreeGraph:
     def __init__(self):
-        self.root = Node(Vertex("C:/","D"))
+        self.root = Node(Vertex("C:/","D"),None,None)
         self.trash = LinkedList()
 
     def add(self, name, type_, reference =None):
@@ -78,7 +78,7 @@ class TreeGraph:
     
         parent = self.search(reference)
         
-        node = parent.value.edge.pop(value)
+        node = parent.value.edges.pop(value)
         date= datetime.datetime.now()
 
         nodeDelete = Node(node.value,date,parent)

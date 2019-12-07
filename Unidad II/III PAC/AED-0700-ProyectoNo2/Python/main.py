@@ -5,6 +5,7 @@ from Core.MultiFunction import *
 multiFunction = Function()
 multiFunction.printHeader()
 centinel = True
+
 while(centinel):
     command = input("\t$ ")
     
@@ -20,17 +21,7 @@ while(centinel):
 
             elif (command[0] == "ls"):
                 #print("\n\t\tLista en forma horizontal y vertical\n")
-                
-                multiFunction.mkdir("a")
-                multiFunction.mkdir("b")
-                multiFunction.mkdir("c")
-                multiFunction.mkdir("d")
-                multiFunction.mkdir("e")
-                multiFunction.mkdir("f")
-                multiFunction.mkdir("g")
-                multiFunction.mkdir("h")
-                multiFunction.mkdir("i")
-                multiFunction.mkdir("j")
+            
 
                 if (command [1] == "-1"):
                     multiFunction.ls(command[1])
@@ -71,8 +62,11 @@ while(centinel):
                 #print("\n\t\tNavegar al nodo padre\n")
                 multiFunction.cd(command[1])
 
-            elif (command[0] == "cd .."):
-                print("\n\t\tRegresauna a ruta anterior a la actual\n")
+            elif (command[0] == "rm"):
+                multiFunction.rm(command[1])
+
+            elif (command[0] == "rmdir"):
+                multiFunction.rm(command[1])
 
             elif (command[0] == "findfbe"):
                 print("\n\t\tEncontrar archivos por extensión\n")
@@ -80,6 +74,7 @@ while(centinel):
             elif (command[0] == "exit"):
                 centinel = False
                 break
+
             else:
                 multiFunction.printCommandError()
                 multiFunction.printHelp()
