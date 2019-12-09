@@ -30,8 +30,8 @@ LinkedList (Lista enlazada)
 
 import math
 
-from Core.TreeGraph.Compare import *
-from Core.TreeGraph.Node import *
+from Core.TreeGraph.Compare import Compare
+from Core.TreeGraph.Node import Node
 
 class LinkedList:
     def __init__(self):

@@ -6,16 +6,18 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class Graph(object):
+    def __init__(self):
+        self.windowSizeX = 1000
+        self.windowSizeY = 512
+
     def setupUi(self, graph):
         graph.setObjectName("graph")
-        graph.resize(1000, 512)
-        graph.setMinimumSize(QtCore.QSize(1000, 512))
-        graph.setMaximumSize(QtCore.QSize(1000, 512))
+        graph.resize(self.windowSizeX, self.windowSizeY)
+        graph.setMinimumSize(QtCore.QSize(self.windowSizeX, self.windowSizeY))
+        graph.setMaximumSize(QtCore.QSize(self.windowSizeX, self.windowSizeY))
         graph.setStyleSheet("background-color: rgb(252, 255, 255);")
         self.centralwidget = QtWidgets.QWidget(graph)
         self.centralwidget.setObjectName("centralwidget")

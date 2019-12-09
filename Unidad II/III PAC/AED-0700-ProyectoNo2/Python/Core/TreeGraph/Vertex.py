@@ -13,7 +13,7 @@ Vertex (Vértice)
 ---------------------------------------------------------------------------------------------------------------------
 """
 
-from Core.TreeGraph.LinkedList import*
+from Core.TreeGraph.LinkedList import LinkedList
 
 class Vertex:
     def __init__(self, name, nodeType):

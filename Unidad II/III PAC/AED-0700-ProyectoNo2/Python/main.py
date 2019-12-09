@@ -14,7 +14,7 @@ Main
 ---------------------------------------------------------------------------------------------------------------------
 """
 
-from Core.MultiFunction import *
+from Core.MultiFunction import Function
 
 multiFunction = Function()
 multiFunction.printHeader()

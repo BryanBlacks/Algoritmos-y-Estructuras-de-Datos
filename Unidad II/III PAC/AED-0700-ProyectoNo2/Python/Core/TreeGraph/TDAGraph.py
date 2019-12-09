@@ -31,9 +31,9 @@ TDAGraph (Grafo)
 """
 
 import datetime
-from Core.TreeGraph.Compare import*
-from Core.TreeGraph.Node import*
-from Core.TreeGraph.LinkedList import*
+from Core.TreeGraph.Compare import Compare
+from Core.TreeGraph.Node import Node
+from Core.TreeGraph.LinkedList import LinkedList
 from Core.TreeGraph.Vertex import Vertex
 
 class TreeGraph:

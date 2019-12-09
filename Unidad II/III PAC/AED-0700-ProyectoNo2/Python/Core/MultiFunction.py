@@ -59,8 +59,9 @@ MultiFunction (Almacen de comandos)
 """
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from Core.Windows.graphWindow import Graph
-from Core.TreeGraph.TDAGraph import *
+from Core.Windows.GraphWindow import Graph
+from Core.TreeGraph.TDAGraph import TreeGraph
+from Core.TreeGraph.LinkedList import LinkedList
 
 graph = TreeGraph()
 list1 = LinkedList()
