@@ -19,6 +19,7 @@ from Core.MultiFunction import Function
 multiFunction = Function()
 multiFunction.printHeader()
 centinel = True
+multiFunction.read("Memory/ArchivoJson.json")
 
 while(centinel):
     #Captura del comando por medio de una cadena.

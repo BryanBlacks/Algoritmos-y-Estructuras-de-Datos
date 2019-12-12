@@ -31,6 +31,7 @@ TDAGraph (Grafo)
 """
 
 import datetime
+import json
 from Core.TreeGraph.Compare import Compare
 from Core.TreeGraph.Node import Node
 from Core.TreeGraph.LinkedList import LinkedList
@@ -164,47 +165,29 @@ class TreeGraph:
 
         f.close()
 
-    def readJson(self):
-        pass
+    def readJson(self, rute= None):
+        
+        f = open(rute,'r')
+        s = f.read()
+        s = s.replace('\t','')
+        s = s.replace('\n','')
+        s = s.replace("'",'"')
+        jsonx = json.loads(s)
 
-"""
-tree = TreeGraph()
+        f.close()
+        for k,v in jsonx.items():
+            root = k
+            d = v
+            break
 
-tree.add("Tu Mama","D")
-tree.add("Tu Papa","D")
-tree.add("Hijo1","F","Tu Mama")
-tree.add("Hijoa2","D","Tu Mama")
-tree.add("sohan","F","Tu Mama")
-tree.add("pedro","D","Tu Mama")
-tree.add("NuevoPedro","D","pedro")
-tree.add("NuevoPedro1","F","pedro")
+        #self.JsonToTree(d,root)
 
-tree.add("Hijoa1","D","Tu Papa")
-tree.add("Hijo2","F","Tu Papa")
-tree.add("Hijo3","D","Tu Papa")
-tree.add("Hijo1","D","Tu Papa")
-tree.add("elsr","F","Tu Papa")
-tree.add("tupak","F","Tu Papa")
-tree.add("wer","D","Tu Papa")
-tree.add("Nuevo","D","Hijo1")
-tree.add("Nuevo2","F","Hijo1")
-tree.add("Nuevo3","F","Hijo1")
-tree.add("Nuevo3","F","Hijo3")
+    def JsonToTree(self,json, parent):
 
-print(tree.root.value.edges)
+        for k,v in json.items():
 
-a = tree.root.value.edges.first
-print(a.value.edges)
+            if isinstance(v,dict):
+                pass
 
-b = tree.search("Tu Mama")
-print(b.value.edges)
-
-c = tree.search("Hijo1")
-print(c.value.edges)
-
-d = tree.search("Hijo3")
-print(d.value.edges)
-
-e = tree.search("pedro")
-print(e.value.edges)
-"""
+        
+        

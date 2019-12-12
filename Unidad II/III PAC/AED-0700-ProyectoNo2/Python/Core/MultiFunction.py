@@ -255,3 +255,6 @@ class Function:
     def save(self, rute):
 
         graph.saveJson(rute)
+
+    def read(self, rute):
+        graph.readJson(rute)
