@@ -59,7 +59,7 @@ MultiFunction (Almacen de comandos)
 """
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from Core.Windows.GraphWindow import Graph
+from Core.Windows.graphWindow import Graph
 from Core.TreeGraph.TDAGraph import TreeGraph
 from Core.TreeGraph.LinkedList import LinkedList
 
@@ -209,7 +209,7 @@ class Function:
 
         copyfile = text[-1]
         a = len(text)
-        text = text[:a]
+        text = text[:a-1]
         direc = text[-1]
 
         file1 = self.rootes[-1].value.edges.search(copyfile)
@@ -237,11 +237,21 @@ class Function:
         trail = ""
 
         while (current):
-            trail = "%s%s, fecha de eliminación: %s\n" % (trail,current.value.name,current.date) 
-            current = current.next
+            if current.value.nodeType is "D":
+                trail = "%s\t\tCarpeta %s\t fecha de eliminación: %s\n" % (trail,current.value.name,current.date) 
+                current = current.next
+
+            elif current.value.nodeType is "F":
+                trail = "%s\t\tArchivo %s\t fecha de eliminación: %s\n" % (trail,current.value.name,current.date) 
+                current = current.next
         
         print(trail)
 
     def findfbe(self, extension):
         pass
         #listOfNodes = 
+
+
+    def save(self, rute):
+
+        graph.saveJson(rute)

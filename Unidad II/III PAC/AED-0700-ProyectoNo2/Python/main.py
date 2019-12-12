@@ -62,16 +62,22 @@ while(centinel):
                 #Restricciones sino se agregan plecas, sino existe el directorio y/o el archivo.
                 #Crea un enlace a un archivo.
                 multiFunction.ln(command[1])
+                #save
+                multiFunction.save("Memory/ArchivoJson.json")
 
             elif (command[0] == "touch"):
                 #Crea un Nodo de tipo archivo.
                 #Captura de parametro.
                 multiFunction.touch(command[1])
+                #save
+                multiFunction.save("Memory/ArchivoJson.json")
 
             elif (command[0] == "mkdir"):
                 #Crea un Nodo de tipo directorio.
                 #Captura de parametro.
                 multiFunction.mkdir(command[1])
+                #save
+                multiFunction.save("Memory/ArchivoJson.json")
 
             elif (command[0] == "plot"):
                 #Muestra el grafo en una ventana.
@@ -96,11 +102,15 @@ while(centinel):
                 #Elimina un Nodo de tipo archivo del árbol.
                 #Captura de parametro.
                 multiFunction.rm(command[1])
+                #save
+                multiFunction.save("Memory/ArchivoJson.json")
 
             elif (command[0] == "rmdir"):
                 #Elimina un Nodo de tipo directorio del árbol.
                 #Captura de parametro.
-                multiFunction.rm(command[1])
+                multiFunction.rmdir(command[1])
+                #save
+                multiFunction.save("Memory/ArchivoJson.json")
 
             elif (command[0] == "findfbe"):
                 #Encuentra archivos por extensión en el árbol.

@@ -35,6 +35,7 @@ from Core.TreeGraph.Compare import Compare
 from Core.TreeGraph.Node import Node
 from Core.TreeGraph.LinkedList import LinkedList
 from Core.TreeGraph.Vertex import Vertex
+from Core.TreeGraph.JSON import Json
 
 class TreeGraph:
     def __init__(self):
@@ -42,6 +43,7 @@ class TreeGraph:
         self.root = Node(Vertex("C:","D"), None, None)
         #Papelera de reciclaje.
         self.trash = LinkedList()
+        self.json = None
 
     def add(self, name, type_, reference = None):
         if(not reference):
@@ -103,13 +105,13 @@ class TreeGraph:
  
     # se borra de la ruta actual(carpeta actual) que es reference, el nodo(value)
     def remove(self, value, reference = None):
-        parent = self.search(reference)
+        parent1 = self.search(reference)
         
-        node = parent.value.edges.pop(value)
-        date= datetime.datetime.now()
+        node = parent1.value.edges.pop(value)
+        date1= datetime.datetime.now()
 
-        nodeDelete = Node(node.value,date,parent)
-        self.trash.addList(nodeDelete)
+        #nodeDelete = Node(node.value,date,parent)
+        self.trash.addList(value=node.value,date=date1,parent=parent1)
 
     def navegation(self, name):
         present = self.search(name)
@@ -119,6 +121,50 @@ class TreeGraph:
         return False
     
     def searchByExtension(self):
+        pass
+
+    def convertJson(self):
+
+        self.json = Json({})
+        current = self.root
+
+        self.json.add(current.value.name, current.value.nodeType)
+
+        return self.convertInner(current)
+
+    def convertInner(self, current, parent = None):
+
+        if parent:
+            self.json.add(current.value.name, current.value.nodeType, parent.value.name)
+        
+        children = self.array(current)
+        for node in children:
+            parent1 = current
+            self.convertInner(node, parent1)
+        return True
+
+    def array(self, current):
+        
+        array = []
+        son = current.value.edges.first
+
+        while son:
+            array.append(son)
+            son = son.next
+        
+        return array
+
+    def saveJson(self, rute):
+
+        self.convertJson()
+        
+        f = open(rute,"w")
+        #f.write("self.json.json")
+        f.write("%s"%(self.json.json))
+
+        f.close()
+
+    def readJson(self):
         pass
 
 """

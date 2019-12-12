@@ -21,6 +21,5 @@ class Vertex:
         self.nodeType = nodeType
         self.edges = LinkedList()
     
-    def setEdges(self, vertexName):
-        self.edges.addList(vertexName)
+    
 

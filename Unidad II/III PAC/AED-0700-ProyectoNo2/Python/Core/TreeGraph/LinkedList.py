@@ -38,9 +38,9 @@ class LinkedList:
         self.first = None
         self.compare = Compare()
 
-    def addList(self, value, prev = None, current = None):
+    def addList(self, value, prev = None, current = None, date = None, parent = None):
         if (not self.first):
-            self.first = Node(value, None, None)
+            self.first = Node(value, date, parent)
             return True
 
         if (not prev):
@@ -54,11 +54,11 @@ class LinkedList:
                 if (prev.value.nodeType == 'D'):
                     if (self.compare.order(value.name, prev.value.name) > 0):
                         if (prev is self.first):
-                            self.first = Node(value, None, None)
+                            self.first = Node(value, date, parent)
                             self.first.next = prev
                             return True
                         else:
-                            current.next = Node(value, None, None)
+                            current.next = Node(value, date, parent)
                             current.next.next = prev
                             return True
 
@@ -66,24 +66,24 @@ class LinkedList:
                         current = prev
                         prev = prev.next
                         if (prev):
-                            return self.addList(value, prev, current)
+                            return self.addList(value, prev, current, date, parent)
                         else:
-                            current.next = Node(value, None, None)
+                            current.next = Node(value, date, parent)
                             return True
 
                 else:
                     if (prev.value.nodeType == 'F'):
                         if  (prev is self.first):
-                            self.first = Node(value, None, None)
+                            self.first = Node(value, date, parent)
                             self.first.next = prev
                             return True
                         
-                        current.next = Node(value, None, None)
+                        current.next = Node(value, date, parent)
                         current.next.next = prev
                         return True
                     
                     if (prev is None):
-                        current.next = Node(value, None, None)
+                        current.next = Node(value, date, parent)
                         return True
 
             else:
@@ -91,11 +91,11 @@ class LinkedList:
                 if (prev.value.nodeType == 'F'):
                     if (self.compare.order(value.name,prev.value.name) > 0):
                         if (prev is self.first):
-                            self.first = Node(value, None, None)
+                            self.first = Node(value, date, parent)
                             self.first.next = prev
                             return True
                         else:
-                            current.next = Node(value, None, None)
+                            current.next = Node(value, date, parent)
                             current.next.next = prev
                             return True
 
@@ -104,9 +104,9 @@ class LinkedList:
                             current = prev
                             prev = prev.next
                             if (prev):
-                                return self.addList(value, prev, current)
+                                return self.addList(value, prev, current, date, parent)
                             else:
-                                current.next = Node(value, None, None)
+                                current.next = Node(value, date, parent)
                                 return True
 
                 else:
@@ -115,11 +115,11 @@ class LinkedList:
                         prev = prev.next
 
                     if (prev is None):
-                        current.next = Node(value, None, None)
+                        current.next = Node(value, date, parent)
                         return True
                     
                     else:
-                        return self.addList(value, prev, current)
+                        return self.addList(value, prev, current, date, parent)
 
     def alreadyExist(self, value):
         current = self.first
@@ -159,6 +159,7 @@ class LinkedList:
                         parent = current
                         prev.next = current.next
                         return parent
+                    prev = current
                     current = current.next
                 return False
 
