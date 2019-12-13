@@ -182,7 +182,7 @@ class Function:
                 self.rootes.pop()
         else:
             nodeName = graph.navegation(nodeName)
-            if nodeName :
+            if nodeName.value.nodeType == "D":
                 self.rootes.append(nodeName)
             else:
                 print("\n\t\tRuta no encontrada\n")
@@ -228,8 +228,9 @@ class Function:
         
     def rm(self,name):
         refer = self.rootes[-1]
-        if graph.searchByExtension(name,refer.value.edges.first):            
-            graph.remove(name,"F",refer.value.name)
+                    
+        if graph.remove(name,"F",refer.value.name):
+            pass
         else:
             print("\tEl archivo que desea eliminar no existe")
 

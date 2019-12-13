@@ -92,6 +92,7 @@ class TreeGraph:
                     return self.search(value, current)
 
         else:
+
             if(comp.compare(current.value.name, value)):
                 return current
 
@@ -118,6 +119,8 @@ class TreeGraph:
 
         #nodeDelete = Node(node.value,date,parent)
         self.trash.addList(value=node.value,date=date1,parent=parent1)
+        
+        return True
 
     def navegation(self, name):
         present = self.search(name)
@@ -204,6 +207,7 @@ class TreeGraph:
 
             if isinstance(v,dict):
                 pass
+    
 
     def plot(self):
         
@@ -212,7 +216,7 @@ class TreeGraph:
 
         self.plotInner(json)
 
-        write_dot(G,'test.dot')
+        write_dot(G,'Memory/test.dot')
         pos = graphviz_layout(G, prog='dot')
         nx.draw(G,pos, with_labels=True, arrows=True)
 

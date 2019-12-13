@@ -69,16 +69,21 @@ while(centinel):
             elif (command[0] == "touch"):
                 #Crea un Nodo de tipo archivo.
                 #Captura de parametro.
-                multiFunction.touch(command[1])
-                #save
-                multiFunction.save("Memory/ArchivoJson.json")
+                if command[1] == "touch":
+                    print("\t\tDebe de ingresar un nombre")
+                else:
+                    multiFunction.touch(command[1])
+                    multiFunction.save("Memory/ArchivoJson.json")
+
 
             elif (command[0] == "mkdir"):
                 #Crea un Nodo de tipo directorio.
                 #Captura de parametro.
-                multiFunction.mkdir(command[1])
-                #save
-                multiFunction.save("Memory/ArchivoJson.json")
+                if command[1] == "mkdir":
+                    print("\t\tDebe de ingresar un nombre")
+                else:
+                    multiFunction.mkdir(command[1])
+                    multiFunction.save("Memory/ArchivoJson.json")
 
             elif (command[0] == "plot"):
                 #Muestra el grafo en una ventana.
@@ -102,16 +107,20 @@ while(centinel):
             elif (command[0] == "rm"):
                 #Elimina un Nodo de tipo archivo del árbol.
                 #Captura de parametro.
-                multiFunction.rm(command[1])
-                #save
-                multiFunction.save("Memory/ArchivoJson.json")
+                if command[1] == "rm":
+                    print("\t\tDebe de ingresar un nombre")
+                else:
+                    multiFunction.rm(command[1])
+                    multiFunction.save("Memory/ArchivoJson.json")
 
             elif (command[0] == "rmdir"):
                 #Elimina un Nodo de tipo directorio del árbol.
                 #Captura de parametro.
-                multiFunction.rmdir(command[1])
-                #save
-                multiFunction.save("Memory/ArchivoJson.json")
+                if command[1] == "rmdir":
+                    print("\t\tDebe de ingresar un nombre")
+                else:
+                    multiFunction.rmdir(command[1])
+                    multiFunction.save("Memory/ArchivoJson.json")
 
             elif (command[0] == "findfbe"):
                 #Encuentra archivos por extensión en el árbol.
