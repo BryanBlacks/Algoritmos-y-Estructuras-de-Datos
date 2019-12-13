@@ -225,15 +225,16 @@ class Function:
         
     def rm(self,name):
         refer = self.rootes[-1]
-        if graph.searchByExtension(name,refer) is not None:            
-            graph.remove(name,refer.value.name)
+        if graph.searchByExtension(name,refer.value.edges.first):            
+            graph.remove(name,"F",refer.value.name)
         else:
             print("\tEl archivo que desea eliminar no existe")
 
     def rmdir(self,name):
         refer = self.rootes[-1]
-        if graph.search(name) is not None:
-            graph.remove(name,refer.value.name)
+        #Solo funciona para carpetas con nombres diferentes
+        if graph.search(name):
+            graph.remove(name,"D",refer.value.name)
         else:
             print("\tEl directorio a eliminar no existe")
     

@@ -37,6 +37,11 @@ from Core.TreeGraph.Node import Node
 from Core.TreeGraph.LinkedList import LinkedList
 from Core.TreeGraph.Vertex import Vertex
 from Core.TreeGraph.JSON import Json
+import networkx as nx
+from networkx.drawing.nx_agraph import write_dot, graphviz_layout
+import matplotlib.pyplot as plt
+
+G = nx.DiGraph()
 
 class TreeGraph:
     def __init__(self):
@@ -105,10 +110,10 @@ class TreeGraph:
                     return None
  
     # se borra de la ruta actual(carpeta actual) que es reference, el nodo(value)
-    def remove(self, value, reference = None):
+    def remove(self, value,type_, reference = None):
         parent1 = self.search(reference)
         
-        node = parent1.value.edges.pop(value)
+        node = parent1.value.edges.pop(value, type_)
         date1= datetime.datetime.now()
 
         #nodeDelete = Node(node.value,date,parent)
@@ -199,6 +204,35 @@ class TreeGraph:
 
             if isinstance(v,dict):
                 pass
+
+    def plot(self):
+        
+        
+        json = self.json.json
+
+        self.plotInner(json)
+
+        write_dot(G,'test.dot')
+        pos = graphviz_layout(G, prog='dot')
+        nx.draw(G,pos, with_labels=True, arrows=True)
+
+        plt.show()
+
+    def plotInner(self,j, parent=None):
+
+        for k,v in j.items():
+
+            if not parent: G.add_node(k)
+            else: G.add_edge(parent,k)
+            
+            if isinstance(v,dict):
+                for a,b in v.items():
+                    if isinstance(b,dict):
+                        G.add_edge(k,a)
+                        self.plotInner(b,a)
+                    else: G.add_edge(k,a)
+        
+        return True
 
         
         

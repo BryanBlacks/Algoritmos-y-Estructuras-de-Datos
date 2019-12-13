@@ -141,13 +141,13 @@ class LinkedList:
                 current = current.next
             return False
     
-    def pop(self,value):
+    def pop(self,value,tp):
         if not self.first:
             return False
         else:
             current  = self.first
 
-            if current.value.name == value:
+            if current.value.name == value and current.value.nodeType == tp:
                 parent = current
                 self.first = self.first.next
                 return parent
@@ -155,7 +155,7 @@ class LinkedList:
                 prev = current
                 current = current.next
                 while current:
-                    if current.value.name == value:        
+                    if current.value.name == value and current.value.nodeType == tp:        
                         parent = current
                         prev.next = current.next
                         return parent
