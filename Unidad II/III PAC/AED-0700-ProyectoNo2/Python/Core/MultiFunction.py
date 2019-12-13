@@ -135,12 +135,15 @@ class Function:
         print(help)
 
     def plot(self):
+        """
         app = QtWidgets.QApplication([])
         self.window = QtWidgets.QMainWindow()
         self.goWindow = Graph()
         self.goWindow.setupUi(self.window)
         self.window.show()
         app.exec()
+        """
+        graph.plot()
     
     def mkdir(self, name):
         refer  = self.rootes[-1]
