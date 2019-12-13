@@ -55,7 +55,7 @@ class TreeGraph:
             parent = self.search(reference)
             parent.value.edges.addList(Vertex(name, type_))
         
-    # Se busca en el arbol el nodo a tratar(value = nombre de archivo o carpeta)
+    # Se busca en el arbol el nodo a tratar(value = nombre de carpeta)
     def search(self, value, current = None):
         comp = Compare()
 
@@ -121,9 +121,20 @@ class TreeGraph:
 
         return False
     
-    def searchByExtension(self):
-        pass
+    def searchByExtension(self,fileExtension,current):
+        compare = Compare()
 
+        files = []
+
+        while current:
+            if current.value.nodeType == 'F':
+                name = (current.value.name).partition(".")
+                if compare.compare(str(name[2]),fileExtension):
+                    files.append("".join(name))
+            current = current.next
+
+        return files[:] 
+                          
     def convertJson(self):
 
         self.json = Json({})

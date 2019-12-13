@@ -115,7 +115,8 @@ while(centinel):
 
             elif (command[0] == "findfbe"):
                 #Encuentra archivos por extensión en el árbol.
-                pass
+                multiFunction.findfbe(command[1])
+                
 
             elif (command[0] == "exit"):
                 #Sale del programa rompiendo el ciclo infinito.

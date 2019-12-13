@@ -182,7 +182,7 @@ class Function:
             if nodeName :
                 self.rootes.append(nodeName)
             else:
-                print("Ruta no encontrada")
+                print("\n\t\tRuta no encontrada\n")
 
         return True
 
@@ -225,11 +225,17 @@ class Function:
         
     def rm(self,name):
         refer = self.rootes[-1]
-        graph.remove(name,refer.value.name)
+        if graph.searchByExtension(name,refer) is not None:            
+            graph.remove(name,refer.value.name)
+        else:
+            print("\tEl archivo que desea eliminar no existe")
 
     def rmdir(self,name):
         refer = self.rootes[-1]
-        graph.remove(name,refer.value.name)
+        if graph.search(name) is not None:
+            graph.remove(name,refer.value.name)
+        else:
+            print("\tEl directorio a eliminar no existe")
     
     def trash(self):
         list1 = graph.trash
@@ -247,10 +253,12 @@ class Function:
         
         print(trail)
 
-    def findfbe(self, extension):
-        pass
-        #listOfNodes = 
-
+    def findfbe(self, fileExtension):
+        listOfFiles = graph.searchByExtension(fileExtension,self.rootes[-1].value.edges.first)
+        trail = "\t\t"        
+        for fileName in listOfFiles:
+            trail += "%s%s%s" % ("\n","\t\t",fileName)
+        print("%s%s" % (trail,"\n"))
 
     def save(self, rute):
 
