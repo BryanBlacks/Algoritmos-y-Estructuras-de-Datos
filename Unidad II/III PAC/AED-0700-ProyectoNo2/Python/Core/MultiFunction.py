@@ -70,6 +70,7 @@ class Function:
     def __init__(self):
         #Arreglo de rutas en las que se navega
         self.rootes = [graph.root]
+        self.lnk = []
 
     def printHeader(self):
         logo = "%s%s%s%s%s%s%s%s%s%s%s%s%s" % (
@@ -143,7 +144,7 @@ class Function:
         self.window.show()
         app.exec()
         """
-        graph.plot()
+        graph.plot(self.lnk)
     
     def mkdir(self, name):
         refer  = self.rootes[-1]
@@ -206,8 +207,7 @@ class Function:
         print("\t\t%s" % (route))
 
     def ln(self, text):
-        pos = text.find("/")
-        #text = [(pos+1):]
+        subarray = []
         text = text.split("/")
 
         copyfile = text[-1]
@@ -217,14 +217,21 @@ class Function:
 
         file1 = self.rootes[-1].value.edges.search(copyfile)
         pos = (file1.value.name).find(".")
-        name = "%s.lnk" % file1.value.name[:pos]
+        if pos == -1:
+            name = "%s.lnk" % file1.value.name
+        else:
+            name = "%s.lnk" % file1.value.name[:pos]
+
+        subarray.append(name)
+        subarray.append(file1.value.name)
+        self.lnk.append(subarray)
 
         dir1 = graph.search(direc)
         
         if file1 and dir1:
             graph.add(name,"F",dir1.value.name)
         else:
-            print("La dirección o el archivo no existe en el árbol")
+            print("\t\tLa dirección o el archivo no existe en el árbol")
         
     def rm(self,name):
         refer = self.rootes[-1]
@@ -232,7 +239,7 @@ class Function:
         if graph.remove(name,"F",refer.value.name):
             pass
         else:
-            print("\tEl archivo que desea eliminar no existe")
+            print("\t\tEl archivo que desea eliminar no existe")
 
     def rmdir(self,name):
         refer = self.rootes[-1]
@@ -240,7 +247,7 @@ class Function:
         if graph.search(name):
             graph.remove(name,"D",refer.value.name)
         else:
-            print("\tEl directorio a eliminar no existe")
+            print("\t\tEl directorio a eliminar no existe")
     
     def trash(self):
         list1 = graph.trash

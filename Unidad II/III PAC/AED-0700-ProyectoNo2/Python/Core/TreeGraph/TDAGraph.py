@@ -115,12 +115,14 @@ class TreeGraph:
         parent1 = self.search(reference)
         
         node = parent1.value.edges.pop(value, type_)
-        date1= datetime.datetime.now()
+        if node:
+            date1= datetime.datetime.now()
 
-        #nodeDelete = Node(node.value,date,parent)
-        self.trash.addList(value=node.value,date=date1,parent=parent1)
+            #nodeDelete = Node(node.value,date,parent)
+            self.trash.addList(value=node.value,date=date1,parent=parent1)
+            return True
         
-        return True
+        else: return False
 
     def navegation(self, name):
         present = self.search(name)
@@ -217,14 +219,14 @@ class TreeGraph:
             
 
                 
-    
-
-    def plot(self):
+    def plot(self, array):
         
-        
+        self.convertJson()
         json = self.json.json
-
         self.plotInner(json)
+
+        for i in array:
+            G.add_edge(i[0],i[1])
 
         write_dot(G,'Memory/test.dot')
         pos = graphviz_layout(G, prog='dot')
