@@ -9,7 +9,7 @@ class Json:
 
     def addInner(self, json, value, nodeType, destiny):
         if (not destiny):
-            if (nodeType is "D"):
+            if (nodeType == "D"):
                 self.json["%s" % value] = {}  
             else:
                 self.json["%s" % value] = nodeType  
@@ -17,7 +17,7 @@ class Json:
             for k, v in json.items():
                 if (json is self.json):
                     if (k is ("%s" % destiny)):
-                        if (nodeType is "D"):
+                        if (nodeType == "D"):
                             self.json[k]["%s" % value] = {}
 
                             return True
@@ -30,7 +30,7 @@ class Json:
                             return True
                 else: 
                     if (k is "%s" % destiny):
-                        if (nodeType is "D"):
+                        if (nodeType == "D"):
                             json[k]["%s" % value] = {}
 
                             return True
