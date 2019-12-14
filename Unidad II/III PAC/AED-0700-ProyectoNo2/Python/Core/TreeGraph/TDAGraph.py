@@ -12,20 +12,47 @@ TDAGraph (Grafo)
     almacen de los subdirectorios y archivos hijos del mismo, es decir, esta lista serán las aristas del árbol.
 
 * Método "search"
-    Este método recursivo busca una coincidencia del valor recibido como parámetro con cada uno de los elementos en
-    el árbol, retornando así un nodo para luego ser tratado u procesado durante la ejecución del programa.
+    Este método recursivo busca una coincidencia del valor recibido como parámetro con cada uno de los elementos
+    en el árbol, retornando así un nodo para luego ser tratado u procesado durante la ejecución del programa.
 
 * Método "remove"
     Este método remueve un directorio o archivo del árbol, utilizando la misma función de la lista enlazada.
+    Este método servirá para los siguentes comandos: "rm", "rmdir" "trash"
 
 * Método "navegation"
     Este método buscará dentro del árbol, utilizando la función "search", para obtener una arista especifica 
-    que es requerida por el usuario, y que es buscada por el nombre de la arista a encontrar.
+    que es requerida por el usuario, y que es buscada por el nombre de la arista a encontrar. Este método
+    servirá para los siguentes comandos: "cd", "cd .."
 
 * Método "searchByExtension"
     Este método busca dentro del árbol, en cada una de sus subdirectorios, los archivos cuya extensión 
     concuerden con la entrada obtendina del usuario.
 
+* Método "convertJson"
+    Este método llama a una función interna llamada "convertInner". 
+
+* Método "convertInner"
+    Este método convierte el grafo a JSON.
+
+* Método "array"
+    Este método retorna un arreglo con los nombres de los directorios y carpetas en el grafo.
+
+* Método "saveJson"
+    Este método guarda en le JSON los archivos y carpetas en el grafo.
+
+* Método "ReadJson"
+    Este método lee el archivo JSON almacenado en disco para luego convertir la informació obtenida en un grafo. 
+
+* Método "JsonToTree"
+    este método convierte el contendio del archivo JSON en un grafo.
+
+* Método "plot"
+    Este método llama a una función interna llamada "plotInner" para construir el grafo utlizando matplotlib
+    para su posetriror visualización en la pantalla. 
+
+* Método "plotInner"
+    Este método construye el un grafo utlizando mapplotlib, pasandole cada uno de los datos que componen dicha
+    estructura.
 
 ---------------------------------------------------------------------------------------------------------------------
 """
@@ -184,7 +211,7 @@ class TreeGraph:
         
         f = open(rute, "w")
         #f.write("self.json.json")
-        f.write("%s"%(self.json.json))
+        f.write("%s" % (self.json.json))
 
         f.close()
 
@@ -206,7 +233,7 @@ class TreeGraph:
 
         self.JsonToTree(d, root)
 
-    def JsonToTree(self,json, parent):
+    def JsonToTree(self, json, parent):
         #parent = C:
         #json = {'c1': {'q7': {}, 'q8': {'96': 'F'}}, 'c2': {'ae5': {}}, 'a5': 'F'}
         for k, v in json.items():
@@ -217,8 +244,6 @@ class TreeGraph:
                 self.add(k, "F", parent)
 
         return True
-            
-
                 
     def plot(self, array):
         self.convertJson()
@@ -226,9 +251,9 @@ class TreeGraph:
         self.plotInner(json)
 
         for i in array:
-            G.add_edge(i[0],i[1])
+            G.add_edge(i[0], i[1])
 
-        write_dot(G,'Memory/test.dot')
+        write_dot(G, 'Memory/test.dot')
         pos = graphviz_layout(G, prog = 'dot')
         nx.draw(G, pos, with_labels = True, arrows = True)
 

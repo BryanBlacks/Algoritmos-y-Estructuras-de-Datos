@@ -8,7 +8,8 @@ LinkedList (Lista enlazada)
 * Método "addList"
     Este método agrega jerárquicamente en orden ascendente (siendo la carpetas antes que los archivos) un directorio
     (D) o un archivo (F), verifcando primero si existe ya un directorio o archivo con el mismo nombre, si es así,
-    muestra un mensaje indicandole al usario que no se puede agregar un elemento con el mismo nombre.
+    muestra un mensaje indicandole al usario que no se puede agregar un elemento con el mismo nombre. Este
+    método servirá para los siguentes comandos: "mkdir", "touch" y "ln".
 
 * Método "alreadyExist"
     Este método verifica si ya existe una carpeta o un archivo con el mismo nombre.
@@ -19,12 +20,12 @@ LinkedList (Lista enlazada)
 * Método "pop"
     Este método busca un nodo cuyo valor es el nombre del directorio o archivo, si determina que existe dicho valor,
     lo guarda en una variable temporal,lo elimina y retorna ese elemento eliminado guardado previamente en la
-    variable temporal.
+    variable temporal. Este método servirá para los siguientes comandos: "rm" y "rmdir".
 
 * Método "print"
     Este método retorna una cadena con formato, los valores de cada uno de los nodos de la lista enlazada,
-    previamente ordenados mediante jerarquía alfabética y tipo de elemento (carpeta o archivo).
-
+    previamente ordenados mediante jerarquía alfabética y tipo de elemento (carpeta o archivo). Este método
+    servirá para las siguentes comandos: "ls", "ls -1" y "trash".
 ---------------------------------------------------------------------------------------------------------------------
 """
 

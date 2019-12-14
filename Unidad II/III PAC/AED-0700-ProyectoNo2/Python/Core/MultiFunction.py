@@ -55,6 +55,12 @@ MultiFunction (Almacen de comandos)
 * Comando "findbe"
     Este comando .
 
+* Método "save"
+    Este método guarda la ruta en el archivo JSON, previamente creado e instanciado.
+
+* Métod "read"
+    Este método lee la ruta en el archivo JSON, previamente creado e instanciado.
+
 ---------------------------------------------------------------------------------------------------------------------
 """
 
@@ -147,6 +153,7 @@ class Function:
         refer = self.rootes[-1]
         graph.add(name, "F", refer.value.name)
     
+    #Tratamiento de la cadena ingresada a un comando sportado por el sistema.
     def info(self, text):
         text = text.split(";")
         array = []
@@ -176,6 +183,7 @@ class Function:
                 self.rootes.pop()
         else:
             nodeName = graph.navegation(nodeName)
+
             if (nodeName.value.nodeType == "D"):
                 self.rootes.append(nodeName)
             else:
@@ -202,6 +210,7 @@ class Function:
 
         return "%s" % (route)
 
+    #El parámetro debe ser una ruta de archivo obligatoriamente.
     def ln(self, text):
         subarray = []
         text = text.split("/")
@@ -213,6 +222,7 @@ class Function:
 
         file1 = self.rootes[-1].value.edges.search(copyfile)
         pos = (file1.value.name).find(".")
+        
         if pos == -1:
             name = "%s.lnk" % file1.value.name
         else:
@@ -258,8 +268,10 @@ class Function:
 
         print("%s%s" % (trail, "\n"))
 
+    #guarda la ruta en le JSON.
     def save(self, route):
         graph.saveJson(route)
 
+    #Lee la ruta en el JSON.
     def read(self, route):
         graph.readJson(route)

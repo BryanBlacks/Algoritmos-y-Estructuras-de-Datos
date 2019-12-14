@@ -17,8 +17,10 @@ Compare (Comparar)
     compararlos con los de la segunda cadena, retornando asi, segun la nomenclatura aprendida en clase, el
     indicador 1 si va después, -1 si va antes y finalmente 0 si son iguales.
 
-*Método "compare"
-    
+* Método "compare"
+    Este método compara cada letra (posición) de la cadena entre cada uno de los nombres de las carpetas y
+    archivos en el árbol para determinar que texto es mayor o menor utilizando una jerarquía alfabetica
+    propia del sistema.
 
 ---------------------------------------------------------------------------------------------------------------------
 """
@@ -37,7 +39,7 @@ class Compare:
 
     def lesserLength(self, str1, str2):
         lesser = len(str1)
-        
+
         if (len(str2) < lesser): lesser = len(str2)
 
         return lesser
