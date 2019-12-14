@@ -164,7 +164,7 @@ class LinkedList:
                 return False
 
     def print(self, typeLs = None):
-        trail = "\t\t"
+        trail = "\n\t\t"
 
         current = self.first
         
@@ -189,5 +189,5 @@ class LinkedList:
                     ln += 1
 
                 current = current.next
-
+        trail += "\n"
         return trail
