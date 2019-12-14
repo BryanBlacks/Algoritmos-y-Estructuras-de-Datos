@@ -59,7 +59,6 @@ MultiFunction (Almacen de comandos)
 """
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-#from Core.Windows.GraphWindow import Graph
 from Core.TreeGraph.TDAGraph import TreeGraph
 from Core.TreeGraph.LinkedList import LinkedList
 
@@ -68,7 +67,7 @@ list1 = LinkedList()
 
 class Function: 
     def __init__(self):
-        #Arreglo de rutas en las que se navega
+        #Arreglo de rutas en las que se navega.
         self.rootes = [graph.root]
 
     def printHeader(self):
@@ -102,6 +101,7 @@ class Function:
             "\n\tSistema que gestiona archivos y carpetas en consola exclusivamente, almacenados en formato JSON.\n",
             "%s%s" % ("\t", "-" * 100)
         )
+
         print(header)
     
     def printError(self):
@@ -110,6 +110,7 @@ class Function:
             "\n\tEl comando ingresado es inválido. Corra el comando \"help\" para ayuda.\n",
             "%s%s" % ("\t", "*" * 100)
         )
+
         print(commandError)
 
     #Comandos de la consola
@@ -139,7 +140,7 @@ class Function:
     
     def mkdir(self, name):
         refer  = self.rootes[-1]
-        graph.add(name,"D", refer.value.name)
+        graph.add(name, "D", refer.value.name)
         
     def touch(self,name):
         refer = self.rootes[-1]
@@ -154,7 +155,7 @@ class Function:
             i = i.strip()
 
             space = i.find(" ")
-            if space == -1:
+            if (space == -1):
                 command, param = i[:],i[:]
             else: 
                 command, param = i[:space], i[space:]
@@ -166,15 +167,15 @@ class Function:
         return array
 
     def cd(self, nodeName):
-        if nodeName == "..":
+        if (nodeName == ".."):
             #condicional si esta en el root
-            if len(self.rootes) == 1:
+            if (len(self.rootes) == 1):
                 pass
             else:
                 self.rootes.pop()
         else:
             nodeName = graph.navegation(nodeName)
-            if nodeName.value.nodeType == "D":
+            if (nodeName.value.nodeType == "D"):
                 self.rootes.append(nodeName)
             else:
                 print("\n\t\tRuta no encontrada.\n")
@@ -215,24 +216,25 @@ class Function:
 
         dir1 = graph.search(direc)
         
-        if file1 and dir1:
-            graph.add(name,"F",dir1.value.name)
+        if (file1 and dir1):
+            graph.add(name, "F", dir1.value.name)
         else:
             print("La dirección o el archivo no existe en el árbol")
         
     def rm(self,name):
         refer = self.rootes[-1]
                     
-        if graph.remove(name,"F",refer.value.name):
+        if (graph.remove(name, "F", refer.value.name)):
             pass
         else:
             print("\tEl archivo que desea eliminar no existe")
 
     def rmdir(self,name):
         refer = self.rootes[-1]
-        #Solo funciona para carpetas con nombres diferentes
-        if graph.search(name):
-            graph.remove(name,"D",refer.value.name)
+
+        #Solo funciona para carpetas con nombres diferentes.
+        if (graph.search(name)):
+            graph.remove(name, "D", refer.value.name)
         else:
             print("\tEl directorio a eliminar no existe")
     
@@ -242,26 +244,26 @@ class Function:
         trail = ""
 
         while (current):
-            if current.value.nodeType is "D":
-                trail = "%s\t\tCarpeta %s\t fecha de eliminación: %s\n" % (trail,current.value.name,current.date) 
+            if (current.value.nodeType == "D"):
+                trail = "%s\t\tCarpeta %s\t fecha de eliminación: %s\n" % (trail, current.value.name, current.date) 
                 current = current.next
-
-            elif current.value.nodeType is "F":
-                trail = "%s\t\tArchivo %s\t fecha de eliminación: %s\n" % (trail,current.value.name,current.date) 
+            elif (current.value.nodeType == "F"):
+                trail = "%s\t\tArchivo %s\t fecha de eliminación: %s\n" % (trail, current.value.name, current.date) 
                 current = current.next
         
         print(trail)
 
     def findfbe(self, fileExtension):
-        listOfFiles = graph.searchByExtension(fileExtension,self.rootes[-1].value.edges.first)
-        trail = "\t\t"        
+        listOfFiles = graph.searchByExtension(fileExtension, self.rootes[-1].value.edges.first)
+        trail = "\t\t"    
+
         for fileName in listOfFiles:
-            trail += "%s%s%s" % ("\n","\t\t",fileName)
-        print("%s%s" % (trail,"\n"))
+            trail += "%s%s%s" % ("\n", "\t\t", fileName)
 
-    def save(self, rute):
+        print("%s%s" % (trail, "\n"))
 
-        graph.saveJson(rute)
+    def save(self, route):
+        graph.saveJson(route)
 
-    def read(self, rute):
-        graph.readJson(rute)
+    def read(self, route):
+        graph.readJson(route)

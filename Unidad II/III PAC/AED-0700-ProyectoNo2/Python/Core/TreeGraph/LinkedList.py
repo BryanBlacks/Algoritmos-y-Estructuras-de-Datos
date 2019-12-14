@@ -48,7 +48,7 @@ class LinkedList:
             #current = prev
 
         #Verifica su ya existe un elemento con el mismo valor.
-        if  not self.alreadyExist(value):
+        if (not self.alreadyExist(value)):
             #El directorio se interpretará como "D"
             if (value.nodeType == 'D'):
                 if (prev.value.nodeType == 'D'):
@@ -56,111 +56,126 @@ class LinkedList:
                         if (prev is self.first):
                             self.first = Node(value, date, parent)
                             self.first.next = prev
+
                             return True
                         else:
                             current.next = Node(value, date, parent)
                             current.next.next = prev
-                            return True
 
+                            return True
                     else:
                         current = prev
                         prev = prev.next
+
                         if (prev):
                             return self.addList(value, prev, current, date, parent)
                         else:
                             current.next = Node(value, date, parent)
-                            return True
 
+                            return True
                 else:
                     if (prev.value.nodeType == 'F'):
                         if  (prev is self.first):
                             self.first = Node(value, date, parent)
                             self.first.next = prev
+                            
                             return True
                         
                         current.next = Node(value, date, parent)
                         current.next.next = prev
+
                         return True
                     
                     if (prev is None):
                         current.next = Node(value, date, parent)
-                        return True
 
+                        return True
             else:
                 #El archivo se interpretará como "F"
                 if (prev.value.nodeType == 'F'):
-                    if (self.compare.order(value.name,prev.value.name) > 0):
+                    if (self.compare.order(value.name, prev.value.name) > 0):
                         if (prev is self.first):
                             self.first = Node(value, date, parent)
                             self.first.next = prev
+
                             return True
                         else:
                             current.next = Node(value, date, parent)
                             current.next.next = prev
-                            return True
 
+                            return True
                     else:
                         if (prev):
                             current = prev
                             prev = prev.next
+
                             if (prev):
                                 return self.addList(value, prev, current, date, parent)
                             else:
                                 current.next = Node(value, date, parent)
                                 return True
-
                 else:
-                    while(not(prev is None) and prev.value.nodeType == 'D'):
+                    while (not (prev is None) and prev.value.nodeType == 'D'):
                         current = prev
                         prev = prev.next
 
                     if (prev is None):
                         current.next = Node(value, date, parent)
+
                         return True
-                    
                     else:
                         return self.addList(value, prev, current, date, parent)
 
     def alreadyExist(self, value):
         current = self.first
         
-        while(current):
+        while (current):
             if (current.value.name == value.name):
                 return True
+
             current = current.next
+
         return False
 
-    def search(self,value):
-        if not self.first:
+    def search(self, value):
+        if (not self.first):
             return False
         else:
-            current  = self.first
-            while current:
+            current = self.first
+
+            while (current):
                 if current.value.name == value:
                     return current
+
                 current = current.next
+
             return False
     
-    def pop(self,value,tp):
-        if not self.first:
+    def pop(self, value, tp):
+        if (not self.first):
             return False
         else:
-            current  = self.first
+            current = self.first
 
-            if current.value.name == value and current.value.nodeType == tp:
+            if (current.value.name == value and current.value.nodeType == tp):
                 parent = current
                 self.first = self.first.next
+
                 return parent
             else:
                 prev = current
                 current = current.next
-                while current:
-                    if current.value.name == value and current.value.nodeType == tp:        
+
+                while (current):
+                    if (current.value.name == value and current.value.nodeType == tp):        
                         parent = current
                         prev.next = current.next
+
                         return parent
+
                     prev = current
                     current = current.next
+
                 return False
 
     def print(self, typeLs = None):

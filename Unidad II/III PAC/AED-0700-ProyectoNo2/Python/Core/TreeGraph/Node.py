@@ -12,7 +12,7 @@ Node (Nodo)
 """
 
 class Node:
-    def __init__(self,value,date,parent):
+    def __init__(self, value, date, parent):
         self.value = value
         self.date = date
         self.parent = parent
