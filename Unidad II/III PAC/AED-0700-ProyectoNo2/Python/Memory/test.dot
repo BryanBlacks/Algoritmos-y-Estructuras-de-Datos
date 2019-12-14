@@ -3,6 +3,8 @@ strict digraph "" {
 	"C:" -> c2;
 	"C:" -> "96.lnk";
 	"C:" -> a5;
+	"C:" -> "hola.lnk";
+	"C:" -> "hola.py";
 	c1 -> q7;
 	c1 -> q8;
 	q8 -> 96;

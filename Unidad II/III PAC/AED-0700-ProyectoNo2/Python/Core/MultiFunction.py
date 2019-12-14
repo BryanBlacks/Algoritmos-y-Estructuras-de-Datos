@@ -275,3 +275,6 @@ class Function:
     #Lee la ruta en el JSON.
     def read(self, route):
         graph.readJson(route)
+
+    def clear(self):
+        print("\n" * 100)

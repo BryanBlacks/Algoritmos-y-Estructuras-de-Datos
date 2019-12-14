@@ -17,6 +17,7 @@ Main
 from Core.MultiFunction import Function
 
 multiFunction = Function()
+multiFunction.clear()
 multiFunction.printHeader()
 centinel = True
 multiFunction.read("Memory/ArchivoJson.json")
@@ -126,6 +127,9 @@ while (centinel):
             elif (command[0] == "findfbe"):
                 #Encuentra archivos por extensión en el árbol.
                 multiFunction.findfbe(command[1])  
+
+            elif (command[0] == "clear"):
+                multiFunction.clear()
 
             elif (command[0] == "exit"):
                 #Sale del programa rompiendo el ciclo infinito.
