@@ -1,0 +1,15 @@
+strict digraph "" {
+	"C:" -> adios;
+	"C:" -> c1;
+	"C:" -> c2;
+	"C:" -> hola;
+	"C:" -> a5;
+	"C:" -> "dia.py";
+	"C:" -> "noche.py";
+	c1 -> q7;
+	c1 -> q8;
+	q7 -> "libro.pdf";
+	q7 -> "new.py";
+	q8 -> 96;
+	c2 -> ae5;
+}

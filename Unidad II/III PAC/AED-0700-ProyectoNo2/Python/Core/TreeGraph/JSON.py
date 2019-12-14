@@ -1,7 +1,7 @@
-# -*- coding:utf-8 -*-
+# -*- coding:utf8 -*-
 
 class Json:
-    def __init__(self,json):
+    def __init__(self, json):
         self.json = json
 
     def add(self, value, nodeType, dest = None):

@@ -235,7 +235,5 @@ class TreeGraph:
                         self.plotInner(b, a)
                     else: G.add_edge(k, a)
         
-        return True
-
-        
+        return True    
         

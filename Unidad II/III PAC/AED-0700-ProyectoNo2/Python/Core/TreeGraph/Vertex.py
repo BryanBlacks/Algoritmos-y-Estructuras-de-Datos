@@ -20,6 +20,3 @@ class Vertex:
         self.name = name
         self.nodeType = nodeType
         self.edges = LinkedList()
-    
-    
-
