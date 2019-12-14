@@ -205,7 +205,7 @@ class Function:
 
         route = "%s/" % route
 
-        print("\n\t\t%s\n" % (route))
+        return "%s" % (route)
 
     def ln(self, text):
         pos = text.find("/")
