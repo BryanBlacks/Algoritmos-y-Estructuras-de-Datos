@@ -153,8 +153,8 @@ class Function:
         for i in text:
             newArray = []
             i = i.strip()
-
             space = i.find(" ")
+
             if (space == -1):
                 command, param = i[:],i[:]
             else: 
@@ -191,6 +191,7 @@ class Function:
 
         for node in array:
             nameRute = node.value.name
+            
             if (nameRute == "C:"):
                 route = "%s%s" % (route, nameRute)
             else:

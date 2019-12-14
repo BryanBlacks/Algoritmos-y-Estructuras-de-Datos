@@ -30,12 +30,14 @@ class Compare:
 
     def greaterLength(self, str1, str2):
         greater = len(str1)
+
         if (len(str2) > greater): greater = len(str2)
 
         return greater  
 
     def lesserLength(self, str1, str2):
         lesser = len(str1)
+        
         if (len(str2) < lesser): lesser = len(str2)
 
         return lesser
