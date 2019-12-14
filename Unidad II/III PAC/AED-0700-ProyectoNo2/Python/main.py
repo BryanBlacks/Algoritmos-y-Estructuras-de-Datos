@@ -23,8 +23,7 @@ multiFunction.read("Memory/ArchivoJson.json")
 
 while(centinel):
     #Captura del comando por medio de una cadena.
-    lineCommandRoute = multiFunction.pwd()
-    command = input("\t%s ~ $ " % (lineCommandRoute))
+    command = input("\t$ ")
     
     if (command == None or command == ""):
         pass
@@ -56,8 +55,7 @@ while(centinel):
             elif (command[0] == "pwd"):
                 #Imprime la ruta del nodo actual del árbol.
                 if (command[1] == "pwd"):
-                    route = multiFunction.pwd()
-                    print("\t\t%s" % (route))
+                    multiFunction.pwd()
                 else:
                     multiFunction.printError()
 

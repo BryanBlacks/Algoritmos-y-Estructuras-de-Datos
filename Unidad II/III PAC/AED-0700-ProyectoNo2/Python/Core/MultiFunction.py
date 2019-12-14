@@ -114,7 +114,7 @@ class Function:
 
     #Comandos de la consola
     def printHelp(self):
-        help = "\n%s%s%s%s%s%s%s%s%s%s%s%s%s%s\n" % (
+        help = "%s%s%s%s%s%s%s%s%s%s%s%s%s%s\n" % (
             #"%s%s" % ("\t", "-" * 100),
             "\tComandos:\n",
             "\n\t\thelp\n\n\t\t\t---> Ayuda.\n",
@@ -129,7 +129,7 @@ class Function:
             "\n\t\ttrash\n\n\t\t\t---> Lista de archivos y directorios borrados con su nombre y fecha.\n",
             "\n\t\tcd [RUTA]\n\n\t\t\t---> Para navergar en rutas.\n",
             "\n\t\tcd ..\n\n\t\t\t---> Para regresar a una ruta anterior a la actual.\n",
-            "\n\t\tfindfbe [EXTENSIÓN]\n\n\t\t\t---> Encontrar archivos por extensión.\n\n",
+            "\n\t\tfindfbe [EXTENSIÓN]\n\n\t\t\t---> Encontrar archivos por extensión.",
             #"%s%s" % ("\t", "-" * 100),
         )
         print(help)
@@ -185,7 +185,7 @@ class Function:
             if nodeName.value.nodeType == "D":
                 self.rootes.append(nodeName)
             else:
-                print("\n\t\tRuta no encontrada\n")
+                print("\n\t\tRuta no encontrada.\n")
 
         return True
 
@@ -205,7 +205,7 @@ class Function:
 
         route = "%s/" % route
 
-        return "%s" % (route)
+        print("\n\t\t%s\n" % (route))
 
     def ln(self, text):
         pos = text.find("/")
