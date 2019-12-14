@@ -59,7 +59,7 @@ MultiFunction (Almacen de comandos)
 """
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from Core.Windows.GraphWindow import Graph
+#from Core.Windows.GraphWindow import Graph
 from Core.TreeGraph.TDAGraph import TreeGraph
 from Core.TreeGraph.LinkedList import LinkedList
 
