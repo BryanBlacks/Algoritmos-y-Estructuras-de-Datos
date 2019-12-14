@@ -55,10 +55,12 @@ class TreeGraph:
     def add(self, name, type_, reference = None):
         if (not reference):
             parentNode = self.root
-            parentNode.value.edges.addList(Vertex(name, type_))
+            date1 = datetime.datetime.now()
+            parentNode.value.edges.addList(Vertex(name, type_), date = date1)
         else:
             parent = self.search(reference)
-            parent.value.edges.addList(Vertex(name, type_))
+            date1 = datetime.datetime.now()
+            parent.value.edges.addList(Vertex(name, type_), date = date1)
         
     # Se busca en el arbol el nodo a tratar(value = nombre de carpeta)
     def search(self, value, current = None):
@@ -108,15 +110,17 @@ class TreeGraph:
                     return None
  
     # se borra de la ruta actual(carpeta actual) que es reference, el nodo(value)
-    def remove(self, value,type_, reference = None):
+    def remove(self, value, type_, reference = None):
         parent1 = self.search(reference)
         
         node = parent1.value.edges.pop(value, type_)
-        if node:
-            date1= datetime.datetime.now()
+
+        if (node):
+            date1 = datetime.datetime.now()
 
             #nodeDelete = Node(node.value,date,parent)
-            self.trash.addList(value=node.value,date=date1,parent=parent1)
+            self.trash.addList(value = node.value, date = date1, parent = parent1)
+
             return True
         
         else: return False
@@ -217,7 +221,6 @@ class TreeGraph:
 
                 
     def plot(self, array):
-        
         self.convertJson()
         json = self.json.json
         self.plotInner(json)
@@ -226,12 +229,12 @@ class TreeGraph:
             G.add_edge(i[0],i[1])
 
         write_dot(G,'Memory/test.dot')
-        pos = graphviz_layout(G, prog='dot')
-        nx.draw(G,pos, with_labels=True, arrows=True)
+        pos = graphviz_layout(G, prog = 'dot')
+        nx.draw(G, pos, with_labels = True, arrows = True)
 
         plt.show()
 
-    def plotInner(self,j, parent = None):
+    def plotInner(self, j, parent = None):
         for k, v in j.items():
             if (not parent): G.add_node(k)
             else: G.add_edge(parent, k)

@@ -144,7 +144,7 @@ class LinkedList:
             current = self.first
 
             while (current):
-                if current.value.name == value:
+                if (current.value.name == value):
                     return current
 
                 current = current.next
@@ -178,20 +178,53 @@ class LinkedList:
 
                 return False
 
-    def print(self, typeLs = None):
+    def print(self, typeList = None):
         trail = "\n\t\t"
 
         current = self.first
         
         #Valida la existencia de un parametro.
-        if (typeLs == "-1"):
+        if (typeList == "-1"):
+            trail += "%s\n%s\n\t\t" % (
+                "{:46}| {:8}| {:38}".format("Elemento", "Tipo", "Fecha de creación"),
+                "%s%s" % ("\t\t", "-" * 92)
+            )
+
             #Construye una lista vertical.
             while (current):
+                typeElemnt = ""
+
+                if (current.value.nodeType == "D"):
+                    typeElemnt = "Carpeta"
+                elif (current.value.nodeType == "F"):
+                    typeElemnt = "Archivo"
+
                 if (current.next):
-                    trail += "{:96}\n\t\t".format(current.value.name)
+                    trail += "{:46}| {:8}| {:38}\n\t\t".format(current.value.name, typeElemnt, "%s" % (current.date))
                 else:
-                    trail += "{:96}".format(current.value.name)
+                    trail += "{:46}| {:8}| {:38}".format(current.value.name, typeElemnt, "%s" % (current.date))
                 
+                current = current.next
+        elif (typeList == "trash"):
+            trail += "%s\n%s\n\t\t" % (
+                "{:46}| {:8}| {:38}".format("Elemento", "Tipo", "Fecha de eliminación"),
+                "%s%s" % ("\t\t", "-" * 92)
+            )
+
+            #Construye una lista vertical.
+            while (current):
+                typeElemnt = ""
+
+                if (current.value.nodeType == "D"):
+                    typeElemnt = "Carpeta"
+                elif (current.value.nodeType == "F"):
+                    typeElemnt = "Archivo"
+
+                if (current.next):
+                    trail += "{:46}| {:8}| {:38}\n\t\t".format(current.value.name, typeElemnt, "%s" % (current.date))
+                else:
+                    trail += "{:46}| {:8}| {:38}".format(current.value.name, typeElemnt, "%s" % (current.date))
+
                 current = current.next
         else:
             #Construye una lista horizontal.
@@ -199,8 +232,12 @@ class LinkedList:
             
             while (current):
                 if (ln == 4):
-                    #Asigna un ancho mínimo por cada valor de los nodos.
-                    trail += "{:23}\n\t\t".format(current.value.name)
+                    if (current.next):
+                        #Asigna un ancho mínimo por cada valor de los nodos.
+                        trail += "{:23}\n\t\t".format(current.value.name)
+                    else:
+                        trail += "{:23}".format(current.value.name)
+
                     ln = 1
                 else:
                     trail += "{:23}".format(current.value.name)

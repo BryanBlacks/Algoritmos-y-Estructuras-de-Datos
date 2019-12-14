@@ -1,5 +1,20 @@
 # -*- coding:utf8 -*-
 
+"""
+---------------------------------------------------------------------------------------------------------------------
+JSON (JavaScript Object Notation)
+---------------------------------------------------------------------------------------------------------------------
+
+* Método "add"
+    Este método llama a una función interna llamada "addInner".
+
+* Método "addInner"
+    Este método agregara a la estructura JSON los identificadores de las carpetas y usaurios que el
+    usuario cree edurante la ejecución del programa.
+
+---------------------------------------------------------------------------------------------------------------------
+"""
+
 class Json:
     def __init__(self, json):
         self.json = json

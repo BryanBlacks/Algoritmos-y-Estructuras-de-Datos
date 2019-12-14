@@ -143,7 +143,7 @@ class Function:
         refer  = self.rootes[-1]
         graph.add(name, "D", refer.value.name)
         
-    def touch(self,name):
+    def touch(self, name):
         refer = self.rootes[-1]
         graph.add(name, "F", refer.value.name)
     
@@ -229,7 +229,7 @@ class Function:
         else:
             print("\t\tLa dirección o el archivo no existe en el árbol")
         
-    def rm(self,name):
+    def rm(self, name):
         refer = self.rootes[-1]
                     
         if (graph.remove(name, "F", refer.value.name)):
@@ -237,7 +237,7 @@ class Function:
         else:
             print("\t\tEl archivo que desea eliminar no existe")
 
-    def rmdir(self,name):
+    def rmdir(self, name):
         refer = self.rootes[-1]
 
         #Solo funciona para carpetas con nombres diferentes.
@@ -247,19 +247,7 @@ class Function:
             print("\t\tEl directorio a eliminar no existe")
     
     def trash(self):
-        list1 = graph.trash
-        current = list1.first
-        trail = ""
-
-        while (current):
-            if (current.value.nodeType == "D"):
-                trail = "%s\t\tCarpeta %s\t fecha de eliminación: %s\n" % (trail, current.value.name, current.date) 
-                current = current.next
-            elif (current.value.nodeType == "F"):
-                trail = "%s\t\tArchivo %s\t fecha de eliminación: %s\n" % (trail, current.value.name, current.date) 
-                current = current.next
-        
-        print(trail)
+        print(graph.trash.print("trash"))
 
     def findfbe(self, fileExtension):
         listOfFiles = graph.searchByExtension(fileExtension, self.rootes[-1].value.edges.first)
