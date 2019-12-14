@@ -172,7 +172,10 @@ class LinkedList:
         if (typeLs == "-1"):
             #Construye una lista vertical.
             while (current):
-                trail += "{:96}\n\t\t".format(current.value.name)
+                if (current.next):
+                    trail += "{:96}\n\t\t".format(current.value.name)
+                else:
+                    trail += "{:96}".format(current.value.name)
                 
                 current = current.next
         else:
@@ -189,5 +192,7 @@ class LinkedList:
                     ln += 1
 
                 current = current.next
+
         trail += "\n"
+
         return trail
