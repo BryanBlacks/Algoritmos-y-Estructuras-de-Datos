@@ -1,0 +1,4 @@
+strict digraph "" {
+	"C:" -> a;
+	"C:" -> b;
+}

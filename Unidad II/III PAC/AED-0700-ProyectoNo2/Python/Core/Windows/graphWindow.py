@@ -10,8 +10,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Graph(object):
     def __init__(self):
-        self.windowSizeX = 1000
-        self.windowSizeY = 512
+        self.windowSizeX = 650
+        self.windowSizeY = 400
 
     def setupUi(self, graph):
         graph.setObjectName("graph")

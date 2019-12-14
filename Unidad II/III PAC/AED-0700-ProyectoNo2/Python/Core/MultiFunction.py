@@ -59,7 +59,7 @@ MultiFunction (Almacen de comandos)
 """
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from Core.Windows.graphWindow import Graph
+from Core.Windows.GraphWindow import Graph
 from Core.TreeGraph.TDAGraph import TreeGraph
 from Core.TreeGraph.LinkedList import LinkedList
 
@@ -197,13 +197,15 @@ class Function:
         route = ""
 
         for node in array:
-
             nameRute = node.value.name
-            route = "%s/%s" % (route,nameRute)
+            if (nameRute == "C:"):
+                route = "%s%s" % (route, nameRute)
+            else:
+                route = "%s/%s" % (route, nameRute)
 
         route = "%s/" % route
 
-        print("\t\t%s" % (route))
+        return "%s" % (route)
 
     def ln(self, text):
         pos = text.find("/")
