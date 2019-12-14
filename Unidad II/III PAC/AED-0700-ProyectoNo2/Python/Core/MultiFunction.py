@@ -59,7 +59,6 @@ MultiFunction (Almacen de comandos)
 """
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from Core.Windows.graphWindow import Graph
 from Core.TreeGraph.TDAGraph import TreeGraph
 from Core.TreeGraph.LinkedList import LinkedList
 
@@ -68,7 +67,7 @@ list1 = LinkedList()
 
 class Function: 
     def __init__(self):
-        #Arreglo de rutas en las que se navega
+        #Arreglo de rutas en las que se navega.
         self.rootes = [graph.root]
         self.lnk = []
 
@@ -103,6 +102,7 @@ class Function:
             "\n\tSistema que gestiona archivos y carpetas en consola exclusivamente, almacenados en formato JSON.\n",
             "%s%s" % ("\t", "-" * 100)
         )
+
         print(header)
     
     def printError(self):
@@ -111,11 +111,12 @@ class Function:
             "\n\tEl comando ingresado es inválido. Corra el comando \"help\" para ayuda.\n",
             "%s%s" % ("\t", "*" * 100)
         )
+
         print(commandError)
 
     #Comandos de la consola
     def printHelp(self):
-        help = "\n%s%s%s%s%s%s%s%s%s%s%s%s%s%s\n" % (
+        help = "%s%s%s%s%s%s%s%s%s%s%s%s%s%s\n" % (
             #"%s%s" % ("\t", "-" * 100),
             "\tComandos:\n",
             "\n\t\thelp\n\n\t\t\t---> Ayuda.\n",
@@ -130,12 +131,13 @@ class Function:
             "\n\t\ttrash\n\n\t\t\t---> Lista de archivos y directorios borrados con su nombre y fecha.\n",
             "\n\t\tcd [RUTA]\n\n\t\t\t---> Para navergar en rutas.\n",
             "\n\t\tcd ..\n\n\t\t\t---> Para regresar a una ruta anterior a la actual.\n",
-            "\n\t\tfindfbe [EXTENSIÓN]\n\n\t\t\t---> Encontrar archivos por extensión.\n\n",
+            "\n\t\tfindfbe [EXTENSIÓN]\n\n\t\t\t---> Encontrar archivos por extensión.",
             #"%s%s" % ("\t", "-" * 100),
         )
         print(help)
 
     def plot(self):
+<<<<<<< HEAD
         """
         app = QtWidgets.QApplication([])
         self.window = QtWidgets.QMainWindow()
@@ -145,10 +147,13 @@ class Function:
         app.exec()
         """
         graph.plot(self.lnk)
+=======
+        graph.plot()
+>>>>>>> f749aac8eab6b125a978d48b2bb44ef4978e7871
     
     def mkdir(self, name):
         refer  = self.rootes[-1]
-        graph.add(name,"D", refer.value.name)
+        graph.add(name, "D", refer.value.name)
         
     def touch(self,name):
         refer = self.rootes[-1]
@@ -161,9 +166,9 @@ class Function:
         for i in text:
             newArray = []
             i = i.strip()
-
             space = i.find(" ")
-            if space == -1:
+
+            if (space == -1):
                 command, param = i[:],i[:]
             else: 
                 command, param = i[:space], i[space:]
@@ -175,18 +180,18 @@ class Function:
         return array
 
     def cd(self, nodeName):
-        if nodeName == "..":
+        if (nodeName == ".."):
             #condicional si esta en el root
-            if len(self.rootes) == 1:
+            if (len(self.rootes) == 1):
                 pass
             else:
                 self.rootes.pop()
         else:
             nodeName = graph.navegation(nodeName)
-            if nodeName.value.nodeType == "D":
+            if (nodeName.value.nodeType == "D"):
                 self.rootes.append(nodeName)
             else:
-                print("\n\t\tRuta no encontrada\n")
+                print("\n\t\tRuta no encontrada.\n")
 
         return True
 
@@ -198,13 +203,16 @@ class Function:
         route = ""
 
         for node in array:
-
             nameRute = node.value.name
-            route = "%s/%s" % (route,nameRute)
+            
+            if (nameRute == "C:"):
+                route = "%s%s" % (route, nameRute)
+            else:
+                route = "%s/%s" % (route, nameRute)
 
         route = "%s/" % route
 
-        print("\t\t%s" % (route))
+        return "%s" % (route)
 
     def ln(self, text):
         subarray = []
@@ -228,24 +236,25 @@ class Function:
 
         dir1 = graph.search(direc)
         
-        if file1 and dir1:
-            graph.add(name,"F",dir1.value.name)
+        if (file1 and dir1):
+            graph.add(name, "F", dir1.value.name)
         else:
             print("\t\tLa dirección o el archivo no existe en el árbol")
         
     def rm(self,name):
         refer = self.rootes[-1]
                     
-        if graph.remove(name,"F",refer.value.name):
+        if (graph.remove(name, "F", refer.value.name)):
             pass
         else:
             print("\t\tEl archivo que desea eliminar no existe")
 
     def rmdir(self,name):
         refer = self.rootes[-1]
-        #Solo funciona para carpetas con nombres diferentes
-        if graph.search(name):
-            graph.remove(name,"D",refer.value.name)
+
+        #Solo funciona para carpetas con nombres diferentes.
+        if (graph.search(name)):
+            graph.remove(name, "D", refer.value.name)
         else:
             print("\t\tEl directorio a eliminar no existe")
     
@@ -255,26 +264,26 @@ class Function:
         trail = ""
 
         while (current):
-            if current.value.nodeType is "D":
-                trail = "%s\t\tCarpeta %s\t fecha de eliminación: %s\n" % (trail,current.value.name,current.date) 
+            if (current.value.nodeType == "D"):
+                trail = "%s\t\tCarpeta %s\t fecha de eliminación: %s\n" % (trail, current.value.name, current.date) 
                 current = current.next
-
-            elif current.value.nodeType is "F":
-                trail = "%s\t\tArchivo %s\t fecha de eliminación: %s\n" % (trail,current.value.name,current.date) 
+            elif (current.value.nodeType == "F"):
+                trail = "%s\t\tArchivo %s\t fecha de eliminación: %s\n" % (trail, current.value.name, current.date) 
                 current = current.next
         
         print(trail)
 
     def findfbe(self, fileExtension):
-        listOfFiles = graph.searchByExtension(fileExtension,self.rootes[-1].value.edges.first)
-        trail = "\t\t"        
+        listOfFiles = graph.searchByExtension(fileExtension, self.rootes[-1].value.edges.first)
+        trail = "\t\t"    
+
         for fileName in listOfFiles:
-            trail += "%s%s%s" % ("\n","\t\t",fileName)
-        print("%s%s" % (trail,"\n"))
+            trail += "%s%s%s" % ("\n", "\t\t", fileName)
 
-    def save(self, rute):
+        print("%s%s" % (trail, "\n"))
 
-        graph.saveJson(rute)
+    def save(self, route):
+        graph.saveJson(route)
 
-    def read(self, rute):
-        graph.readJson(rute)
+    def read(self, route):
+        graph.readJson(route)

@@ -32,30 +32,30 @@ TDAGraph (Grafo)
 
 import datetime
 import json
+import networkx as nx
+from networkx.drawing.nx_agraph import write_dot, graphviz_layout
+import matplotlib.pyplot as plt
+
 from Core.TreeGraph.Compare import Compare
 from Core.TreeGraph.Node import Node
 from Core.TreeGraph.LinkedList import LinkedList
 from Core.TreeGraph.Vertex import Vertex
 from Core.TreeGraph.JSON import Json
-import networkx as nx
-from networkx.drawing.nx_agraph import write_dot, graphviz_layout
-import matplotlib.pyplot as plt
 
 G = nx.DiGraph()
 
 class TreeGraph:
     def __init__(self):
         #Ruta raiz del gestor de archivos.
-        self.root = Node(Vertex("C:","D"), None, None)
+        self.root = Node(Vertex("C:", "D"), None, None)
         #Papelera de reciclaje.
         self.trash = LinkedList()
         self.json = None
 
     def add(self, name, type_, reference = None):
-        if(not reference):
+        if (not reference):
             parentNode = self.root
             parentNode.value.edges.addList(Vertex(name, type_))
-
         else:
             parent = self.search(reference)
             parent.value.edges.addList(Vertex(name, type_))
@@ -65,44 +65,41 @@ class TreeGraph:
         comp = Compare()
 
         if (not current):
-            current=  self.root
+            current = self.root
 
         if (current.next):
             if (comp.compare(current.value.name, value)):
                 return current
-
             else:
                 #El directorio se interpretará como "D"
-                if(current.value.nodeType == 'D'):
+                if (current.value.nodeType == 'D'):
                     if (current.value.edges.first):
                         if (self.search(value, current.value.edges.first)):
                             current = current.value.edges.first
-                            return self.search(value, current)
 
+                            return self.search(value, current)
                         else:
                             current = current.next
-                            return self.search(value, current)
 
+                            return self.search(value, current)
                     else:
                         current = current.next
-                        return self.search(value, current)
 
+                        return self.search(value, current)
                 else:
                     current = current.next
+
                     return self.search(value, current)
-
         else:
-
-            if(comp.compare(current.value.name, value)):
+            if (comp.compare(current.value.name, value)):
                 return current
-
             else:                
-                if(current.value.nodeType == 'D'):
-                    if(current.value.edges.first):
-                        if(self.search(value,current.value.edges.first)):
+                if (current.value.nodeType == 'D'):
+                    if (current.value.edges.first):
+                        if (self.search(value, current.value.edges.first)):
                             current = current.value.edges.first
-                            return self.search(value, current)
 
+                            return self.search(value, current)
                         else:
                             return None
                     else:
@@ -118,35 +115,42 @@ class TreeGraph:
         if node:
             date1= datetime.datetime.now()
 
+<<<<<<< HEAD
             #nodeDelete = Node(node.value,date,parent)
             self.trash.addList(value=node.value,date=date1,parent=parent1)
             return True
+=======
+        #nodeDelete = Node(node.value,date,parent)
+        self.trash.addList(value = node.value, date = date1, parent = parent1)
+>>>>>>> f749aac8eab6b125a978d48b2bb44ef4978e7871
         
         else: return False
 
     def navegation(self, name):
         present = self.search(name)
-        if present:
+
+        if (present):
             return present
 
         return False
     
-    def searchByExtension(self,fileExtension,current):
+    def searchByExtension(self, fileExtension, current):
         compare = Compare()
 
         files = []
 
-        while current:
-            if current.value.nodeType == 'F':
+        while (current):
+            if (current.value.nodeType == 'F'):
                 name = (current.value.name).partition(".")
-                if compare.compare(str(name[2]),fileExtension):
+
+                if compare.compare(str(name[2]), fileExtension):
                     files.append("".join(name))
+
             current = current.next
 
         return files[:] 
                           
     def convertJson(self):
-
         self.json = Json({})
         current = self.root
 
@@ -155,100 +159,105 @@ class TreeGraph:
         return self.convertInner(current)
 
     def convertInner(self, current, parent = None):
-
-        if parent:
+        if (parent):
             self.json.add(current.value.name, current.value.nodeType, parent.value.name)
         
         children = self.array(current)
+
         for node in children:
             parent1 = current
             self.convertInner(node, parent1)
+
         return True
 
     def array(self, current):
-        
         array = []
         son = current.value.edges.first
 
-        while son:
+        while (son):
             array.append(son)
             son = son.next
         
         return array
 
     def saveJson(self, rute):
-
         self.convertJson()
         
-        f = open(rute,"w")
+        f = open(rute, "w")
         #f.write("self.json.json")
         f.write("%s"%(self.json.json))
 
         f.close()
 
-    def readJson(self, rute= None):
-        
-        f = open(rute,'r')
+    def readJson(self, rute = None):
+        f = open(rute, 'r')
         s = f.read()
-        s = s.replace('\t','')
-        s = s.replace('\n','')
-        s = s.replace("'",'"')
+        s = s.replace('\t', '')
+        s = s.replace('\n', '')
+        s = s.replace("'", '"')
         jsonx = json.loads(s)
 
         f.close()
-        for k,v in jsonx.items():
+
+        for k, v in jsonx.items():
             root = k
             d = v
+
             break
 
-        self.JsonToTree(d,root)
+        self.JsonToTree(d, root)
 
     def JsonToTree(self,json, parent):
         #parent = C:
         #json = {'c1': {'q7': {}, 'q8': {'96': 'F'}}, 'c2': {'ae5': {}}, 'a5': 'F'}
-        for k,v in json.items():
-
-            if isinstance(v,dict):
-                self.add(k,"D",parent)
-                self.JsonToTree(v,k)
-                
+        for k, v in json.items():
+            if (isinstance(v, dict)):
+                self.add(k, "D", parent)
+                self.JsonToTree(v, k)
             else:
-                self.add(k,"F",parent)
+                self.add(k, "F", parent)
 
         return True
+<<<<<<< HEAD
             
 
                 
     def plot(self, array):
         
         self.convertJson()
+=======
+
+    def plot(self):
+>>>>>>> f749aac8eab6b125a978d48b2bb44ef4978e7871
         json = self.json.json
         self.plotInner(json)
 
+<<<<<<< HEAD
         for i in array:
             G.add_edge(i[0],i[1])
 
         write_dot(G,'Memory/test.dot')
         pos = graphviz_layout(G, prog='dot')
         nx.draw(G,pos, with_labels=True, arrows=True)
+=======
+        write_dot(G, 'Memory/test.dot')
+        pos = graphviz_layout(G, prog = 'dot')
+        nx.draw(G, pos, with_labels = True, arrows = True)
+>>>>>>> f749aac8eab6b125a978d48b2bb44ef4978e7871
 
         plt.show()
 
-    def plotInner(self,j, parent=None):
-
-        for k,v in j.items():
-
-            if not parent: G.add_node(k)
-            else: G.add_edge(parent,k)
+    def plotInner(self,j, parent = None):
+        for k, v in j.items():
+            if (not parent): G.add_node(k)
+            else: G.add_edge(parent, k)
             
-            if isinstance(v,dict):
-                for a,b in v.items():
-                    if isinstance(b,dict):
-                        G.add_edge(k,a)
-                        self.plotInner(b,a)
-                    else: G.add_edge(k,a)
+            if (isinstance(v, dict)):
+                for a, b in v.items():
+                    if (isinstance(b, dict)):
+                        G.add_edge(k, a)
+                        self.plotInner(b, a)
+                    else: G.add_edge(k, a)
         
-        return True
-
-        
+        return True    
         

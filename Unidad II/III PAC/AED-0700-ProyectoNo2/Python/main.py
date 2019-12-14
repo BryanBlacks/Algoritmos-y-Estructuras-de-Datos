@@ -21,9 +21,10 @@ multiFunction.printHeader()
 centinel = True
 multiFunction.read("Memory/ArchivoJson.json")
 
-while(centinel):
+while (centinel):
     #Captura del comando por medio de una cadena.
-    command = input("\t$ ")
+    lineCommandRoute = multiFunction.pwd()
+    command = input("\t%s $ " % (lineCommandRoute))
     
     if (command == None or command == ""):
         pass
@@ -55,7 +56,8 @@ while(centinel):
             elif (command[0] == "pwd"):
                 #Imprime la ruta del nodo actual del árbol.
                 if (command[1] == "pwd"):
-                    multiFunction.pwd()
+                    route = multiFunction.pwd()
+                    print("\n\t\t%s\n" % (route))
                 else:
                     multiFunction.printError()
 
@@ -70,17 +72,16 @@ while(centinel):
                 #Crea un Nodo de tipo archivo.
                 #Captura de parametro.
                 if command[1] == "touch":
-                    print("\t\tDebe de ingresar un nombre")
+                    print("\n\t\tDebe de ingresar un nombre\n")
                 else:
                     multiFunction.touch(command[1])
                     multiFunction.save("Memory/ArchivoJson.json")
-
 
             elif (command[0] == "mkdir"):
                 #Crea un Nodo de tipo directorio.
                 #Captura de parametro.
                 if command[1] == "mkdir":
-                    print("\t\tDebe de ingresar un nombre")
+                    print("\n\t\tDebe de ingresar un nombre\n")
                 else:
                     multiFunction.mkdir(command[1])
                     multiFunction.save("Memory/ArchivoJson.json")
@@ -108,7 +109,7 @@ while(centinel):
                 #Elimina un Nodo de tipo archivo del árbol.
                 #Captura de parametro.
                 if command[1] == "rm":
-                    print("\t\tDebe de ingresar un nombre")
+                    print("\n\t\tDebe de ingresar un nombre\n")
                 else:
                     multiFunction.rm(command[1])
                     multiFunction.save("Memory/ArchivoJson.json")
@@ -117,15 +118,14 @@ while(centinel):
                 #Elimina un Nodo de tipo directorio del árbol.
                 #Captura de parametro.
                 if command[1] == "rmdir":
-                    print("\t\tDebe de ingresar un nombre")
+                    print("\n\t\tDebe de ingresar un nombre\n")
                 else:
                     multiFunction.rmdir(command[1])
                     multiFunction.save("Memory/ArchivoJson.json")
 
             elif (command[0] == "findfbe"):
                 #Encuentra archivos por extensión en el árbol.
-                multiFunction.findfbe(command[1])
-                
+                multiFunction.findfbe(command[1])  
 
             elif (command[0] == "exit"):
                 #Sale del programa rompiendo el ciclo infinito.
