@@ -115,14 +115,9 @@ class TreeGraph:
         if node:
             date1= datetime.datetime.now()
 
-<<<<<<< HEAD
             #nodeDelete = Node(node.value,date,parent)
             self.trash.addList(value=node.value,date=date1,parent=parent1)
             return True
-=======
-        #nodeDelete = Node(node.value,date,parent)
-        self.trash.addList(value = node.value, date = date1, parent = parent1)
->>>>>>> f749aac8eab6b125a978d48b2bb44ef4978e7871
         
         else: return False
 
@@ -218,32 +213,21 @@ class TreeGraph:
                 self.add(k, "F", parent)
 
         return True
-<<<<<<< HEAD
             
 
                 
     def plot(self, array):
         
         self.convertJson()
-=======
-
-    def plot(self):
->>>>>>> f749aac8eab6b125a978d48b2bb44ef4978e7871
         json = self.json.json
         self.plotInner(json)
 
-<<<<<<< HEAD
         for i in array:
             G.add_edge(i[0],i[1])
 
         write_dot(G,'Memory/test.dot')
         pos = graphviz_layout(G, prog='dot')
         nx.draw(G,pos, with_labels=True, arrows=True)
-=======
-        write_dot(G, 'Memory/test.dot')
-        pos = graphviz_layout(G, prog = 'dot')
-        nx.draw(G, pos, with_labels = True, arrows = True)
->>>>>>> f749aac8eab6b125a978d48b2bb44ef4978e7871
 
         plt.show()
 

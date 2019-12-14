@@ -137,19 +137,7 @@ class Function:
         print(help)
 
     def plot(self):
-<<<<<<< HEAD
-        """
-        app = QtWidgets.QApplication([])
-        self.window = QtWidgets.QMainWindow()
-        self.goWindow = Graph()
-        self.goWindow.setupUi(self.window)
-        self.window.show()
-        app.exec()
-        """
         graph.plot(self.lnk)
-=======
-        graph.plot()
->>>>>>> f749aac8eab6b125a978d48b2bb44ef4978e7871
     
     def mkdir(self, name):
         refer  = self.rootes[-1]

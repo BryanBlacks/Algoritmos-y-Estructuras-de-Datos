@@ -1,24 +1,10 @@
 strict digraph "" {
-<<<<<<< HEAD
 	"C:" -> c1;
 	"C:" -> c2;
 	"C:" -> "96.lnk";
 	"C:" -> a5;
 	c1 -> q7;
 	c1 -> q8;
-=======
-	"C:" -> adios;
-	"C:" -> c1;
-	"C:" -> c2;
-	"C:" -> hola;
-	"C:" -> a5;
-	"C:" -> "dia.py";
-	"C:" -> "noche.py";
-	c1 -> q7;
-	c1 -> q8;
-	q7 -> "libro.pdf";
-	q7 -> "new.py";
->>>>>>> f749aac8eab6b125a978d48b2bb44ef4978e7871
 	q8 -> 96;
 	c2 -> ae5;
 }
