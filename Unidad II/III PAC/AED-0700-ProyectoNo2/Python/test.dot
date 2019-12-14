@@ -1,4 +1,10 @@
 strict digraph "" {
-	"C:" -> a;
-	"C:" -> b;
+	"C:" -> c1;
+	"C:" -> c2;
+	"C:" -> a1;
+	"C:" -> a2;
+	c1 -> ca0;
+	c1 -> ar0;
+	c2 -> te1;
+	te1 -> alfalfa;
 }
