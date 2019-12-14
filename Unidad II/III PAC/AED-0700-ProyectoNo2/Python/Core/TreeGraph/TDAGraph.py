@@ -199,14 +199,24 @@ class TreeGraph:
             d = v
             break
 
-        #self.JsonToTree(d,root)
+        self.JsonToTree(d,root)
 
     def JsonToTree(self,json, parent):
-
+        #parent = C:
+        #json = {'c1': {'q7': {}, 'q8': {'96': 'F'}}, 'c2': {'ae5': {}}, 'a5': 'F'}
         for k,v in json.items():
 
             if isinstance(v,dict):
-                pass
+                self.add(k,"D",parent)
+                self.JsonToTree(v,k)
+                
+            else:
+                self.add(k,"F",parent)
+
+        return True
+            
+
+                
     
 
     def plot(self):
