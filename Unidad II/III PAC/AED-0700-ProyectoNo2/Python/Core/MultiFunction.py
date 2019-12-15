@@ -70,6 +70,7 @@ from Core.TreeGraph.LinkedList import LinkedList
 
 graph = TreeGraph()
 list1 = LinkedList()
+trashlist = graph.csvToLinked("Memory/Trash.csv")
 
 class Function: 
     def __init__(self):
@@ -261,7 +262,9 @@ class Function:
             print("\t\tEl directorio a eliminar no existe")
     
     def trash(self):
+        listTrash = graph.trash
         print(graph.trash.print("trash"))
+        graph.toCsv(listTrash,"Memory/Trash.csv")
 
     def findfbe(self, fileExtension):
         listOfFiles = graph.searchByExtension(fileExtension, self.rootes[-1].value.edges.first)
@@ -282,6 +285,3 @@ class Function:
     
     def lnk(self, route):
         graph.readLnk(route)
-
-    def clear(self):
-        print("\n" * 100)
