@@ -248,7 +248,15 @@ class Function:
         refer = self.rootes[-1]
                     
         if (graph.remove(name, "F", refer.value.name)):
-            pass
+            
+            array = graph.lnk
+            count = 0
+            for i in array:
+                if i[0] == name:
+                    a = count
+                    break
+                count +=1
+            graph.lnk.pop(a)
         else:
             print("\t\tEl archivo que desea eliminar no existe")
 
@@ -262,24 +270,7 @@ class Function:
             print("\t\tEl directorio a eliminar no existe")
     
     def trash(self):
-<<<<<<< HEAD
-        list1 = graph.trash
-        current = list1.first
-        trail = ""
-
-        while (current):
-            if (current.value.nodeType == "D"):
-                trail = "%s\t\tCarpeta %s\t fecha de eliminación: %s\n" % (trail, current.value.name, current.date) 
-                current = current.next
-            elif (current.value.nodeType == "F"):
-                trail = "%s\t\tArchivo %s\t fecha de eliminación: %s\n" % (trail, current.value.name, current.date) 
-                current = current.next
-        
-        print(trail)
-        graph.toCsv(list1,"Memory/Trash.csv")
-=======
         print(graph.trash.print("trash"))
->>>>>>> d6d4aa078a2fab73ac00da3ede4ce10ac5084001
 
     def findfbe(self, fileExtension):
         listOfFiles = graph.searchByExtension(fileExtension, self.rootes[-1].value.edges.first)
