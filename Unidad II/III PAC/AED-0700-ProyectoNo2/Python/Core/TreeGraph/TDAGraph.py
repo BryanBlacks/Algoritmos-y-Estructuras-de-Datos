@@ -12,20 +12,47 @@ TDAGraph (Grafo)
     almacen de los subdirectorios y archivos hijos del mismo, es decir, esta lista serán las aristas del árbol.
 
 * Método "search"
-    Este método recursivo busca una coincidencia del valor recibido como parámetro con cada uno de los elementos en
-    el árbol, retornando así un nodo para luego ser tratado u procesado durante la ejecución del programa.
+    Este método recursivo busca una coincidencia del valor recibido como parámetro con cada uno de los elementos
+    en el árbol, retornando así un nodo para luego ser tratado u procesado durante la ejecución del programa.
 
 * Método "remove"
     Este método remueve un directorio o archivo del árbol, utilizando la misma función de la lista enlazada.
+    Este método servirá para los siguentes comandos: "rm", "rmdir" "trash"
 
 * Método "navegation"
     Este método buscará dentro del árbol, utilizando la función "search", para obtener una arista especifica 
-    que es requerida por el usuario, y que es buscada por el nombre de la arista a encontrar.
+    que es requerida por el usuario, y que es buscada por el nombre de la arista a encontrar. Este método
+    servirá para los siguentes comandos: "cd", "cd .."
 
 * Método "searchByExtension"
     Este método busca dentro del árbol, en cada una de sus subdirectorios, los archivos cuya extensión 
     concuerden con la entrada obtendina del usuario.
 
+* Método "convertJson"
+    Este método llama a una función interna llamada "convertInner". 
+
+* Método "convertInner"
+    Este método convierte el grafo a JSON.
+
+* Método "array"
+    Este método retorna un arreglo con los nombres de los directorios y carpetas en el grafo.
+
+* Método "saveJson"
+    Este método guarda en le JSON los archivos y carpetas en el grafo.
+
+* Método "ReadJson"
+    Este método lee el archivo JSON almacenado en disco para luego convertir la informació obtenida en un grafo. 
+
+* Método "JsonToTree"
+    este método convierte el contendio del archivo JSON en un grafo.
+
+* Método "plot"
+    Este método llama a una función interna llamada "plotInner" para construir el grafo utlizando matplotlib
+    para su posetriror visualización en la pantalla. 
+
+* Método "plotInner"
+    Este método construye el un grafo utlizando mapplotlib, pasandole cada uno de los datos que componen dicha
+    estructura.
 
 ---------------------------------------------------------------------------------------------------------------------
 """
@@ -50,15 +77,18 @@ class TreeGraph:
         self.root = Node(Vertex("C:", "D"), None, None)
         #Papelera de reciclaje.
         self.trash = LinkedList()
+        self.lnk = []
         self.json = None
 
     def add(self, name, type_, reference = None):
         if (not reference):
             parentNode = self.root
-            parentNode.value.edges.addList(Vertex(name, type_))
+            date1 = datetime.datetime.now()
+            parentNode.value.edges.addList(Vertex(name, type_), date = date1)
         else:
             parent = self.search(reference)
-            parent.value.edges.addList(Vertex(name, type_))
+            date1 = datetime.datetime.now()
+            parent.value.edges.addList(Vertex(name, type_), date = date1)
         
     # Se busca en el arbol el nodo a tratar(value = nombre de carpeta)
     def search(self, value, current = None):
@@ -108,15 +138,21 @@ class TreeGraph:
                     return None
  
     # se borra de la ruta actual(carpeta actual) que es reference, el nodo(value)
-    def remove(self, value,type_, reference = None):
+    def remove(self, value, type_, reference = None):
         parent1 = self.search(reference)
         
         node = parent1.value.edges.pop(value, type_)
-        if node:
-            date1= datetime.datetime.now()
+
+        if (node):
+            date1 = datetime.datetime.now()
 
             #nodeDelete = Node(node.value,date,parent)
+<<<<<<< HEAD
             self.trash.addList(value=node.value,date=date1,parent=parent1.value.name)
+=======
+            self.trash.addList(value = node.value, date = date1, parent = parent1)
+
+>>>>>>> d6d4aa078a2fab73ac00da3ede4ce10ac5084001
             return True
         
         else: return False
@@ -180,7 +216,7 @@ class TreeGraph:
         
         f = open(rute, "w")
         #f.write("self.json.json")
-        f.write("%s"%(self.json.json))
+        f.write("%s" % (self.json.json))
 
         f.close()
 
@@ -202,7 +238,7 @@ class TreeGraph:
 
         self.JsonToTree(d, root)
 
-    def JsonToTree(self,json, parent):
+    def JsonToTree(self, json, parent):
         #parent = C:
         #json = {'c1': {'q7': {}, 'q8': {'96': 'F'}}, 'c2': {'ae5': {}}, 'a5': 'F'}
         for k, v in json.items():
@@ -213,25 +249,22 @@ class TreeGraph:
                 self.add(k, "F", parent)
 
         return True
-            
-
                 
     def plot(self, array):
-        
         self.convertJson()
         json = self.json.json
         self.plotInner(json)
 
         for i in array:
-            G.add_edge(i[0],i[1])
+            G.add_edge(i[0], i[1])
 
-        write_dot(G,'Memory/test.dot')
-        pos = graphviz_layout(G, prog='dot')
-        nx.draw(G,pos, with_labels=True, arrows=True)
+        write_dot(G, 'Memory/test.dot')
+        pos = graphviz_layout(G, prog = 'dot')
+        nx.draw(G, pos, with_labels = True, arrows = True)
 
         plt.show()
 
-    def plotInner(self,j, parent = None):
+    def plotInner(self, j, parent = None):
         for k, v in j.items():
             if (not parent): G.add_node(k)
             else: G.add_edge(parent, k)
@@ -246,6 +279,7 @@ class TreeGraph:
         
         return True    
         
+<<<<<<< HEAD
     def toCsv(self,listTrash,filename):
         current = listTrash.first
         csv = "Nombre, Tipo, Fecha, Directorio Origen\n"
@@ -278,3 +312,29 @@ class TreeGraph:
             self.trash.addList(value =newVertex,date=str(pd[i][2]),parent=newParent.value.name)
         
         
+=======
+    def saveLnk(self,ls):
+        array = ls
+        txt=""
+        for i in range(len(array)):
+            txt = "%s%s,%s\n" % (txt,array[i][0],array[i][1])
+
+        f = open("Memory/Lnk.csv","a")
+        f.write(txt)
+        f.close()
+
+    def readLnk(self, rute):
+        
+
+        r = open("Memory/Lnk.csv",'r')
+        f = r.read()
+        f = f.split("\n")
+        r.close()
+
+        for i in range(len(f)-1):
+            array = f[i].split(",")
+            self.lnk.append(array)
+            
+        
+        return True
+>>>>>>> d6d4aa078a2fab73ac00da3ede4ce10ac5084001

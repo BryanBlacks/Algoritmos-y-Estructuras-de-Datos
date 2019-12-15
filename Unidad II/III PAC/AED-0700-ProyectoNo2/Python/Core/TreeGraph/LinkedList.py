@@ -8,7 +8,8 @@ LinkedList (Lista enlazada)
 * Método "addList"
     Este método agrega jerárquicamente en orden ascendente (siendo la carpetas antes que los archivos) un directorio
     (D) o un archivo (F), verifcando primero si existe ya un directorio o archivo con el mismo nombre, si es así,
-    muestra un mensaje indicandole al usario que no se puede agregar un elemento con el mismo nombre.
+    muestra un mensaje indicandole al usario que no se puede agregar un elemento con el mismo nombre. Este
+    método servirá para los siguentes comandos: "mkdir", "touch" y "ln".
 
 * Método "alreadyExist"
     Este método verifica si ya existe una carpeta o un archivo con el mismo nombre.
@@ -19,12 +20,12 @@ LinkedList (Lista enlazada)
 * Método "pop"
     Este método busca un nodo cuyo valor es el nombre del directorio o archivo, si determina que existe dicho valor,
     lo guarda en una variable temporal,lo elimina y retorna ese elemento eliminado guardado previamente en la
-    variable temporal.
+    variable temporal. Este método servirá para los siguientes comandos: "rm" y "rmdir".
 
 * Método "print"
     Este método retorna una cadena con formato, los valores de cada uno de los nodos de la lista enlazada,
-    previamente ordenados mediante jerarquía alfabética y tipo de elemento (carpeta o archivo).
-
+    previamente ordenados mediante jerarquía alfabética y tipo de elemento (carpeta o archivo). Este método
+    servirá para las siguentes comandos: "ls", "ls -1" y "trash".
 ---------------------------------------------------------------------------------------------------------------------
 """
 
@@ -144,7 +145,7 @@ class LinkedList:
             current = self.first
 
             while (current):
-                if current.value.name == value:
+                if (current.value.name == value):
                     return current
 
                 current = current.next
@@ -178,20 +179,53 @@ class LinkedList:
 
                 return False
 
-    def print(self, typeLs = None):
+    def print(self, typeList = None):
         trail = "\n\t\t"
 
         current = self.first
         
         #Valida la existencia de un parametro.
-        if (typeLs == "-1"):
+        if (typeList == "-1"):
+            trail += "%s\n%s\n\t\t" % (
+                "{:46}| {:8}| {:38}".format("Elemento", "Tipo", "Fecha de creación"),
+                "%s%s" % ("\t\t", "-" * 92)
+            )
+
             #Construye una lista vertical.
             while (current):
+                typeElemnt = ""
+
+                if (current.value.nodeType == "D"):
+                    typeElemnt = "Carpeta"
+                elif (current.value.nodeType == "F"):
+                    typeElemnt = "Archivo"
+
                 if (current.next):
-                    trail += "{:96}\n\t\t".format(current.value.name)
+                    trail += "{:46}| {:8}| {:38}\n\t\t".format(current.value.name, typeElemnt, "%s" % (current.date))
                 else:
-                    trail += "{:96}".format(current.value.name)
+                    trail += "{:46}| {:8}| {:38}".format(current.value.name, typeElemnt, "%s" % (current.date))
                 
+                current = current.next
+        elif (typeList == "trash"):
+            trail += "%s\n%s\n\t\t" % (
+                "{:46}| {:8}| {:38}".format("Elemento", "Tipo", "Fecha de eliminación"),
+                "%s%s" % ("\t\t", "-" * 92)
+            )
+
+            #Construye una lista vertical.
+            while (current):
+                typeElemnt = ""
+
+                if (current.value.nodeType == "D"):
+                    typeElemnt = "Carpeta"
+                elif (current.value.nodeType == "F"):
+                    typeElemnt = "Archivo"
+
+                if (current.next):
+                    trail += "{:46}| {:8}| {:38}\n\t\t".format(current.value.name, typeElemnt, "%s" % (current.date))
+                else:
+                    trail += "{:46}| {:8}| {:38}".format(current.value.name, typeElemnt, "%s" % (current.date))
+
                 current = current.next
         else:
             #Construye una lista horizontal.
@@ -199,8 +233,12 @@ class LinkedList:
             
             while (current):
                 if (ln == 4):
-                    #Asigna un ancho mínimo por cada valor de los nodos.
-                    trail += "{:23}\n\t\t".format(current.value.name)
+                    if (current.next):
+                        #Asigna un ancho mínimo por cada valor de los nodos.
+                        trail += "{:23}\n\t\t".format(current.value.name)
+                    else:
+                        trail += "{:23}".format(current.value.name)
+
                     ln = 1
                 else:
                     trail += "{:23}".format(current.value.name)

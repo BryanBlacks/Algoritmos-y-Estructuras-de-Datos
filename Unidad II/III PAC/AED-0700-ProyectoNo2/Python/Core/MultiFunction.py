@@ -55,6 +55,12 @@ MultiFunction (Almacen de comandos)
 * Comando "findbe"
     Este comando .
 
+* Método "save"
+    Este método guarda la ruta en el archivo JSON, previamente creado e instanciado.
+
+* Métod "read"
+    Este método lee la ruta en el archivo JSON, previamente creado e instanciado.
+
 ---------------------------------------------------------------------------------------------------------------------
 """
 
@@ -70,7 +76,8 @@ class Function:
     def __init__(self):
         #Arreglo de rutas en las que se navega.
         self.rootes = [graph.root]
-        self.lnk = []
+        self.lk=[]
+        
 
     def printHeader(self):
         logo = "%s%s%s%s%s%s%s%s%s%s%s%s%s" % (
@@ -138,16 +145,17 @@ class Function:
         print(help)
 
     def plot(self):
-        graph.plot(self.lnk)
+        graph.plot(graph.lnk)
     
     def mkdir(self, name):
         refer  = self.rootes[-1]
         graph.add(name, "D", refer.value.name)
         
-    def touch(self,name):
+    def touch(self, name):
         refer = self.rootes[-1]
         graph.add(name, "F", refer.value.name)
     
+    #Tratamiento de la cadena ingresada a un comando sportado por el sistema.
     def info(self, text):
         text = text.split(";")
         array = []
@@ -177,6 +185,7 @@ class Function:
                 self.rootes.pop()
         else:
             nodeName = graph.navegation(nodeName)
+
             if (nodeName.value.nodeType == "D"):
                 self.rootes.append(nodeName)
             else:
@@ -203,6 +212,7 @@ class Function:
 
         return "%s" % (route)
 
+    #El parámetro debe ser una ruta de archivo obligatoriamente.
     def ln(self, text):
         subarray = []
         text = text.split("/")
@@ -214,6 +224,7 @@ class Function:
 
         file1 = self.rootes[-1].value.edges.search(copyfile)
         pos = (file1.value.name).find(".")
+        
         if pos == -1:
             name = "%s.lnk" % file1.value.name
         else:
@@ -221,7 +232,10 @@ class Function:
 
         subarray.append(name)
         subarray.append(file1.value.name)
-        self.lnk.append(subarray)
+        self.lk.append(subarray)
+        graph.lnk = self.lk
+        #print(graph.lnk)
+        graph.saveLnk(graph.lnk)
 
         dir1 = graph.search(direc)
         
@@ -230,7 +244,7 @@ class Function:
         else:
             print("\t\tLa dirección o el archivo no existe en el árbol")
         
-    def rm(self,name):
+    def rm(self, name):
         refer = self.rootes[-1]
                     
         if (graph.remove(name, "F", refer.value.name)):
@@ -238,7 +252,7 @@ class Function:
         else:
             print("\t\tEl archivo que desea eliminar no existe")
 
-    def rmdir(self,name):
+    def rmdir(self, name):
         refer = self.rootes[-1]
 
         #Solo funciona para carpetas con nombres diferentes.
@@ -248,6 +262,7 @@ class Function:
             print("\t\tEl directorio a eliminar no existe")
     
     def trash(self):
+<<<<<<< HEAD
         list1 = graph.trash
         current = list1.first
         trail = ""
@@ -262,6 +277,9 @@ class Function:
         
         print(trail)
         graph.toCsv(list1,"Memory/Trash.csv")
+=======
+        print(graph.trash.print("trash"))
+>>>>>>> d6d4aa078a2fab73ac00da3ede4ce10ac5084001
 
     def findfbe(self, fileExtension):
         listOfFiles = graph.searchByExtension(fileExtension, self.rootes[-1].value.edges.first)
@@ -272,8 +290,16 @@ class Function:
 
         print("%s%s" % (trail, "\n"))
 
+    #guarda la ruta en le JSON.
     def save(self, route):
         graph.saveJson(route)
 
+    #Lee la ruta en el JSON.
     def read(self, route):
         graph.readJson(route)
+    
+    def lnk(self, route):
+        graph.readLnk(route)
+
+    def clear(self):
+        print("\n" * 100)
