@@ -64,6 +64,7 @@ from Core.TreeGraph.LinkedList import LinkedList
 
 graph = TreeGraph()
 list1 = LinkedList()
+trashlist = graph.csvToLinked("Memory/Trash.csv")
 
 class Function: 
     def __init__(self):
@@ -260,6 +261,7 @@ class Function:
                 current = current.next
         
         print(trail)
+        graph.toCsv(list1,"Memory/Trash.csv")
 
     def findfbe(self, fileExtension):
         listOfFiles = graph.searchByExtension(fileExtension, self.rootes[-1].value.edges.first)

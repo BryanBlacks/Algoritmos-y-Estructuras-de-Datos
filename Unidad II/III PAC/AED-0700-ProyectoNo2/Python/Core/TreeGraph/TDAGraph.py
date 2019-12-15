@@ -116,7 +116,7 @@ class TreeGraph:
             date1= datetime.datetime.now()
 
             #nodeDelete = Node(node.value,date,parent)
-            self.trash.addList(value=node.value,date=date1,parent=parent1)
+            self.trash.addList(value=node.value,date=date1,parent=parent1.value.name)
             return True
         
         else: return False
@@ -242,6 +242,39 @@ class TreeGraph:
                         G.add_edge(k, a)
                         self.plotInner(b, a)
                     else: G.add_edge(k, a)
+
         
         return True    
+        
+    def toCsv(self,listTrash,filename):
+        current = listTrash.first
+        csv = "Nombre, Tipo, Fecha, Directorio Origen\n"
+
+        while(current):
+            csv = "%s%s,%s,%s,%s%s"%(csv,current.value.name,current.value.nodeType,current.date,current.parent,"\n") 
+            current = current.next
+
+        file1 = open(filename,"w")
+        file1.write(csv)
+        file1.close()
+
+    def csvToLinked(self,file1):
+        pd=[]
+        con = open(file1,"r")
+        contenc = con.read()
+        rows = contenc.split("\n")
+        con.close()
+        for row in rows:
+            cont = row.split(",")
+            pd.append(cont)
+        
+        #nodeDelete = Node(node.value,date,parent)
+        
+        for i in range(1,len(pd)-1):
+            newVertex = Vertex(str(pd[i][0]),str(pd[i][1]))
+            print(pd[i][3])
+            newParent = self.search(pd[i][3])
+
+            self.trash.addList(value =newVertex,date=str(pd[i][2]),parent=newParent.value.name)
+        
         
