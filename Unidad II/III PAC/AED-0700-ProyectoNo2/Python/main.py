@@ -20,6 +20,7 @@ multiFunction = Function()
 multiFunction.clear()
 multiFunction.printHeader()
 centinel = True
+multiFunction.lnk("Memory/Lnk.csv")
 multiFunction.read("Memory/ArchivoJson.json")
 
 while (centinel):

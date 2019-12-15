@@ -75,7 +75,8 @@ class Function:
     def __init__(self):
         #Arreglo de rutas en las que se navega.
         self.rootes = [graph.root]
-        self.lnk = []
+        self.lk=[]
+        
 
     def printHeader(self):
         logo = "%s%s%s%s%s%s%s%s%s%s%s%s%s" % (
@@ -143,7 +144,7 @@ class Function:
         print(help)
 
     def plot(self):
-        graph.plot(self.lnk)
+        graph.plot(graph.lnk)
     
     def mkdir(self, name):
         refer  = self.rootes[-1]
@@ -230,7 +231,10 @@ class Function:
 
         subarray.append(name)
         subarray.append(file1.value.name)
-        self.lnk.append(subarray)
+        self.lk.append(subarray)
+        graph.lnk = self.lk
+        #print(graph.lnk)
+        graph.saveLnk(graph.lnk)
 
         dir1 = graph.search(direc)
         
@@ -275,6 +279,9 @@ class Function:
     #Lee la ruta en el JSON.
     def read(self, route):
         graph.readJson(route)
+    
+    def lnk(self, route):
+        graph.readLnk(route)
 
     def clear(self):
         print("\n" * 100)

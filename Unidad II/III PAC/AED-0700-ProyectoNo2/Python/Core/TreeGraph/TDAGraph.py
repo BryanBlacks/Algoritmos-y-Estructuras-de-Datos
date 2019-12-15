@@ -77,6 +77,7 @@ class TreeGraph:
         self.root = Node(Vertex("C:", "D"), None, None)
         #Papelera de reciclaje.
         self.trash = LinkedList()
+        self.lnk = []
         self.json = None
 
     def add(self, name, type_, reference = None):
@@ -273,3 +274,27 @@ class TreeGraph:
         
         return True    
         
+    def saveLnk(self,ls):
+        array = ls
+        txt=""
+        for i in range(len(array)):
+            txt = "%s%s,%s\n" % (txt,array[i][0],array[i][1])
+
+        f = open("Memory/Lnk.csv","a")
+        f.write(txt)
+        f.close()
+
+    def readLnk(self, rute):
+        
+
+        r = open("Memory/Lnk.csv",'r')
+        f = r.read()
+        f = f.split("\n")
+        r.close()
+
+        for i in range(len(f)-1):
+            array = f[i].split(",")
+            self.lnk.append(array)
+            
+        
+        return True
