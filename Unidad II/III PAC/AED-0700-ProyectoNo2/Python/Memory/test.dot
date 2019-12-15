@@ -1,14 +1,15 @@
-strict digraph "" {
-	"C:" -> c1;
-	"C:" -> c2;
+strict digraph  {
+	"file.lnk" -> "file.py";
+	Acceso -> "96.py";
+	Directorio -> "documento.txt";
+	Directorio -> Carpeta;
+	"96.lnk" -> "96.py";
+	"C:" -> "file.lnk";
+	"C:" -> "file.py";
+	"C:" -> Directorio;
 	"C:" -> "96.lnk";
-	"C:" -> a5;
-	"C:" -> "ew.lnk";
-	c1 -> q7;
-	c1 -> q8;
-	q8 -> 96;
-	c2 -> ae5;
-	c2 -> ew;
-	"96.lnk" -> 96;
-	"ew.lnk" -> ew;
+	"C:" -> Test;
+	Test -> Acceso;
+	Test -> "main.py";
+	Test -> Nueva;
 }
