@@ -250,7 +250,6 @@ class TreeGraph:
         self.convertJson()
         json = self.json.json
         self.plotInner(json)
-
         for i in array:
             G.add_edge(i[0], i[1])
 

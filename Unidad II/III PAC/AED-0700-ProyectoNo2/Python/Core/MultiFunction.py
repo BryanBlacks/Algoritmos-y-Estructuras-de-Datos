@@ -185,9 +185,11 @@ class Function:
                 self.rootes.pop()
         else:
             nodeName = graph.navegation(nodeName)
-
-            if (nodeName.value.nodeType == "D"):
-                self.rootes.append(nodeName)
+            if nodeName:
+                if (nodeName.value.nodeType == "D"):
+                    self.rootes.append(nodeName)
+                else:
+                    print("\n\t\tRuta no encontrada.\n")
             else:
                 print("\n\t\tRuta no encontrada.\n")
 
