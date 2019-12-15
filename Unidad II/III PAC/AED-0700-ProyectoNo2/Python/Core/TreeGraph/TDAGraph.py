@@ -147,12 +147,8 @@ class TreeGraph:
             date1 = datetime.datetime.now()
 
             #nodeDelete = Node(node.value,date,parent)
-<<<<<<< HEAD
             self.trash.addList(value=node.value,date=date1,parent=parent1.value.name)
-=======
-            self.trash.addList(value = node.value, date = date1, parent = parent1)
 
->>>>>>> d6d4aa078a2fab73ac00da3ede4ce10ac5084001
             return True
         
         else: return False
@@ -260,7 +256,7 @@ class TreeGraph:
 
         write_dot(G, 'Memory/test.dot')
         pos = graphviz_layout(G, prog = 'dot')
-        nx.draw(G, pos, with_labels = True, arrows = True)
+        nx.draw(G, pos, with_labels = True, arrows = True, node_size = 2000)
 
         plt.show()
 
@@ -279,7 +275,6 @@ class TreeGraph:
         
         return True    
         
-<<<<<<< HEAD
     def toCsv(self,listTrash,filename):
         current = listTrash.first
         csv = "Nombre, Tipo, Fecha, Directorio Origen\n"
@@ -306,13 +301,12 @@ class TreeGraph:
         
         for i in range(1,len(pd)-1):
             newVertex = Vertex(str(pd[i][0]),str(pd[i][1]))
-            print(pd[i][3])
+            #print(pd[i][3])
             newParent = self.search(pd[i][3])
 
             self.trash.addList(value =newVertex,date=str(pd[i][2]),parent=newParent.value.name)
         
         
-=======
     def saveLnk(self,ls):
         array = ls
         txt=""
@@ -337,4 +331,3 @@ class TreeGraph:
             
         
         return True
->>>>>>> d6d4aa078a2fab73ac00da3ede4ce10ac5084001

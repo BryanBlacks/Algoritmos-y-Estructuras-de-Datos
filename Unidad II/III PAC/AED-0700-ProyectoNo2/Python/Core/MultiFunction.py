@@ -270,7 +270,13 @@ class Function:
             print("\t\tEl directorio a eliminar no existe")
     
     def trash(self):
+<<<<<<< HEAD
         print(graph.trash.print("trash"))
+=======
+        listTrash = graph.trash
+        print(graph.trash.print("trash"))
+        graph.toCsv(listTrash,"Memory/Trash.csv")
+>>>>>>> 24f8932df8c56e2fd18be7949099397fe7a72355
 
     def findfbe(self, fileExtension):
         listOfFiles = graph.searchByExtension(fileExtension, self.rootes[-1].value.edges.first)
@@ -291,6 +297,3 @@ class Function:
     
     def lnk(self, route):
         graph.readLnk(route)
-
-    def clear(self):
-        print("\n" * 100)

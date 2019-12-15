@@ -17,7 +17,6 @@ Main
 from Core.MultiFunction import Function
 
 multiFunction = Function()
-multiFunction.clear()
 multiFunction.printHeader()
 centinel = True
 multiFunction.lnk("Memory/Lnk.csv")
@@ -104,8 +103,11 @@ while (centinel):
 
             elif (command[0] == "cd"):
                 #Navegación entre nodos.
-                #Captura de parametro.                
-                multiFunction.cd(command[1])
+                #Captura de parametro.
+                if command[1] == "cd":
+                    print("\n\t\tIngresar una ruta a la que acceder\n")
+                else:                
+                    multiFunction.cd(command[1])
 
             elif (command[0] == "rm"):
                 #Elimina un Nodo de tipo archivo del árbol.
@@ -129,9 +131,6 @@ while (centinel):
                 #Encuentra archivos por extensión en el árbol.
                 multiFunction.findfbe(command[1])  
 
-            elif (command[0] == "clear"):
-                multiFunction.clear()
-
             elif (command[0] == "exit"):
                 #Sale del programa rompiendo el ciclo infinito.
                 if (command[1] == "exit"):
@@ -139,7 +138,6 @@ while (centinel):
                     break
                 else:
                     multiFunction.printError()
-
             else:
                 #Error si el usuario ha ingresado un comando inválido.
                 multiFunction.printError()
