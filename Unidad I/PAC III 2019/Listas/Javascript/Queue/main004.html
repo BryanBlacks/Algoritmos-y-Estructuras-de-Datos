@@ -1,0 +1,30 @@
+<meta charset = "utf-8">
+<script src = "Classes/Queue.js"></script>
+<script src = "Classes/Node.js"></script>
+<script>
+
+    superMarket = new Queue();
+
+    superMarket.add("Jugo");
+    superMarket.add("Frituras");
+    superMarket.add("Dulceria");
+    superMarket.add("Bebida de Café");
+
+    console.log("El contenido de la cola es: " , superMarket.print());
+    
+    //El cajero atiende un producto a la vez 
+    product = superMarket.pop();
+    console.log("El producto extraido es: ", product);
+    
+    product = superMarket.pop();
+    console.log("El producto extraido es: ", product);
+    
+    product = superMarket.pop();
+    console.log("El producto extraido es: ", product);
+    
+    product = superMarket.pop();
+    console.log("El producto extraido es: ", product);
+    
+    console.log("El contenido de la cola es: " , superMarket.print());
+
+</script>

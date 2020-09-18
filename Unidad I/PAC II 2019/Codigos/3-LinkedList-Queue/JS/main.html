@@ -1,0 +1,14 @@
+<meta charset="utf-8">
+<script src="Queue.js"></script>
+<script>
+    ll = new LinkedList();
+    ll.add("1");
+    ll.add("Hola");
+    ll.add("2");
+    ll.addInPosition("3", 1)
+    ll.print();
+    ll.delete("2")
+    ll.print();
+    console.log("El valor del primer nodo es: ", ll.getFirst().value);
+    console.log("El valor del ultimo nodo es: ", ll.getLast().value);
+</script>

@@ -1,0 +1,34 @@
+A
+	B
+		distancia:700
+		anchoDeBanda:400
+		usuariosConectados:342
+		cantidadDeTrafico:37
+		tipoDeMedio:Par-Trenzado
+	C
+		distancia:65
+		anchoDeBanda:160
+		usuariosConectados:54
+		cantidadDeTrafico:32
+		tipoDeMedio:WIFI
+B
+	A
+		distancia:320
+		anchoDeBanda:260
+		usuariosConectados:194
+		cantidadDeTrafico:56
+		tipoDeMedio:CAT6
+C
+	D
+		distancia:194
+		anchoDeBanda:200
+		usuariosConectados:144
+		cantidadDeTrafico:49
+		tipoDeMedio:CAT5
+D
+	B
+		distancia:65
+		anchoDeBanda:160
+		usuariosConectados:54
+		cantidadDeTrafico:32
+		tipoDeMedio:WIFI

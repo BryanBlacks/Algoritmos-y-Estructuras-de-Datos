@@ -1,0 +1,17 @@
+strict digraph  {
+	Nueva -> "acces.py";
+	"C:" -> Carpeta2;
+	"C:" -> "acces.lnk";
+	"C:" -> "file.py";
+	"C:" -> Directorio;
+	"C:" -> Test;
+	"hola2.lnk" -> "hola2.txt";
+	Carpeta2 -> "google.py";
+	Carpeta2 -> Youtube;
+	"acces.lnk" -> "acces.py";
+	Directorio -> "documento.txt";
+	Test -> Nueva;
+	Test -> "hola2.lnk";
+	Test -> "main.py";
+	Youtube -> "hola2.txt";
+}
